@@ -15,8 +15,7 @@
     ./imports/redshift.nix
     ./imports/rofi.nix
     ./imports/unclutter.nix
-    ./imports/xmobar.nix
-    ./imports/xmonad.nix
+    ./imports/awesome.nix
     ./imports/dunst.nix
   ];
 
@@ -75,8 +74,8 @@
 
   xdg.enable = true;
   programs.home-manager.enable = true;
-  home.username = "grig-xm";
-  home.homeDirectory = "/home/grig-xm";
+  home.username = "grig-aw";
+  home.homeDirectory = "/home/grig-aw";
   home.stateVersion = "23.05"; # lock. do not change
 
   nixpkgs.config = {

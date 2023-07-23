@@ -25,7 +25,7 @@
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit (self) inputs outputs;};
         modules = [
-          ./user/${userName}.nix
+          ./users/${userName}.nix
           { home.packages = [nvim]; }
         ];
       };
@@ -43,8 +43,9 @@
     };
 
     homeConfigurations = {
-      grig-xm = mkHomeConfig "grig-xm";
       grig-gn = mkHomeConfig "grig-gn";
+      grig-xm = mkHomeConfig "grig-xm";
+      grig-aw = mkHomeConfig "grig-aw";
     };
   };
 }

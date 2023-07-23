@@ -37,7 +37,7 @@ in {
 
     shellAliases = {
       # Verbosity and settings that you pretty much just always are going to want.
-      cp = "cp -iv";
+      cp = "cp -ivr";
       mv = "mv -iv";
       rm = "rm -vI";
       mkd = "mkdir -pv";

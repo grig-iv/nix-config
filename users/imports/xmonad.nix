@@ -18,7 +18,6 @@ in {
     pulsemixer
   ];
 
-  xsession.enable = true;
   xsession.windowManager.xmonad = {
     enable = true;
     enableContribAndExtras = true;
@@ -111,7 +110,7 @@ in {
           , ("<XF86AudioRaiseVolume>", spawn "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")
 
           -- rofi
-          , ("M-<Space>", spawn "rofi -show run")
+          , ("M-<Space>", spawn "rofi -show drun")
           , ("M-p", spawn "rofi -show power-menu -modi power-menu:rofi-power-menu")
           , ("M-s", spawn "rofi-pulse-select source")
           , ("M-u e", spawn "rofi -show emoji")
@@ -190,11 +189,34 @@ in {
           red500  = xmobarColor "#FA6464" ""
           orange500  = xmobarColor "#E3743C" ""
 
+      myXmobarPP2 = def
+          { ppSep             = magenta " • "
+          , ppTitleSanitize   = xmobarStrip
+          , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#8be9fd" 2
+          , ppHidden          = white . wrap " " ""
+          , ppHiddenNoWindows = lowWhite . wrap " " ""
+          , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+          , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+          , ppExtras          = [logTitles formatFocused formatUnfocused]
+          }
+        where
+          formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+          formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+          ppWindow :: String -> String
+          ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
+
+          blue, lowWhite, magenta, red, white, yellow :: String -> String
+          magenta  = xmobarColor "#ff79c6" ""
+          blue     = xmobarColor "#bd93f9" ""
+          white    = xmobarColor "#f8f8f2" ""
+          yellow   = xmobarColor "#f1fa8c" ""
+          red      = xmobarColor "#ff5555" ""
+          lowWhite = xmobarColor "#bbbbbb" ""
 
       main = xmonad
            . ewmhFullscreen
            . ewmh
-           . withEasySB (statusBarProp "xmobar $XDG_CONFIG_HOME/xmobar/.xmobarrc" (pure myXmobarPP)) defToggleStrutsKey
+           . withEasySB (statusBarProp "xmobar $XDG_CONFIG_HOME/xmobar/.xmobarrc" (pure myXmobarPP2)) defToggleStrutsKey
            $ myConfig `additionalKeysP` myKeybindings
     '';
   };

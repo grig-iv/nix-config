@@ -2,7 +2,16 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  mkUser = user: name: {
+    isNormalUser = true;
+    initialPassword = user;
+    description = name;
+    shell = pkgs.fish;
+    extraGroups = ["wheel" "networkmanager" "libvirtd" "nixos"];
+  };
+in
+{
   imports = [
     ./hardware-configuration.nix
     ./bootloader.nix
@@ -30,8 +39,12 @@
     enable = true;
     autorun = true;
     layout = "us";
+    displayManager.startx.enable = true;
 
-    windowManager.xmonad.enable = true;
+    windowManager = {
+      xmonad.enable = true;
+      awesome.enable = true;
+    };
   };
 
   # fix windows clock async
@@ -40,20 +53,9 @@
   # groups
   users.groups.nixos = {};
   programs.fish.enable = true;
-  users.users."grig-xm" = {
-    isNormalUser = true;
-    initialPassword = "grig-xm";
-    description = "Grig XM";
-    shell = pkgs.fish;
-    extraGroups = ["wheel" "networkmanager" "libvirtd" "nixos"];
-  };
-  users.users."grig-gn" = {
-    isNormalUser = true;
-    initialPassword = "grig-gn";
-    description = "Grig GN";
-    shell = pkgs.fish;
-    extraGroups = ["wheel" "networkmanager" "nixos"];
-  };
+  users.users."grig-gn" = mkUser "grig-gn" "Grig GN";
+  users.users."grig-xm" = mkUser "grig-xm" "Grig XM";
+  users.users."grig-aw" = mkUser "grig-aw" "Grig AW";
 
   # Fonts
   fonts.fonts = with pkgs; [
@@ -85,7 +87,7 @@
   nix.package = pkgs.nixFlakes;
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    allowed-users = ["grig-xm" "grig-gn"];
+    allowed-users = [ "grig-gn" "grig-xm" "grig-aw" ];
   };
 
   hardware.keyboard.qmk.enable = true;
