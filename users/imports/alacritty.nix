@@ -217,6 +217,11 @@ in {
         mods = "Control | Shift";
         chars = "\\u001b[9;6u";
       }
+      {
+        key = "Return";
+        mods = "Control";
+        chars = "\\u001b[13;5u";
+      }
     ];
   };
 }
