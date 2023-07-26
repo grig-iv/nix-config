@@ -2,8 +2,12 @@
 
 {
   imports = [
-    ./shared
     ./modules
+    ./imports/git.nix
+    ./imports/fish.nix
+    ./imports/alacritty.nix
+    ./imports/redshift.nix
+    ./imports/unclutter.nix
   ];
 
   home.packages = with pkgs; [
@@ -38,6 +42,11 @@
     gnomeExtensions.removable-drive-menu
     gnomeExtensions.user-themes
   ];
+
+  home.sessionVariables = {
+    BROWSER = "firefox";
+    TERMINAL = "alacritty";
+  };
 
   dconf = {
     enable = true;
@@ -77,45 +86,6 @@
         edge-tiling = true; 
       };
     };
-  };
-
-environment.variables.EDITOR
-
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "firefox";
-    TERMINAL = "alacritty";
-    CONFIG = "$HOME/.config";
-    CHEZMOI = "$HOME/.local/share/chezmoi";
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "grig-iv";
-    userEmail = "abstractgrig@gmail.com";
-    config = {
-      core = {
-        "safe.directory" = "/etc/nixos";
-      };
-    };
-  };
-
-  services.redshift = {
-    enable = true;
-    temperature.night = 3000;
-    temperature.day = 6500;
-    latitude = 59.951828;
-    longitude = 30.342980;
-  };
-
-  programs.home-manager.enable = true;
-  home.username = "grig-gn";
-  home.homeDirectory = "/home/grig-gn";
-  home.stateVersion = "23.05"; # lock. do not change
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = (_: true);  # Workaround for https://github.com/nix-community/home-manager/issues/2942
   };
 }
 

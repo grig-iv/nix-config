@@ -10,8 +10,7 @@
     shell = pkgs.fish;
     extraGroups = ["wheel" "networkmanager" "libvirtd" "nixos"];
   };
-in
-{
+in {
   imports = [
     ./hardware-configuration.nix
     ./bootloader.nix
@@ -87,7 +86,7 @@ in
   nix.package = pkgs.nixFlakes;
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    allowed-users = [ "grig-gn" "grig-xm" "grig-aw" ];
+    allowed-users = ["grig-gn" "grig-xm" "grig-aw"];
   };
 
   hardware.keyboard.qmk.enable = true;

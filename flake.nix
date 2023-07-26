@@ -18,15 +18,36 @@
     home-manager,
     neovim-grig,
     ...
-  } @ inputs: let
-    nvim = neovim-grig.packages.x86_64-linux.nvim;
+  } @ inputs: with nixpkgs.lib; let
+#    nvim = neovim-grig.packages.x86_64-linux.nvim;
     mkHomeConfig = userName:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit (self) inputs outputs;};
         modules = [
           ./users/${userName}.nix
-          { home.packages = [nvim]; }
+          {
+#            home.packages = [nvim];
+
+            home.sessionVariables = {
+              EDITOR = mkDefault "nvim";
+              CONFIG = mkDefault "$HOME/.config";
+              CHEZMOI = mkDefault "$HOME/.local/share/chezmoi";
+              NIXCONF = mkDefault "/etc/nixos";
+              NVIMCONF = mkDefault "$CONFIG/neovim-flake";
+            };
+
+            xdg.enable = true;
+            programs.home-manager.enable = true;
+            home.username = userName;
+            home.homeDirectory = "/home/${userName}";
+            home.stateVersion = "23.05"; # lock. do not change
+
+            nixpkgs.config = {
+              allowUnfree = true;
+              allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
+            };
+          }
         ];
       };
   in {
@@ -46,6 +67,7 @@
       grig-gn = mkHomeConfig "grig-gn";
       grig-xm = mkHomeConfig "grig-xm";
       grig-aw = mkHomeConfig "grig-aw";
+      grig-wsl = mkHomeConfig "grig-wsl";
     };
   };
 }

@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   colors = config.my.colors.base16;
@@ -8,28 +9,23 @@ in {
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [
-      # colorized command output
-      {
+      { # colorized command output
         name = "grc";
         src = grc.src;
       }
-      # faster dir jumps
-      {
+      { # faster dir jumps
         name = "z";
         src = z.src;
       }
-      # clear history from typos and private things
-      {
+      { # clear history from typos and private things
         name = "sponge";
         src = sponge.src;
       }
-      # "../." auto expands
-      {
+      { # "../." auto expands
         name = "puffer";
         src = puffer.src;
       }
-      # colored man pages
-      {
+      { # colored man pages
         name = "colored-man-pages";
         src = colored-man-pages.src;
       }
@@ -52,21 +48,16 @@ in {
       # These common commands are just too long! Abbreviate them.
       g = "git";
       e = "$EDITOR";
-      ef = "nix run ~/.config/neovim-flake";
-      shdn = "shutdown -h now";
+      ef = "nix run $NVIMCONF";
 
       # Edit shortcuts
-      enx = "cd /etc/nixos & e";
-      env = "cd $CONFIG/neovim-flake & e";
-
-      # Shortcuts
-      shutdown = "sudo shutdown";
-      reboot = "sudo reboot";
+      enx = "cd $NIXCONF & e";
+      env = "cd $NVIMCONF & e";
 
       # nix
       nft = "nix fmt";
-      rshm = "home-manager switch --flake /etc/nixos#${config.home.username}";
-      rsnc = "sudo nixos-rebuild switch --flake /etc/nixos#nixos";
+      rshm = "home-manager switch --flake $NIXCONF#${config.home.username}";
+      rsnc = "sudo nixos-rebuild switch --flake $NIXCONF#nixos";
 
       vpn-on = "wg-quick up $CONFIG/wireguard/peer.conf";
       vpn-off = "wg-quick down $CONFIG/wireguard/peer.conf";

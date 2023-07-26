@@ -29,7 +29,6 @@
     qbittorrent
     inkscape
 
-
     dunst
     xclip
     feh
@@ -63,23 +62,9 @@
   colorScheme = inputs.nix-colors.colorSchemes.dracula;
 
   home.sessionVariables = {
-    EDITOR = "nvim";
     BROWSER = "firefox";
     TERMINAL = "alacritty";
-    CONFIG = "$HOME/.config";
-    CHEZMOI = "$HOME/.local/share/chezmoi";
   };
 
   programs.autorandr.enable = true;
-
-  xdg.enable = true;
-  programs.home-manager.enable = true;
-  home.username = "grig-aw";
-  home.homeDirectory = "/home/grig-aw";
-  home.stateVersion = "23.05"; # lock. do not change
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
-  };
 }

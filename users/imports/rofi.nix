@@ -4,10 +4,10 @@
   ...
 }: let
   my = config.my;
-  mytheme =  builtins.toFile "rofi-theme.rasi" ''
+  mytheme = builtins.toFile "rofi-theme.rasi" ''
     /*******************************************************************************
-    * ROUNDED THEME FOR ROFI 
-    * User                 : LR-Tech               
+    * ROUNDED THEME FOR ROFI
+    * User                 : LR-Tech
     * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
     *******************************************************************************/
 
@@ -37,7 +37,7 @@
         location:       center;
         width:          480;
         border-radius:  24px;
-        
+
         background-color:   @bg0;
     }
 
@@ -110,7 +110,7 @@
         text-color: inherit;
     }
   '';
-in{
+in {
   # don't know why rofi.plugins don't work
   home.packages = with pkgs; [
     rofi-emoji

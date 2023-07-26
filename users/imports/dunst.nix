@@ -1,5 +1,4 @@
 # https://dunst-project.org/documentation/
-
 {config, ...}: let
   colors = config.my.colors.base16;
 in {

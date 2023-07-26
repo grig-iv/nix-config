@@ -174,7 +174,7 @@ in {
       myXmobarPP = def
           { ppSep             = ${mkXColor colors.base04} "  •  "
           , ppTitleSanitize   = xmobarStrip
-          , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#${colors.base0E}" 3 
+          , ppCurrent         = wrap " " "" . xmobarBorder "Top" "#${colors.base0E}" 3
           , ppHidden          = ${mkXColor colors.base05} . wrap " " ""
           , ppHiddenNoWindows = ${mkXColor colors.base03} . wrap " " ""
           , ppUrgent          = red500 . wrap (orange500 "!") (orange500 "!")
