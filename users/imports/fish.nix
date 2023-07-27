@@ -29,6 +29,10 @@ in {
         name = "colored-man-pages";
         src = colored-man-pages.src;
       }
+      { # inherit system-wide environment variables
+        name = "bass";
+        src = bass.src;
+      }
     ];
 
     shellAliases = {
@@ -39,7 +43,7 @@ in {
       mkd = "mkdir -pv";
 
       # Colorize commands when possible.
-      ls = "ls -hN --color=auto --group-directories-first";
+      ls = "exa --icons";
       grep = "grep --color=auto";
       diff = "diff --color=auto";
       ccat = "highlight --out-format=ansi";
@@ -66,6 +70,8 @@ in {
 
     shellInit = ''
       fish_vi_key_bindings
+
+      bass source /etc/profile
 
       function fish_prompt
           set_color -o ${colors.base0E}

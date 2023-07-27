@@ -23,6 +23,8 @@
     vifm
     chezmoi
     age
+    exa
+    ripgrep
 
     # nvim
     gcc
