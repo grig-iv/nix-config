@@ -9,8 +9,10 @@
     inputs.nix-colors.homeManagerModules.default
 
     ./modules
+    ./imports/lf
     ./imports/git.nix
     ./imports/fish.nix
+    ./imports/tmux.nix
   ];
 
   home.packages = with pkgs; [
@@ -20,20 +22,28 @@
     curl
     unzip
     tldr
-    vifm
     chezmoi
     age
     exa
     ripgrep
+    wslu
+    chafa
+    zip
 
     # nvim
     gcc
-
-    # dev
-    dotnet-sdk_6
-    msbuild
-    # nodejs_20
   ];
+
+  my.hostInfo.isInWsl = true;
+
+  home.activation = {
+    appendFishExec = config.lib.dag.entryBefore ["writeBoundary"] ''
+      #!/usr/bin/env bash
+      if ! grep -q "exec fish" "$HOME/.profile"; then
+        echo -e "\nexec fish" >> "$HOME/.profile"
+      fi
+    '';
+  };
 
   programs.neovim = {
     enable = true;

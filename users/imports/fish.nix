@@ -9,29 +9,25 @@ in {
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [
-      { # colorized command output
+      {
+        # colorized command output
         name = "grc";
         src = grc.src;
       }
-      { # faster dir jumps
-        name = "z";
-        src = z.src;
-      }
-      { # clear history from typos and private things
+      {
+        # clear history from typos and private things
         name = "sponge";
         src = sponge.src;
       }
-      { # "../." auto expands
+      {
+        # "../." auto expands
         name = "puffer";
         src = puffer.src;
       }
-      { # colored man pages
+      {
+        # colored man pages
         name = "colored-man-pages";
         src = colored-man-pages.src;
-      }
-      { # inherit system-wide environment variables
-        name = "bass";
-        src = bass.src;
       }
     ];
 
@@ -71,7 +67,7 @@ in {
     shellInit = ''
       fish_vi_key_bindings
 
-      bass source /etc/profile
+      zoxide init fish | source
 
       function fish_prompt
           set_color -o ${colors.base0E}
@@ -105,4 +101,9 @@ in {
       #set --universal fish_color_selection      E6B450 # ayu:syntax.accent    when selecting text (in vi visual mode)
     '';
   };
+
+  home.packages = with pkgs; [
+    zoxide
+    fzf
+  ];
 }

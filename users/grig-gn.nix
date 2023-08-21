@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./modules
     ./imports/git.nix
@@ -11,8 +13,8 @@
   ];
 
   home.packages = with pkgs; [
-    alacritty 
-    telegram-desktop  
+    alacritty
+    telegram-desktop
     discord
     tor-browser-bundle-bin
     firefox
@@ -22,7 +24,8 @@
     obs-studio
     mpv-unwrapped
 
-    virt-manager libvirt
+    virt-manager
+    libvirt
 
     wireguard-tools
     neovim
@@ -31,9 +34,10 @@
     wget
     curl
     unzip
-    tldr  
-    vifm 
-    chezmoi age
+    tldr
+    vifm
+    chezmoi
+    age
 
     gnome-extension-manager
     gnomeExtensions.blur-my-shell
@@ -74,7 +78,7 @@
       };
 
       "/org/gnome/shell/extensions/blur-my-shell" = {
-        noise-amount = "0.80"; 
+        noise-amount = "0.80";
         noise-lightness = "0.80";
       };
 
@@ -83,9 +87,8 @@
       };
 
       "/org/gnome/mutter" = {
-        edge-tiling = true; 
+        edge-tiling = true;
       };
     };
   };
 }
-

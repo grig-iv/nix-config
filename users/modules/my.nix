@@ -4,10 +4,16 @@
   ...
 }:
 with lib; {
+  options.my.hostInfo.isInWsl = mkOption {
+    type = types.bool;
+    default = false;
+    description = "WSL indicator";
+  };
+
   options.my.marginBase = mkOption {
     type = types.int;
     default = 8;
-    description = "Margin bas of screen elements";
+    description = "Margin base of screen elements";
   };
 
   options.my.backgroundsDirPath = mkOption {
