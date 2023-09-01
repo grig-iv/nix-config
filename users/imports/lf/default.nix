@@ -12,6 +12,8 @@
       ignorecase = true;
       incsearch = true;
       icons = true;
+      ratios = "1:2";
+      shellopts = "-eu";
     };
 
     commands = {
@@ -63,6 +65,7 @@
     };
 
     extraConfig = ''
+      set truncatechar ⋯
       &${pkgs.ctpv}/bin/ctpv -s $id
       cmd on-quit %${pkgs.ctpv}/bin/ctpv -e $id
       set cleaner ${pkgs.ctpv}/bin/ctpvclear

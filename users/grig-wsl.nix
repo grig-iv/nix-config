@@ -29,6 +29,7 @@
     wslu
     chafa
     zip
+    lazygit
 
     # nvim
     gcc
