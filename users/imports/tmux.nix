@@ -10,10 +10,20 @@
     keyMode = "vi";
     newSession = true;
     mouse = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     plugins = with pkgs.tmuxPlugins; [
-      catppuccin
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavour 'mocha'
+        '';
+      }
     ];
+
+    extraConfig = ''
+      set-option -sa terminal-overrides ",xterm*:Tc"
+      set-option -g status-position top
+    '';
   };
 
   programs.fish = {

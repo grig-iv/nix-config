@@ -22,17 +22,19 @@
     curl
     unzip
     tldr
+    exa
+    wslu
+    zip
     chezmoi
     age
-    exa
-    ripgrep
-    wslu
-    chafa
-    zip
-    lazygit
 
     # nvim
+    alejandra
+    tree-sitter
     gcc
+    ripgrep
+    fd
+    stylua
   ];
 
   my.hostInfo.isInWsl = true;

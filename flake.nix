@@ -40,7 +40,7 @@
                 CONFIG = mkDefault "$HOME/.config";
                 CHEZMOI = mkDefault "$HOME/.local/share/chezmoi";
                 NIXCONF = mkDefault "/etc/nixos";
-                NVIMCONF = mkDefault "$CONFIG/neovim-flake";
+                NVIMCONF = mkDefault "$CONFIG/nvim";
               };
 
               xdg.enable = true;
