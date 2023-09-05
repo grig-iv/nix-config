@@ -10,6 +10,7 @@
 
     ./modules
     ./imports/lf
+    ./imports/lazygit.nix
     ./imports/git.nix
     ./imports/fish.nix
     ./imports/tmux.nix
