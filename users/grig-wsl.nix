@@ -10,8 +10,8 @@
 
     ./modules
     ./imports/lf
-    ./imports/lazygit.nix
     ./imports/git.nix
+    ./imports/gitui.nix
     ./imports/fish.nix
     ./imports/tmux.nix
   ];
