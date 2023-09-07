@@ -10,6 +10,7 @@
 
     ./modules
     ./imports/lf
+    ./imports/go.nix
     ./imports/git.nix
     ./imports/gitui.nix
     ./imports/fish.nix

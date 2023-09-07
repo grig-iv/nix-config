@@ -23,6 +23,10 @@
     extraConfig = ''
       set-option -sa terminal-overrides ",xterm*:Tc"
       set-option -g status-position top
+
+      bind c new-window -c "#{pane_current_path}"
+      bind | split-window -h -c "#{pane_current_path}"
+      bind _ split-window -v -c "#{pane_current_path}"
     '';
   };
 
