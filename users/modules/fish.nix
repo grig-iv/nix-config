@@ -60,8 +60,6 @@ in {
     };
 
     shellInit = ''
-      fish_vi_key_bindings
-
       zoxide init fish | source
 
       function fish_prompt

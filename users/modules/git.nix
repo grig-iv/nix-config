@@ -1,4 +1,6 @@
 {config, ...}: {
+  imports = [./gitui.nix];
+
   programs.git = {
     enable = true;
     userName = "grig-iv";

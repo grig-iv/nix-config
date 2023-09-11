@@ -8,15 +8,15 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./modules
-    ./imports/git.nix
-    ./imports/fish.nix
-    ./imports/alacritty.nix
-    ./imports/redshift.nix
-    ./imports/rofi.nix
-    ./imports/unclutter.nix
-    ./imports/awesome.nix
-    ./imports/dunst.nix
+    ./modules/my.nix
+    ./modules/git.nix
+    ./modules/fish.nix
+    ./modules/alacritty.nix
+    ./modules/redshift.nix
+    ./modules/rofi.nix
+    ./modules/unclutter.nix
+    ./modules/awesome.nix
+    ./modules/dunst.nix
   ];
 
   home.packages = with pkgs; [

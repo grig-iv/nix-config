@@ -20,60 +20,47 @@
     home-manager,
     neovim-grig,
     ...
-  } @ inputs:
-    with nixpkgs.lib; let
-      #    nvim = neovim-grig.packages.x86_64-linux.nvim;
-      mkHomeConfig = userName:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit (self) inputs outputs;
-            inherit nixpkgs-unstable;
-          };
-          modules = [
-            ./users/${userName}.nix
-            {
-              #            home.packages = [nvim];
+  } @ inputs: let
+    unstable = import nixpkgs-unstable {
+      system = "x86_64-linux";
+      config.allowUnfree = true;
+    };
 
-              home.sessionVariables = {
-                EDITOR = mkDefault "nvim";
-                CONFIG = mkDefault "$HOME/.config";
-                CHEZMOI = mkDefault "$HOME/.local/share/chezmoi";
-                NIXCONF = mkDefault "/etc/nixos";
-                NVIMCONF = mkDefault "$CONFIG/nvim";
-              };
-
-              xdg.enable = true;
-              programs.home-manager.enable = true;
-              home.username = userName;
-              home.homeDirectory = "/home/${userName}";
-              home.stateVersion = "23.05"; # lock. do not change
-
-              nixpkgs.config = {
-                allowUnfree = true;
-                allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
-              };
-            }
-          ];
+    #    nvim = neovim-grig.packages.x86_64-linux.nvim;
+    mkHomeConfig = userName:
+      home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          inherit (self) inputs outputs;
+          inherit unstable;
         };
-    in {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-
-      nixosConfigurations = {
-        nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [
-            ./system/configuration.nix
-            inputs.grub2-themes.nixosModules.default
-          ];
-        };
+        modules = [
+          ./users/${userName}.nix
+          ./users/grig-shared.nix
+          {
+            home.username = userName;
+            home.homeDirectory = "/home/${userName}";
+          }
+        ];
       };
+  in {
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
-      homeConfigurations = {
-        grig-gn = mkHomeConfig "grig-gn";
-        grig-xm = mkHomeConfig "grig-xm";
-        grig-aw = mkHomeConfig "grig-aw";
-        grig-wsl = mkHomeConfig "grig-wsl";
+    nixosConfigurations = {
+      nixos = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./system/configuration.nix
+          inputs.grub2-themes.nixosModules.default
+        ];
       };
     };
+
+    homeConfigurations = {
+      grig-gn = mkHomeConfig "grig-gn";
+      grig-xm = mkHomeConfig "grig-xm";
+      grig-aw = mkHomeConfig "grig-aw";
+      grig-wsl = mkHomeConfig "grig-wsl";
+    };
+  };
 }

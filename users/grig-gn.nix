@@ -4,12 +4,12 @@
   ...
 }: {
   imports = [
-    ./modules
-    ./imports/git.nix
-    ./imports/fish.nix
-    ./imports/alacritty.nix
-    ./imports/redshift.nix
-    ./imports/unclutter.nix
+    ./modules/my.nix
+    ./modules/git.nix
+    ./modules/fish.nix
+    ./modules/alacritty.nix
+    ./modules/redshift.nix
+    ./modules/unclutter.nix
   ];
 
   home.packages = with pkgs; [

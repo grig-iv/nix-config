@@ -8,13 +8,13 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./modules
-    ./imports/lf
-    ./imports/go.nix
-    ./imports/git.nix
-    ./imports/gitui.nix
-    ./imports/fish.nix
-    ./imports/tmux.nix
+    ./modules/my.nix
+    ./modules/lf
+    ./modules/fish.nix
+    ./modules/tmux.nix
+    ./modules/neovim.nix
+    ./modules/git.nix
+    ./modules/dotnet.nix
   ];
 
   home.packages = with pkgs; [

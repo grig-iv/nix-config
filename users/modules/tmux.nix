@@ -1,11 +1,10 @@
 {
-  config,
   pkgs,
   ...
 }: {
   programs.tmux = {
     enable = true;
-    escapeTime = 0;
+    escapeTime = 50;
     baseIndex = 1;
     keyMode = "vi";
     newSession = true;
@@ -33,7 +32,9 @@
   programs.fish = {
     shellInit = pkgs.lib.mkAfter ''
       if not set -q TMUX
-          tmux
+        set -g TMUX tmux new-session -d -s main
+        eval $TMUX
+        tmux attach-session -d -t main
       end
     '';
   };
