@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   ...
 }: {
@@ -10,6 +11,7 @@
     newSession = true;
     mouse = true;
     terminal = "tmux-256color";
+    shell = "${pkgs.fish}/bin/fish";
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = catppuccin;
@@ -29,19 +31,29 @@
     '';
   };
 
-  programs.fish = {
-    shellInit = pkgs.lib.mkAfter ''
-      if not set -q TMUX
-        set -g TMUX tmux new-session -d -s main
-        eval $TMUX
-        tmux attach-session -d -t main
-      end
-    '';
-  };
-
   home.packages = with pkgs; [
     teamocil
   ];
+
+  home.activation = {
+    addTmuxAutoStart = config.lib.dag.entryBefore ["writeBoundary"] ''
+      #!/bin/bash
+
+      # Path to the .profile file
+      PROFILE="$HOME/.profile"
+
+      # Check for the presence of "exec tmux"
+      if ! grep -q "tmux" "\$PROFILE"; then
+          cat <<EOT >> "$PROFILE"
+
+      # Autostart tmux
+      if command -v tmux &> /dev/null && [ -z "\$TMUX" ]; then
+          tmux attach -t main || tmux new -s main
+      fi
+      EOT
+      fi
+    '';
+  };
 
   home.file.".teamocil/main.yml".text = ''
     windows:

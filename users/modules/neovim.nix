@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -19,5 +15,9 @@
     gcc
     ripgrep
     fd
+    nodejs_20
+    gnumake
+
+    #ltex-ls
   ];
 }

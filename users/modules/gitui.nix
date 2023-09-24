@@ -27,4 +27,8 @@
       )
     '';
   };
+
+  home.shellAliases = {
+    g = "gitui";
+  };
 }

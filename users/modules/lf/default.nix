@@ -8,7 +8,7 @@
 
     settings = {
       drawbox = true;
-      hidden = true;
+      hidden = false;
       ignorecase = true;
       incsearch = true;
       icons = true;
@@ -49,6 +49,7 @@
     keybindings = {
       "x" = "cut";
       "d" = "delete";
+      "<delete>" = "delete";
       "y" = null;
       "yy" = "copy";
       "yp" = "yank-path";
@@ -57,6 +58,14 @@
       "z<space>" = "push :z<space>";
       "a" = "push :mkfile<space>";
       "A" = "push :mkdir<space>";
+
+      "gw" = "cd /mnt/c/Users/grig";
+      "gd" = "cd /mnt/c/Users/grig/Downloads";
+      "gp" = "cd ~/projects";
+      "gm" = "cd ~/extended-mind";
+      "gc" = "cd ~/.config";
+      "gx" = "cd ~/.config/nix-config";
+      "gn" = "cd ~/.config/nvim";
     };
 
     previewer = {
@@ -79,26 +88,31 @@
   '';
 
   # lfcd (cd to current directory on lf exit)
-  programs.fish.functions.lfcd = ''
-    set tmp (mktemp)
-    command lf -last-dir-path=$tmp $argv
-    if test -f "$tmp"
-        set dir (cat $tmp)
-        rm -f $tmp > /dev/null 2>&1
-        if test -d "$dir"
-            if test "$dir" != (pwd)
-                cd $dir
-            end
-        end
-    end
-  '';
+  programs.fish = {
+    functions.lfcd = ''
+      set tmp (mktemp)
+      command lf -last-dir-path=$tmp $argv
+      if test -f "$tmp"
+          set dir (cat $tmp)
+          rm -f $tmp > /dev/null 2>&1
+          if test -d "$dir"
+              if test "$dir" != (pwd)
+                  cd $dir
+              end
+          end
+      end
+    '';
 
-  home.shellAliases.lf = "lfcd";
-  home.shellAliases.fm = "lfcd";
+    shellAliases = {
+      lf = "lfcd";
+    };
+
+    shellInit = pkgs.lib.mkAfter ''
+      bind \ce 'lfcd; commandline -f execute'
+    '';
+  };
 
   home.packages = with pkgs; [
     ctpv
-    zoxide
-    fzf
   ];
 }

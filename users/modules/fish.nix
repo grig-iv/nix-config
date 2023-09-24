@@ -1,11 +1,29 @@
 {
   config,
   pkgs,
-  lib,
   ...
 }: let
-  colors = config.my.colors.base16;
+  # Setup script for a non-nixos system
+  fishSetup = pkgs.writeShellScriptBin "fish-setup" ''
+    #!/bin/bash
+
+    if [[ $EUID -ne 0 ]]; then
+        echo "This script must be run as root."
+        exit 1
+    fi
+
+    if ! grep -q "${pkgs.fish}/bin/fish" /etc/shells; then
+        echo "${pkgs.fish}/bin/fish" | sudo tee -a /etc/shells
+    fi
+
+    # Change the shell to fish
+    chsh -s "${pkgs.fish}/bin/fish" ${config.home.username}
+  '';
 in {
+  home.packages = [
+    fishSetup
+  ];
+
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [
@@ -26,51 +44,19 @@ in {
       }
     ];
 
-    shellAliases = {
-      # Verbosity and settings that you pretty much just always are going to want.
-      cp = "cp -ivr";
-      mv = "mv -iv";
-      rm = "rm -vI";
-      mkd = "mkdir -pv";
-
-      # Colorize commands when possible.
-      ls = "exa --icons";
-      grep = "grep --color=auto";
-      diff = "diff --color=auto";
-      ccat = "highlight --out-format=ansi";
-      ip = "ip -color=auto";
-
-      # These common commands are just too long! Abbreviate them.
-      g = "git";
-      e = "$EDITOR";
-      ef = "nix run $NVIMCONF";
-
-      # Edit shortcuts
-      enx = "cd $NIXCONF & e";
-      env = "cd $NVIMCONF & e";
-
-      # nix
-      nft = "nix fmt";
-      rshm = "home-manager switch --flake $NIXCONF#${config.home.username}";
-      rsnc = "sudo nixos-rebuild switch --flake $NIXCONF#nixos";
-
-      vpn-on = "wg-quick up $CONFIG/wireguard/peer.conf";
-      vpn-off = "wg-quick down $CONFIG/wireguard/peer.conf";
-      find-font = "fc-list | grep ";
+    functions = {
+      fish_greeting = "";
+      fish_prompt = ''
+        set_color -o a6e3a1
+        echo -n (prompt_pwd)
+        echo -n ' '
+        set_color f38ba8
+        echo -n 'ඞ '
+        set_color normal
+      '';
     };
 
     shellInit = ''
-      zoxide init fish | source
-
-      function fish_prompt
-          set_color -o a6e3a1
-          echo -n (prompt_pwd)
-          echo -n ' '
-          set_color f38ba8
-          echo -n 'ඞ '
-          set_color normal
-      end
-
       set --universal fish_color_normal cdd6f4
       set --universal fish_color_command 89b4fa
       set --universal fish_color_param f2cdcd
@@ -100,8 +86,6 @@ in {
     '';
   };
 
-  home.packages = with pkgs; [
-    zoxide
-    fzf
-  ];
+  programs.zoxide.enable = true;
+  programs.fzf.enable = true;
 }
