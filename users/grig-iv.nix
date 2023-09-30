@@ -8,8 +8,7 @@
 
     ./grig-shared-desktop.nix
 
-    ./modules/xmonad.nix
-    ./modules/xmobar.nix
+    ./modules/awesome.nix
   ];
 
   home.packages = with pkgs; [

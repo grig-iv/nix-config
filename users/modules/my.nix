@@ -18,7 +18,7 @@ with lib; {
 
   options.my.backgroundsDirPath = mkOption {
     type = types.path;
-    default = /usr/share/backgrounds/dracula;
+    default = /usr/share/backgrounds;
     description = "Path to wallpaper folder";
   };
 

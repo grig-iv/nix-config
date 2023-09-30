@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   inputs,
@@ -31,15 +30,13 @@ with lib; {
     tldr
     exa
     zip
+
+    neofetch
+    cbonsai
   ];
 
   home.sessionVariables = {
-    EDITOR = mkDefault "nvim";
     CONFIG = mkDefault "$HOME/.config";
-    CHEZMOI = mkDefault "$HOME/.local/share/chezmoi";
-    NIXCONF = mkDefault "/etc/nixos";
-    NVIMCONF = mkDefault "$CONFIG/nvim";
-    EXTMIND = mkDefault "$HOME/extended-mind";
   };
 
   home.sessionPath = [
@@ -62,31 +59,21 @@ with lib; {
 
     # shortcuts
     e = "$EDITOR";
-    x = "cd $NIXCONF & e";
-    n = "cd $NVIMCONF & e";
-    m = "cd ~/extended-mind & e index.norg";
-
-    # nix
-    shm = "home-manager switch --flake $NIXCONF#${config.home.username}";
-    snc = "sudo nixos-rebuild switch --flake $NIXCONF#nixos";
 
     # utils
-    vpn-on = "wg-quick up $CONFIG/wireguard/peer.conf";
-    vpn-off = "wg-quick down $CONFIG/wireguard/peer.conf";
     find-font = "fc-list | grep ";
   };
 
-
   programs.fish = {
     functions.goToProject = ''
-        set selected_folder (command ls -d ~/projects/*/ | fzf)
+      set selected_folder (command ls -d ~/projects/*/ | fzf)
 
-        if test -n "$selected_folder"
-            cd "$selected_folder"
-            $EDITOR 
-        else
-            echo "No folder selected."
-        end
+      if test -n "$selected_folder"
+          cd "$selected_folder"
+          $EDITOR
+      else
+          echo "No folder selected."
+      end
     '';
 
     shellInit = pkgs.lib.mkAfter ''
@@ -95,11 +82,4 @@ with lib; {
   };
 
   xdg.enable = true;
-  programs.home-manager.enable = true;
-  home.stateVersion = "23.05"; # lock. do not change
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
-  };
 }

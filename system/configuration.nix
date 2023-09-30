@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   mkUser = user: name: {
     isNormalUser = true;
     initialPassword = user;
@@ -52,6 +48,7 @@ in {
   # groups
   users.groups.nixos = {};
   programs.fish.enable = true;
+  users.users."grig-iv" = mkUser "grig-iv" "Grig IV";
   users.users."grig-gn" = mkUser "grig-gn" "Grig GN";
   users.users."grig-xm" = mkUser "grig-xm" "Grig XM";
   users.users."grig-aw" = mkUser "grig-aw" "Grig AW";
@@ -70,12 +67,12 @@ in {
   # System packages
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
+    home-manager
     neovim
     git
     wget
     curl
     unzip
-    gcc # need for nvim packer
   ];
 
   # USB mount
@@ -86,7 +83,7 @@ in {
   nix.package = pkgs.nixFlakes;
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
-    allowed-users = ["grig-gn" "grig-xm" "grig-aw"];
+    allowed-users = ["grig-iv" "grig-gn" "grig-xm"];
   };
 
   hardware.keyboard.qmk.enable = true;

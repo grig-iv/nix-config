@@ -51,7 +51,7 @@ in {
       import qualified XMonad.StackSet as W
       import qualified XMonad.Layout.MultiToggle as MT (Toggle(..))
 
-      myTerminal = "alacritty"
+      myTerminal = "wezterm"
       myBrowser = "firefox"
       myConfig = def
           { modMask    = mod4Mask

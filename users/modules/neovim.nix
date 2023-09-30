@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+with lib; {
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -20,4 +25,15 @@
 
     #ltex-ls
   ];
+
+  home.sessionVariables = {
+    EDITOR = mkDefault "nvim";
+    NVIMCONF = mkDefault "$CONFIG/nvim";
+    EXTMIND = mkDefault "$HOME/extended-mind";
+  };
+
+  home.shellAliases = {
+    n = "cd $NVIMCONF & e";
+    m = "cd ~/extended-mind & e index.norg";
+  };
 }

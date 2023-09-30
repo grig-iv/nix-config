@@ -10,7 +10,7 @@
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-colors.url = "github:misterio77/nix-colors";
-    neovim-grig.url = "github:grig-iv/neovim-flake";
+    nil.url = "github:oxalica/nil";
   };
 
   outputs = {
@@ -18,7 +18,7 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    neovim-grig,
+    nil,
     ...
   } @ inputs: let
     unstable = import nixpkgs-unstable {
@@ -26,7 +26,6 @@
       config.allowUnfree = true;
     };
 
-    #    nvim = neovim-grig.packages.x86_64-linux.nvim;
     mkHomeConfig = userName:
       home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -36,8 +35,8 @@
         };
         modules = [
           ./users/${userName}.nix
-          ./users/grig-shared.nix
           {
+            home.packages = [nil.packages.x86_64-linux.default];
             home.username = userName;
             home.homeDirectory = "/home/${userName}";
           }
@@ -59,7 +58,7 @@
     homeConfigurations = {
       grig-gn = mkHomeConfig "grig-gn";
       grig-xm = mkHomeConfig "grig-xm";
-      grig-aw = mkHomeConfig "grig-aw";
+      grig-iv = mkHomeConfig "grig-iv";
       grig-wsl = mkHomeConfig "grig-wsl";
     };
   };

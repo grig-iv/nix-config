@@ -5,8 +5,6 @@
 }: let
   # Setup script for a non-nixos system
   fishSetup = pkgs.writeShellScriptBin "fish-setup" ''
-    #!/bin/bash
-
     if [[ $EUID -ne 0 ]]; then
         echo "This script must be run as root."
         exit 1

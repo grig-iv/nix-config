@@ -4,6 +4,8 @@
   ...
 }: {
   imports = [
+    ./grig-shared.nix
+
     ./modules/wsl-vpnkit.nix
     ./modules/dotnet.nix
     ./modules/go.nix
