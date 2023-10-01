@@ -1,9 +1,4 @@
-{pkgs, ...}: let
-  cascadeTheme = fetchTarball {
-    url = "https://github.com/andreasgrafen/cascade/archive/main.tar.gz";
-    sha256 = "1gf65iypcc8lzp2s5mwbf71n77c9ldr0g9ic2p9w13hdax1q3qqw";
-  };
-in {
+{pkgs, ...}:  {
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -15,6 +10,7 @@ in {
         vimium
         bitwarden
         i-dont-care-about-cookies
+        firefox-color  # https://github.com/catppuccin/firefox
       ];
       settings = {
         "app.update.auto" = false; # disable autoupdate
@@ -29,6 +25,9 @@ in {
         "full-screen-api.warning.timeout" = 0; # disable full screen warning
         "browser.download.dir" = "~/downloads"; # set downloads directory
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false; # disable picture-in-pictur feature
+        "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org"; # default theme
+        "browser.uidensity" = 1; # compact view
+        "browser.toolbars.bookmarks.visibility" = "never"; # doesn't show bookmarks
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;
@@ -54,18 +53,6 @@ in {
         "network.http.referer.XOriginTrimmingPolicy" = 2; # when sending the referrer across origins, send only the origin, not the full URL
         "privacy.donottrackheader.enabled" = true; # enable the Do Not Track header
       };
-      userChrome = ''
-      '';
     };
-  };
-
-  home.file."cascade" = {
-    target = ".mozilla/firefox/default/chrome/cascade/";
-    source = "${cascadeTheme}/chrome/includes";
-  };
-
-  home.file."cascade-catppuccin" = {
-    target = ".mozilla/firefox/default/chrome/cascade-catppuccin";
-    source = "${cascadeTheme}/integrations/catppuccin";
   };
 }

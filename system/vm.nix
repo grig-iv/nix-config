@@ -1,10 +1,9 @@
 {
-  config,
   pkgs,
   ...
 }: {
   # Enable dconf (System Management Tool)
-  programs.dconf.enable = true;
+  # programs.dconf.enable = true;
 
   # Install necessary packages
   environment.systemPackages = with pkgs; [

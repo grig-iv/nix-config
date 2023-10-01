@@ -10,7 +10,7 @@
   };
 
   # Tell Xorg to use the nvidia driver
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nouveau"];
 
   # Make sure opengl is enabled
   hardware.opengl = {

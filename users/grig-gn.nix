@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   ...
 }: {
@@ -13,7 +12,6 @@
   ];
 
   home.packages = with pkgs; [
-    alacritty
     telegram-desktop
     discord
     tor-browser-bundle-bin
@@ -35,9 +33,6 @@
     curl
     unzip
     tldr
-    vifm
-    chezmoi
-    age
 
     gnome-extension-manager
     gnomeExtensions.blur-my-shell

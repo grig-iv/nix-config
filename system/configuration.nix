@@ -33,13 +33,21 @@ in {
   services.xserver = {
     enable = true;
     autorun = true;
-    layout = "us";
     displayManager.startx.enable = true;
 
     windowManager = {
       xmonad.enable = true;
       awesome.enable = true;
     };
+
+    layout = "us,ru";
+    xkbOptions = "grp:alt_shift_toggle";
+/*    extraLayouts.ru-grig = {
+      description = "Grig RU layout";
+      languages = ["ru"]; 
+      symbolsFile = ./layout-ru.xkb;
+    };
+    */
   };
 
   # fix windows clock async

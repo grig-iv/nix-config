@@ -4,7 +4,7 @@
   ...
 }: let
   wallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
-    feh --randomize --bg-fill ${toString config.my.backgroundsDirPath}/*catppuccin*
+    feh --randomize --bg-fill ${toString config.my.backgroundsDirPath}/*nature*
   '';
 in {
   home.packages = [wallpaper];
