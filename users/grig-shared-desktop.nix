@@ -22,7 +22,7 @@ in
       ./modules/rofi.nix
       ./modules/unclutter.nix
       ./modules/dunst.nix
-      ./modules/picom.nix
+      ./modules/picom.nix   
       ./modules/feh.nix
       ./modules/wireguard.nix
       ./modules/qmk.nix
