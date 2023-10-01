@@ -16,6 +16,8 @@ in
       ./grig-shared.nix
 
       ./modules/wezterm.nix
+      ./modules/firefox.nix
+      ./modules/gtk.nix
       ./modules/redshift.nix
       ./modules/rofi.nix
       ./modules/unclutter.nix
@@ -29,7 +31,6 @@ in
     home.packages = with pkgs; [
       autostart
 
-      firefox
       telegram-desktop
 
       xclip

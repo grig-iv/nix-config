@@ -8,9 +8,12 @@
     home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nur.url = "github:nix-community/NUR";
+
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-colors.url = "github:misterio77/nix-colors";
     nil.url = "github:oxalica/nil";
+    tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";
   };
 
   outputs = {
@@ -19,6 +22,7 @@
     nixpkgs-unstable,
     home-manager,
     nil,
+    tidal-cycles,
     ...
   } @ inputs: let
     unstable = import nixpkgs-unstable {
@@ -36,6 +40,7 @@
         modules = [
           ./users/${userName}.nix
           {
+            nixpkgs.overlays = [inputs.nur.overlay tidal-cycles.overlays.tidal];
             home.packages = [nil.packages.x86_64-linux.default];
             home.username = userName;
             home.homeDirectory = "/home/${userName}";
@@ -57,7 +62,6 @@
 
     homeConfigurations = {
       grig-gn = mkHomeConfig "grig-gn";
-      grig-xm = mkHomeConfig "grig-xm";
       grig-iv = mkHomeConfig "grig-iv";
       grig-wsl = mkHomeConfig "grig-wsl";
     };

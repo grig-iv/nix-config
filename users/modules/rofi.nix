@@ -4,110 +4,117 @@
   ...
 }: let
   my = config.my;
-  mytheme = builtins.toFile "rofi-theme.rasi" ''
-    /*******************************************************************************
-    * ROUNDED THEME FOR ROFI
-    * User                 : LR-Tech
-    * Theme Repo           : https://github.com/lr-tech/rofi-themes-collection
-    *******************************************************************************/
-
+  catppuccin = builtins.toFile "rofi-theme.rasi" ''
     * {
-        bg0:    #${my.colors.base16.base00};
-        bg1:    #2A2A2A;
-        bg2:    #3D3D3D80;
-        bg3:    #${my.colors.base16.base0E};
-        fg0:    #${my.colors.base16.base05};
-        fg1:    #FFFFFF;
-        fg2:    #969696;
-        fg3:    #3D3D3D;
+        bg-col:  #1e1e2e;
+        bg-col-light: #1e1e2e;
+        border-col: #1e1e2e;
+        selected-col: #1e1e2e;
+        blue: #89b4fa;
+        fg-col: #cdd6f4;
+        fg-col2: #f38ba8;
+        grey: #6c7086;
+
+        width: 600;
+        font: "JetBrainsMono Nerd Font 14";
     }
 
-    * {
-        font:   "${my.fontName} 12";
-
-        background-color:   transparent;
-        text-color:         @fg0;
-
-        margin:     0px;
-        padding:    0px;
-        spacing:    0px;
+    element-text, element-icon , mode-switcher {
+        background-color: inherit;
+        text-color:       inherit;
     }
 
     window {
-        location:       center;
-        width:          480;
-        border-radius:  24px;
-
-        background-color:   @bg0;
+        height: 360px;
+        border: 3px;
+        border-color: @border-col;
+        background-color: @bg-col;
     }
 
     mainbox {
-        padding:    12px;
+        background-color: @bg-col;
     }
 
     inputbar {
-        background-color:   @bg1;
-        border-color:       @bg3;
-
-        border:         2px;
-        border-radius:  16px;
-
-        padding:    8px 16px;
-        spacing:    8px;
-        children:   [ prompt, entry ];
+        children: [prompt,entry];
+        background-color: @bg-col;
+        border-radius: 5px;
+        padding: 2px;
     }
 
     prompt {
-        text-color: @fg2;
+        background-color: @blue;
+        padding: 6px;
+        text-color: @bg-col;
+        border-radius: 3px;
+        margin: 20px 0px 0px 20px;
+    }
+
+    textbox-prompt-colon {
+        expand: false;
+        str: ":";
     }
 
     entry {
-        placeholder:        "Search";
-        placeholder-color:  @fg3;
-    }
-
-    message {
-        margin:             12px 0 0;
-        border-radius:      16px;
-        border-color:       @bg2;
-        background-color:   @bg2;
-    }
-
-    textbox {
-        padding:    8px 24px;
+        padding: 6px;
+        margin: 20px 0px 0px 10px;
+        text-color: @fg-col;
+        background-color: @bg-col;
     }
 
     listview {
-        background-color:   transparent;
-
-        margin:     12px 0 0;
-        lines:      8;
-        columns:    1;
-
-        fixed-height: false;
+        border: 0px 0px 0px;
+        padding: 6px 0px 0px;
+        margin: 10px 0px 0px 20px;
+        columns: 2;
+        lines: 5;
+        background-color: @bg-col;
     }
 
     element {
-        padding:        8px 16px;
-        spacing:        8px;
-        border-radius:  16px;
-    }
-
-    element normal active {
-        text-color: @bg3;
-    }
-
-    element selected normal, element selected active {
-        background-color:   @bg3;
+        padding: 5px;
+        background-color: @bg-col;
+        text-color: @fg-col  ;
     }
 
     element-icon {
-        size:           1em;
-        vertical-align: 0.5;
+        size: 25px;
     }
 
-    element-text {
-        text-color: inherit;
+    element selected {
+        background-color:  @selected-col ;
+        text-color: @fg-col2  ;
+    }
+
+    mode-switcher {
+        spacing: 0;
+      }
+
+    button {
+        padding: 10px;
+        background-color: @bg-col-light;
+        text-color: @grey;
+        vertical-align: 0.5;
+        horizontal-align: 0.5;
+    }
+
+    button selected {
+      background-color: @bg-col;
+      text-color: @blue;
+    }
+
+    message {
+        background-color: @bg-col-light;
+        margin: 2px;
+        padding: 2px;
+        border-radius: 5px;
+    }
+
+    textbox {
+        padding: 6px;
+        margin: 20px 0px 0px 20px;
+        text-color: @blue;
+        background-color: @bg-col-light;
     }
   '';
 in {
@@ -123,7 +130,7 @@ in {
 
   programs.rofi = {
     enable = true;
-    theme = mytheme;
+    theme = catppuccin;
 
     plugins = with pkgs; [
       rofi-emoji
@@ -134,10 +141,22 @@ in {
     ];
 
     extraConfig = {
-      modi = "emoji,calc";
       show-icons = true;
       sort = true;
       matching = "fuzzy";
+
+      modi = "run,drun,window";
+      icon-theme = "Oranchelo";
+      terminal = "wezterm";
+      drun-display-format = "{icon} {name}";
+      location = 0;
+      disable-history = false;
+      hide-scrollbar = true;
+      display-drun = "   Apps ";
+      display-run = "   Run ";
+      display-window = " 﩯  Window";
+      display-Network = " 󰤨  Network";
+      sidebar-mode = true;
     };
   };
 }

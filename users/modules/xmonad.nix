@@ -14,7 +14,6 @@ in {
     xclip
     feh
     maim
-    picom-jonaburg
     pulsemixer
   ];
 
@@ -67,8 +66,6 @@ in {
           , startupHook = myStartupHook
           , logHook =  refocusLastLogHook >> nsHideOnFocusLoss myScratchPads
           }
-
-      setRandomWallpapers = "feh --randomize --bg-fill --no-recurseve ${toString config.my.backgroundsDirPath}/*"
 
       myKeybindings =
           [ ("M-q", spawn "xmonad --restart")
@@ -125,11 +122,9 @@ in {
       myStartupHook = do
         spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144"
         spawnOnce "xinput --set-prop 14 'libinput Accel Speed' -0.5"
-        spawnOnce "udiskie"
-        spawnOnce setRandomWallpapers
-        spawnOnOnce "WEB" myBrowser
+        spawnOnce autostart
+        spawnOnce set-wallpaper 
         spawnOnOnce "SYS" myTerminal
-        spawnOnOnce "MSG" "telegram-desktop"
 
 
       myManageHook = composeAll
