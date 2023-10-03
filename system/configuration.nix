@@ -42,9 +42,10 @@ in {
 
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
-/*    extraLayouts.ru-grig = {
+    /*
+      extraLayouts.ru-grig = {
       description = "Grig RU layout";
-      languages = ["ru"]; 
+      languages = ["ru"];
       symbolsFile = ./layout-ru.xkb;
     };
     */
@@ -58,8 +59,6 @@ in {
   programs.fish.enable = true;
   users.users."grig-iv" = mkUser "grig-iv" "Grig IV";
   users.users."grig-gn" = mkUser "grig-gn" "Grig GN";
-  users.users."grig-xm" = mkUser "grig-xm" "Grig XM";
-  users.users."grig-aw" = mkUser "grig-aw" "Grig AW";
 
   # Fonts
   fonts.fonts = with pkgs; [
@@ -70,6 +69,7 @@ in {
       ];
     })
     font-awesome
+    roboto-mono
   ];
 
   # System packages
@@ -92,6 +92,7 @@ in {
   nix.settings = {
     experimental-features = ["nix-command" "flakes"];
     allowed-users = ["grig-iv" "grig-gn" "grig-xm"];
+    auto-optimise-store = true;
   };
 
   hardware.keyboard.qmk.enable = true;

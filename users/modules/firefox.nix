@@ -1,4 +1,4 @@
-{pkgs, ...}:  {
+{pkgs, ...}: {
   programs.firefox = {
     enable = true;
     profiles.default = {
@@ -10,7 +10,7 @@
         vimium
         bitwarden
         i-dont-care-about-cookies
-        firefox-color  # https://github.com/catppuccin/firefox
+        firefox-color # https://github.com/catppuccin/firefox
       ];
       settings = {
         "app.update.auto" = false; # disable autoupdate

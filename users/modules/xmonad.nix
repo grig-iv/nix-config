@@ -123,7 +123,7 @@ in {
         spawnOnce "xrandr --output DP-0 --mode 2560x1440 --rate 144"
         spawnOnce "xinput --set-prop 14 'libinput Accel Speed' -0.5"
         spawnOnce autostart
-        spawnOnce set-wallpaper 
+        spawnOnce set-wallpaper
         spawnOnOnce "SYS" myTerminal
 
 

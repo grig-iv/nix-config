@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./modules/my.nix
     ./modules/git.nix
@@ -19,7 +16,6 @@
     spotify
     tor
     keepass
-    obs-studio
     mpv-unwrapped
 
     virt-manager

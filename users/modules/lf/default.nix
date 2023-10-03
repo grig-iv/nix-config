@@ -53,7 +53,6 @@ with lib; {
       };
 
       keybindings = {
-
         "x" = "cut";
         "d" = "delete";
         "<delete>" = "delete";

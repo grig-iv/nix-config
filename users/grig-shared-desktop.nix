@@ -34,7 +34,6 @@ in
       telegram-desktop
 
       xclip
-      feh
       maim
       sxiv
       pulsemixer
@@ -42,6 +41,8 @@ in
       udiskie
       udisks2
     ];
+
+    qt.enable = true;
 
     colorScheme = {
       slug = "catppuccin";

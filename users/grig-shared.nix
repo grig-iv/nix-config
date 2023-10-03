@@ -81,5 +81,5 @@ with lib; {
     '';
   };
 
-  xdg.enable = true;
+  xdg.enable = false;
 }

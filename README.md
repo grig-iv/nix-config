@@ -1,9 +1,4 @@
-# ⚙️ My dotfiles 
+# ⚙️ My nix-config
 
-Settings for:
-- zsh
-- neovim
-- zathura
-
-
-*managed with chezmoi and home-manager*
+Other configs that i learned from:
+- https://github.com/fufexan/dotfiles
