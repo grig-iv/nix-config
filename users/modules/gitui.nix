@@ -1,6 +1,9 @@
-{config, ...}: {
+{...}: {
   programs.gitui = {
     enable = true;
+    keyConfig = ''
+      exit: Some(( code: Char('q'), modifiers: ( bits: 2,),)),
+    '';
     theme = ''
       (
           selected_tab: Reset,

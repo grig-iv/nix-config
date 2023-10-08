@@ -33,7 +33,7 @@ with lib; {
   };
 
   home.shellAliases = {
-    n = "cd $NVIMCONF & e";
+    n = ''cd $NVIMCONF & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
     m = "cd ~/extended-mind & e index.norg";
   };
 }

@@ -10,6 +10,7 @@
 
     nur.url = "github:nix-community/NUR";
 
+    sops-nix.url = "github:Mic92/sops-nix";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-colors.url = "github:misterio77/nix-colors";
     nil.url = "github:oxalica/nil";
@@ -23,6 +24,7 @@
     home-manager,
     nil,
     tidal-cycles,
+    sops-nix,
     ...
   } @ inputs: let
     unstable = import nixpkgs-unstable {
@@ -56,6 +58,7 @@
         modules = [
           ./system/configuration.nix
           inputs.grub2-themes.nixosModules.default
+          sops-nix.nixosModules.sops
         ];
       };
     };

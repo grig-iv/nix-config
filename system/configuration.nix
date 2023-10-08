@@ -15,6 +15,8 @@ in {
     ./gnome.nix
     ./sudo.nix
     ./vm.nix
+    ./sops.nix
+    ./wireguard.nix
   ];
 
   # keep the last 10 system configurations.
@@ -81,6 +83,8 @@ in {
     wget
     curl
     unzip
+    sops
+    age
   ];
 
   # USB mount

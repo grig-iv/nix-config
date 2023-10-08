@@ -27,7 +27,8 @@
         "media.videocontrols.picture-in-picture.video-toggle.enabled" = false; # disable picture-in-pictur feature
         "extensions.activeThemeID" = "firefox-compact-dark@mozilla.org"; # default theme
         "browser.uidensity" = 1; # compact view
-        "browser.toolbars.bookmarks.visibility" = "never"; # doesn't show bookmarks
+        "browser.toolbars.bookmarks.visibility" = "never"; # doesn't show bookmark bar
+        "browser.urlbar.showSearchSuggestionsFirst" = false; # search engien suggestion goes after history/bookmarks suggestions
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;

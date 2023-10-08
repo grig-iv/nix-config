@@ -13,6 +13,8 @@ with lib; {
     ./modules/my.nix
     ./modules/nix.nix
     ./modules/lf
+    ./modules/fzf.nix
+    ./modules/bat.nix
     ./modules/git.nix
     ./modules/gitui.nix
     ./modules/fish.nix
@@ -62,23 +64,6 @@ with lib; {
 
     # utils
     find-font = "fc-list | grep ";
-  };
-
-  programs.fish = {
-    functions.goToProject = ''
-      set selected_folder (command ls -d ~/projects/*/ | fzf)
-
-      if test -n "$selected_folder"
-          cd "$selected_folder"
-          $EDITOR
-      else
-          echo "No folder selected."
-      end
-    '';
-
-    shellInit = pkgs.lib.mkAfter ''
-      bind \cp 'goToProject; commandline -f execute'
-    '';
   };
 
   xdg.enable = false;

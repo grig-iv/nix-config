@@ -1,20 +1,26 @@
 {
   pkgs,
-  unstable,
+  lib,
   ...
-}: {
-  #TODO: add script that adds dotnet tools csharprepl, fantomas, etc
-
-  home.packages = [
-    pkgs.dotnet-sdk_7
-    unstable.fsautocomplete
+}: let
+  tools = [
+    "dotnet-fsharplint"
+    "fantomas"
+    "fsautocomplete"
   ];
 
-  home.sessionVariables = {
-    CLI_TELEMETRY_OPTOUT = "true";
+  toolString = lib.concatStringsSep " " tools;
+in {
+  home = {
+    packages = with pkgs; [dotnet-sdk_7];
+
+    sessionVariables = {
+      CLI_TELEMETRY_OPTOUT = "true";
+      DOTNET_ROOT = pkgs.dotnet-sdk_7;
+    };
+
+    sessionPath = [
+      "$HOME/.dotnet/tools"
+    ];
   };
-
-  home.sessionPath = [
-    "$HOME/.dotnet/tools"
-  ];
 }
