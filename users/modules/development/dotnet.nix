@@ -12,7 +12,7 @@
   toolString = lib.concatStringsSep " " tools;
 in {
   home = {
-    packages = with pkgs; [dotnet-sdk_7];
+    packages = with pkgs; [dotnet-sdk_7 fsharp];
 
     sessionVariables = {
       CLI_TELEMETRY_OPTOUT = "true";
@@ -23,4 +23,6 @@ in {
       "$HOME/.dotnet/tools"
     ];
   };
+
+  programs.vscode.extensions = [pkgs.vscode-extensions.ionide.ionide-fsharp];
 }

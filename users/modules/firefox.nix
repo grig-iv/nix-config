@@ -44,7 +44,7 @@
         "privacy.resistFingerprinting" = true; # make Firefox more resistant to browser fingerprinting
         "privacy.firstparty.isolate" = true; # prevent cookies and web data from being shared between domains
         "network.cookie.cookieBehavior" = 1; # allow cookies from originating sites only (block third-party cookies)
-        "media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
+        #"media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
         "network.dns.disablePrefetch" = true; # prevent Firefox from "prefetching" DNS requests
         "network.predictor.enabled" = false; # disable network prediction
         "webgl.disabled" = true; # disable WebGL which can be used to fingerprint your device

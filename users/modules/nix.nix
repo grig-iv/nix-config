@@ -1,10 +1,20 @@
 {
   config,
   pkgs,
+  unstable,
   lib,
   ...
 }: {
-  programs.home-manager.enable = true;
+  programs = {
+    home-manager.enable = true;
+    vscode = {
+      userSettings = {
+        nix.enableLanguageServer = true;
+        nix.serverPath = "nil";
+      };
+      extensions = [pkgs.vscode-extensions.jnoortheen.nix-ide];
+    };
+  };
 
   manual = {
     html.enable = false;
@@ -13,8 +23,9 @@
   };
 
   home = {
-    packages = with pkgs; [
-      alejandra
+    packages = [
+      pkgs.alejandra
+      unstable.nil
     ];
 
     sessionVariables = {

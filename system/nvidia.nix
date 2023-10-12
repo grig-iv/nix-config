@@ -1,5 +1,5 @@
 {...}: {
-  services.xserver.videoDrivers = ["nouveau"];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.opengl = {
     enable = true;
@@ -9,6 +9,6 @@
 
   hardware.nvidia = {
     modesetting.enable = true;
-    open = true;
+    open = false;
   };
 }

@@ -9,12 +9,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     nur.url = "github:nix-community/NUR";
-
     sops-nix.url = "github:Mic92/sops-nix";
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-colors.url = "github:misterio77/nix-colors";
-    nil.url = "github:oxalica/nil";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = {
@@ -22,7 +21,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    nil,
     tidal-cycles,
     sops-nix,
     ...
@@ -42,8 +40,7 @@
         modules = [
           ./users/${userName}.nix
           {
-            nixpkgs.overlays = [inputs.nur.overlay tidal-cycles.overlays.tidal];
-            home.packages = [nil.packages.x86_64-linux.default];
+            nixpkgs.overlays = [inputs.nur.overlay tidal-cycles.overlays.tidal inputs.nix-vscode-extensions.overlays.default];
             home.username = userName;
             home.homeDirectory = "/home/${userName}";
           }

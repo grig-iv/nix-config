@@ -26,6 +26,7 @@ in
       ./modules/feh.nix
       ./modules/wireguard.nix
       ./modules/qmk.nix
+      ./modules/vscode.nix
     ];
 
     home.packages = with pkgs; [

@@ -16,7 +16,7 @@ in {
     ./sudo.nix
     ./vm.nix
     ./sops.nix
-    ./wireguard.nix
+#    ./wireguard.nix
   ];
 
   # keep the last 10 system configurations.
@@ -26,6 +26,8 @@ in {
   # Networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
+
+  xdg.portal.enable = true;
 
   # Internationalisation
   time.timeZone = "Europe/Moscow";

@@ -20,7 +20,6 @@ with lib; {
     ./modules/fish.nix
     ./modules/tmux.nix
     ./modules/neovim.nix
-    ./modules/lua.nix
     ./modules/syncthing.nix
   ];
 

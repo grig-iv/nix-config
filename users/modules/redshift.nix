@@ -1,4 +1,4 @@
-{config, ...}: {
+{...}: {
   services.redshift = {
     enable = true;
     temperature.night = 3000;
