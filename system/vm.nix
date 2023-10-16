@@ -2,6 +2,8 @@
   # Enable dconf (System Management Tool)
   # programs.dconf.enable = true;
 
+  boot.kernelModules = ["kvm-intel"];
+
   # Install necessary packages
   environment.systemPackages = with pkgs; [
     virt-manager

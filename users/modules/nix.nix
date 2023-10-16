@@ -42,6 +42,8 @@
     stateVersion = "23.05"; # lock. do not change
   };
 
+  systemd.user.startServices = "sd-switch";
+
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942

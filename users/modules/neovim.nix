@@ -23,11 +23,12 @@ with lib; {
       curl
       unzip
       tree-sitter
-      gcc
+      clang
       ripgrep
       fd
       nodejs_20
       gnumake
+      nodePackages.cspell
 
       #ltex-ls
     ];

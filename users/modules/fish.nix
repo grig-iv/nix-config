@@ -61,6 +61,9 @@ in {
         echo -n 'ඞ '
         set_color normal
       '';
+      mkdircd = ''
+        mkdir -pv $argv; and cd $argv
+      '';
     };
 
     shellInit = ''

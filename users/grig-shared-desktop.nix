@@ -15,14 +15,14 @@ in
 
       ./grig-shared.nix
 
-      ./modules/wezterm.nix
+      ./modules/wezterm
       ./modules/firefox.nix
-      ./modules/gtk.nix
-      ./modules/redshift.nix
+      #./modules/gtk.nix
+      #./modules/redshift.nix
       ./modules/rofi.nix
       ./modules/unclutter.nix
-      ./modules/dunst.nix
-      ./modules/picom.nix   
+      #./modules/dunst.nix
+      #./modules/picom.nix 
       ./modules/feh.nix
       ./modules/wireguard.nix
       ./modules/qmk.nix
@@ -38,12 +38,9 @@ in
       maim
       sxiv
       pulsemixer
-
-      udiskie
-      udisks2
     ];
 
-    qt.enable = true;
+    #qt.enable = true;
 
     colorScheme = {
       slug = "catppuccin";

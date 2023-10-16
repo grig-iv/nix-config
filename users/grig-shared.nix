@@ -23,47 +23,46 @@ with lib; {
     ./modules/syncthing.nix
   ];
 
-  home.packages = with pkgs; [
-    htop
-    wget
-    curl
-    unzip
-    tldr
-    exa
-    zip
+  xdg.enable = true;
 
-    neofetch
-    cbonsai
-  ];
+  home = {
+    packages = with pkgs; [
+      htop
+      wget
+      curl
+      unzip
+      tldr
+      exa
+      zip
+    ];
 
-  home.sessionVariables = {
-    CONFIG = mkDefault "$HOME/.config";
+    sessionVariables = {
+      CONFIG = mkDefault "$HOME/.config";
+    };
+
+    sessionPath = [
+      "$HOME/.local/bin"
+    ];
+
+    shellAliases = {
+      # Verbosity and settings that you pretty much just always are going to want.
+      cp = "cp -ivr";
+      mv = "mv -iv";
+      rm = "rm -vI";
+#      mkdir = "mkdir -pv";
+
+      # Colorize commands when possible.
+      ls = "exa --icons";
+      grep = "grep --color=auto";
+      diff = "diff --color=auto";
+      ccat = "highlight --out-format=ansi";
+      ip = "ip -color=auto";
+
+      # shortcuts
+      e = "$EDITOR";
+
+      # utils
+      find-font = "fc-list | grep ";
+    };
   };
-
-  home.sessionPath = [
-    "$HOME/.local/bin"
-  ];
-
-  home.shellAliases = {
-    # Verbosity and settings that you pretty much just always are going to want.
-    cp = "cp -ivr";
-    mv = "mv -iv";
-    rm = "rm -vI";
-    mkdir = "mkdir -pv";
-
-    # Colorize commands when possible.
-    ls = "exa --icons";
-    grep = "grep --color=auto";
-    diff = "diff --color=auto";
-    ccat = "highlight --out-format=ansi";
-    ip = "ip -color=auto";
-
-    # shortcuts
-    e = "$EDITOR";
-
-    # utils
-    find-font = "fc-list | grep ";
-  };
-
-  xdg.enable = false;
 }

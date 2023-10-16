@@ -21,15 +21,6 @@
     virt-manager
     libvirt
 
-    wireguard-tools
-    neovim
-    htop
-    git
-    wget
-    curl
-    unzip
-    tldr
-
     gnome-extension-manager
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals

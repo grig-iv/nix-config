@@ -4,11 +4,9 @@
   hardware.opengl = {
     enable = true;
     driSupport = true;
-    driSupport32Bit = true;
   };
 
   hardware.nvidia = {
-    modesetting.enable = true;
-    open = false;
+    modesetting.enable = true; # should be true for "nvidia" and fals for "nouveau"
   };
 }

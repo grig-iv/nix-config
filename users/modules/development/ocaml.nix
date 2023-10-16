@@ -3,6 +3,8 @@
     ocaml
     ocamlformat
     dune_3
+    pkgconfig
+    gmp
     ocamlPackages.ocaml-lsp
     ocamlPackages.ocp-indent
   ];

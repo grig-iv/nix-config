@@ -4,30 +4,28 @@
     initialPassword = user;
     description = name;
     shell = pkgs.fish;
-    extraGroups = ["wheel" "networkmanager" "libvirtd" "nixos"];
+    extraGroups = ["wheel" "networkmanager"];
   };
 in {
   imports = [
+    ./nix.nix
     ./hardware-configuration.nix
     ./bootloader.nix
-    ./nvidia.nix
+    ./nvidia-close.nix
+    ./wm.nix
     ./audio.nix
-    ./gnome.nix
     ./sudo.nix
-    ./vm.nix
+    ./fonts.nix
+    #    ./vm.nix
     ./sops.nix
-#    ./wireguard.nix
+    #    ./wireguard.nix
   ];
 
-  # keep the last 10 system configurations.
-  nix.gc.automatic = true;
-  nix.gc.options = "--delete-older-than 5d";
+  networking.firewall.enable = false;
 
   # Networking
   networking.hostName = "nixos";
   networking.networkmanager.enable = true;
-
-  xdg.portal.enable = true;
 
   # Internationalisation
   time.timeZone = "Europe/Moscow";
@@ -35,15 +33,6 @@ in {
 
   # Xserver
   services.xserver = {
-    enable = true;
-    autorun = true;
-    displayManager.startx.enable = true;
-
-    windowManager = {
-      xmonad.enable = true;
-      awesome.enable = true;
-    };
-
     layout = "us,ru";
     xkbOptions = "grp:alt_shift_toggle";
     /*
@@ -58,28 +47,12 @@ in {
   # fix windows clock async
   time.hardwareClockInLocalTime = true;
 
-  # groups
-  users.groups.nixos = {};
   programs.fish.enable = true;
   users.users."grig-iv" = mkUser "grig-iv" "Grig IV";
   users.users."grig-gn" = mkUser "grig-gn" "Grig GN";
 
-  # Fonts
-  fonts.fonts = with pkgs; [
-    (nerdfonts.override {
-      fonts = [
-        "JetBrainsMono"
-        "Mononoki"
-      ];
-    })
-    font-awesome
-    roboto-mono
-  ];
-
   # System packages
-  nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    home-manager
     neovim
     git
     wget
@@ -93,16 +66,5 @@ in {
   services.udisks2.enable = true;
   boot.supportedFilesystems = ["ntfs"];
 
-  # misc
-  nix.package = pkgs.nixFlakes;
-  nix.settings = {
-    experimental-features = ["nix-command" "flakes"];
-    allowed-users = ["grig-iv" "grig-gn" "grig-xm"];
-    auto-optimise-store = true;
-  };
-
   hardware.keyboard.qmk.enable = true;
-  documentation.man.enable = false;
-
-  system.stateVersion = "23.05";
 }

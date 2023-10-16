@@ -1,10 +1,13 @@
 {pkgs, ...}: {
+  home.sessionVariables."BROWSER" = "firefox";
+
   programs.firefox = {
     enable = true;
     profiles.default = {
       id = 0;
       isDefault = true;
       name = "Grig";
+
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         vimium
@@ -12,6 +15,35 @@
         i-dont-care-about-cookies
         firefox-color # https://github.com/catppuccin/firefox
       ];
+
+      bookmarks = [
+        {
+          name = "wikipedia";
+          tags = ["wiki"];
+          keyword = "wiki";
+          url = "https://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go";
+        }
+        {
+          name = "kernel.org";
+          url = "https://www.kernel.org";
+        }
+        {
+          name = "Nix sites";
+          toolbar = true;
+          bookmarks = [
+            {
+              name = "homepage";
+              url = "https://nixos.org/";
+            }
+            {
+              name = "wiki";
+              tags = ["wiki" "nix"];
+              url = "https://nixos.wiki/";
+            }
+          ];
+        }
+      ];
+
       settings = {
         "app.update.auto" = false; # disable autoupdate
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # enable userChrome
@@ -29,6 +61,7 @@
         "browser.uidensity" = 1; # compact view
         "browser.toolbars.bookmarks.visibility" = "never"; # doesn't show bookmark bar
         "browser.urlbar.showSearchSuggestionsFirst" = false; # search engien suggestion goes after history/bookmarks suggestions
+        "browser.startup.page" = 3; # restore previous tabs on startup
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;
@@ -44,7 +77,7 @@
         "privacy.resistFingerprinting" = true; # make Firefox more resistant to browser fingerprinting
         "privacy.firstparty.isolate" = true; # prevent cookies and web data from being shared between domains
         "network.cookie.cookieBehavior" = 1; # allow cookies from originating sites only (block third-party cookies)
-        #"media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
+        "media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
         "network.dns.disablePrefetch" = true; # prevent Firefox from "prefetching" DNS requests
         "network.predictor.enabled" = false; # disable network prediction
         "webgl.disabled" = true; # disable WebGL which can be used to fingerprint your device
