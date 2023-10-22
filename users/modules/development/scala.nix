@@ -5,6 +5,7 @@
     metals
     coursier
     mill
+    bloop
   ];
 
   programs.java.enable = true;

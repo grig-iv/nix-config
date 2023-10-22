@@ -10,7 +10,6 @@
 
           if test -n "$selected_folder"
               cd "$selected_folder"
-              $EDITOR
           else
               echo "No folder selected."
           end

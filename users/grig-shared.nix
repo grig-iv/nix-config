@@ -34,6 +34,7 @@ with lib; {
       tldr
       exa
       zip
+      tree
     ];
 
     sessionVariables = {

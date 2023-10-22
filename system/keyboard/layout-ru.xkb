@@ -1,3 +1,5 @@
+default xkb_symbols "basic" {
+    name[Group1] = "Grig RU layout";
 	key <AE01> { [ 1, U0021, NoSymbol, NoSymbol ] }; // DIGIT ONE, EXCLAMATION MARK, <none>, <none>, <none>
 	key <AE02> { [ 2, U0040, NoSymbol, NoSymbol ] }; // DIGIT TWO, COMMERCIAL AT, <none>, <none>, <none>
 	key <AE03> { [ 3, U0023, NoSymbol, U2116 ] }; // DIGIT THREE, NUMBER SIGN, <none>, <none>, NUMERO SIGN
@@ -47,3 +49,4 @@
 	key <AB10> { [ U002f, U003f, NoSymbol, NoSymbol ] }; // SOLIDUS, QUESTION MARK, <none>, <none>, <none>
 	key <SPCE> { [ U0020, U0020, NoSymbol, NoSymbol ] }; // SPACE, SPACE, <none>, <none>, <none>
 	key <KPDL> { [ U002e, U002e, NoSymbol, NoSymbol ] }; // FULL STOP, FULL STOP, , ,
+};

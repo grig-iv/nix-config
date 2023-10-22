@@ -8,6 +8,7 @@
   };
 in {
   imports = [
+    ./keyboard
     ./nix.nix
     ./hardware-configuration.nix
     ./bootloader.nix
@@ -31,19 +32,6 @@ in {
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # Xserver
-  services.xserver = {
-    layout = "us,ru";
-    xkbOptions = "grp:alt_shift_toggle";
-    /*
-      extraLayouts.ru-grig = {
-      description = "Grig RU layout";
-      languages = ["ru"];
-      symbolsFile = ./layout-ru.xkb;
-    };
-    */
-  };
-
   # fix windows clock async
   time.hardwareClockInLocalTime = true;
 
@@ -65,6 +53,4 @@ in {
   # USB mount
   services.udisks2.enable = true;
   boot.supportedFilesystems = ["ntfs"];
-
-  hardware.keyboard.qmk.enable = true;
 }

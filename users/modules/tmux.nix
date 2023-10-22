@@ -35,6 +35,7 @@ in {
 
       # Alt bindings
       bind -n M-c new-window -c "#{pane_current_path}"
+      bind -n M-w confirm-before -p "kill-window #W? (y/n)" kill-pane
 
       bind -n M-h split-window -h -c "#{pane_current_path}"
       bind -n M-v split-window -v -c "#{pane_current_path}"

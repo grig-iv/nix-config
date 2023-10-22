@@ -5,6 +5,17 @@ return {
     color_scheme = "Catppuccin Mocha",
     enable_tab_bar = false,
     disable_default_key_bindings = true,
+
+    keys = {
+        {
+            key = 'Enter',
+            mods = 'CTRL',
+            action = act.SendKey { key = 'Enter', mods = 'CTRL' },
+        },
+        -- paste from the clipboard
+        { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+    },
+
     mouse_bindings = {
         -- Bind 'Up' event of click to open hyperlinks
         {

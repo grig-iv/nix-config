@@ -8,12 +8,14 @@
       isDefault = true;
       name = "Grig";
 
+      # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions = with pkgs.nur.repos.rycee.firefox-addons; [
         ublock-origin
         vimium
         bitwarden
         i-dont-care-about-cookies
         firefox-color # https://github.com/catppuccin/firefox
+        improved-tube
       ];
 
       bookmarks = [
@@ -62,6 +64,7 @@
         "browser.toolbars.bookmarks.visibility" = "never"; # doesn't show bookmark bar
         "browser.urlbar.showSearchSuggestionsFirst" = false; # search engien suggestion goes after history/bookmarks suggestions
         "browser.startup.page" = 3; # restore previous tabs on startup
+        "browser.translations.neverTranslateLanguages" = "ru"; # do not translate ru pages
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;
