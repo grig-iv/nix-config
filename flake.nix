@@ -20,48 +20,15 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = inputs: let
-    mkHomeConfig = userName:
-      inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = {
-          inherit (inputs.self) inputs outputs;
-          unstable = import inputs.nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
-        modules = [
-          ./home-manager/${userName}.nix
-          {
-            nixpkgs.overlays = [
-              inputs.nur.overlay
-              inputs.tidal-cycles.overlays.tidal
-              inputs.nix-vscode-extensions.overlays.default
-            ];
-            home.username = userName;
-            home.homeDirectory = "/home/${userName}";
-          }
-        ];
-      };
-  in {
-    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
-
-    nixosConfigurations = {
-      nixos = inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
-        modules = [
-          ./nixos/configuration.nix
-          inputs.grub2-themes.nixosModules.default
-          inputs.sops-nix.nixosModules.sops
-        ];
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        ./nixos
+        ./home-manager
+      ];
+      systems = ["x86_64-linux"];
+      perSystem = {pkgs, ...}: {
+        formatter = pkgs.alejandra;
       };
     };
-
-    homeConfigurations = {
-      grig-gn = mkHomeConfig "grig-gn";
-      grig-iv = mkHomeConfig "grig-iv";
-      grig-wsl = mkHomeConfig "grig-wsl";
-    };
-  };
 }

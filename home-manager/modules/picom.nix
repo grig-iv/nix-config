@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   services.picom = {
-    enable = true; 
+    enable = true;
     package = pkgs.picom-jonaburg;
 
     backend = "xrender"; # one of “egl”, “glx”, “xrender”, “xr_glx_hybrid"

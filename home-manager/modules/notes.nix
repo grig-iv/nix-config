@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   home = {
-    packages = [pkgs.obsidian];  # remove in vsl
+    packages = [pkgs.obsidian]; # remove in vsl
 
     shellAliases = {
       m = "cd ~/extended-mind & e index.norg";

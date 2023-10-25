@@ -50,7 +50,7 @@ with lib; {
       cp = "cp -ivr";
       mv = "mv -iv";
       rm = "rm -vI";
-#      mkdir = "mkdir -pv";
+      #      mkdir = "mkdir -pv";
 
       # Colorize commands when possible.
       ls = "exa --icons";

@@ -40,8 +40,8 @@ in {
       bind -n M-h split-window -h -c "#{pane_current_path}"
       bind -n M-v split-window -v -c "#{pane_current_path}"
 
-      bind -n M-C-PgUp previous-window 
-      bind -n M-C-PgDn next-window 
+      bind -n M-C-PgUp previous-window
+      bind -n M-C-PgDn next-window
 
       bind -n M-Up select-pane -U
       bind -n M-Down select-pane -D
