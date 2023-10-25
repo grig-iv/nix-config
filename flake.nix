@@ -5,8 +5,10 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nur.url = "github:nix-community/NUR";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -14,48 +16,44 @@
     nix-colors.url = "github:misterio77/nix-colors";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    tidal-cycles,
-    sops-nix,
-    ...
-  } @ inputs: let
-    unstable = import nixpkgs-unstable {
-      system = "x86_64-linux";
-      config.allowUnfree = true;
-    };
-
+  outputs = inputs: let
     mkHomeConfig = userName:
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = inputs.nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {
-          inherit (self) inputs outputs;
-          inherit unstable;
+          inherit (inputs.self) inputs outputs;
+          unstable = import inputs.nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
         };
         modules = [
-          ./users/${userName}.nix
+          ./home-manager/${userName}.nix
           {
-            nixpkgs.overlays = [inputs.nur.overlay tidal-cycles.overlays.tidal inputs.nix-vscode-extensions.overlays.default];
+            nixpkgs.overlays = [
+              inputs.nur.overlay
+              inputs.tidal-cycles.overlays.tidal
+              inputs.nix-vscode-extensions.overlays.default
+            ];
             home.username = userName;
             home.homeDirectory = "/home/${userName}";
           }
         ];
       };
   in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+    formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
 
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixos = inputs.nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./system/configuration.nix
+          ./nixos/configuration.nix
           inputs.grub2-themes.nixosModules.default
-          sops-nix.nixosModules.sops
+          inputs.sops-nix.nixosModules.sops
         ];
       };
     };
