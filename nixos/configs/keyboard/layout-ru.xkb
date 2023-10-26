@@ -1,0 +1,52 @@
+default xkb_symbols "basic" {
+    name[Group1] = "Grig RU layout";
+	key <AE01> { [ 1, U0021, NoSymbol, NoSymbol ] }; // DIGIT ONE, EXCLAMATION MARK, <none>, <none>, <none>
+	key <AE02> { [ 2, U0040, NoSymbol, NoSymbol ] }; // DIGIT TWO, COMMERCIAL AT, <none>, <none>, <none>
+	key <AE03> { [ 3, U0023, NoSymbol, U2116 ] }; // DIGIT THREE, NUMBER SIGN, <none>, <none>, NUMERO SIGN
+	key <AE04> { [ 4, U0024, NoSymbol, NoSymbol ] }; // DIGIT FOUR, DOLLAR SIGN, <none>, <none>, <none>
+	key <AE05> { [ 5, U0025, NoSymbol, NoSymbol ] }; // DIGIT FIVE, PERCENT SIGN, <none>, <none>, <none>
+	key <AE06> { [ 6, U005e, NoSymbol, NoSymbol ] }; // DIGIT SIX, CIRCUMFLEX ACCENT, <none>, <none>, <none>
+	key <AE07> { [ 7, U0026, NoSymbol, NoSymbol ] }; // DIGIT SEVEN, AMPERSAND, <none>, <none>, <none>
+	key <AE08> { [ 8, U002a, NoSymbol, NoSymbol ] }; // DIGIT EIGHT, ASTERISK, <none>, <none>, <none>
+	key <AE09> { [ 9, U0028, NoSymbol, NoSymbol ] }; // DIGIT NINE, LEFT PARENTHESIS, <none>, <none>, <none>
+	key <AE10> { [ 0, U0029, NoSymbol, NoSymbol ] }; // DIGIT ZERO, RIGHT PARENTHESIS, <none>, <none>, <none>
+	key <AE11> { [ U002d, U005f, NoSymbol, NoSymbol ] }; // HYPHEN-MINUS, LOW LINE, <none>, <none>, <none>
+	key <AE12> { [ U003d, U002b, NoSymbol, NoSymbol ] }; // EQUALS SIGN, PLUS SIGN, <none>, <none>, <none>
+	key <AD01> { [ U044f, U042f, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER YA, CYRILLIC CAPITAL LETTER YA, <none>, <none>, <none>
+	key <AD02> { [ U044b, U042b, U044e, U042e ] }; // CYRILLIC SMALL LETTER YERU, CYRILLIC CAPITAL LETTER YERU, <none>, CYRILLIC SMALL LETTER YU, CYRILLIC CAPITAL LETTER YU
+	key <AD03> { [ U0435, U0415, U0451, U0401 ] }; // CYRILLIC SMALL LETTER IE, CYRILLIC CAPITAL LETTER IE, <none>, CYRILLIC SMALL LETTER IO, CYRILLIC CAPITAL LETTER IO
+	key <AD04> { [ U0440, U0420, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER ER, CYRILLIC CAPITAL LETTER ER, <none>, <none>, <none>
+	key <AD05> { [ U0442, U0422, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER TE, CYRILLIC CAPITAL LETTER TE, <none>, <none>, <none>
+	key <AD06> { [ U0448, U0428, U0449, U0429 ] }; // CYRILLIC SMALL LETTER SHA, CYRILLIC CAPITAL LETTER SHA, <none>, CYRILLIC SMALL LETTER SHCHA, CYRILLIC CAPITAL LETTER SHCHA
+	key <AD07> { [ U0443, U0423, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER U, CYRILLIC CAPITAL LETTER U, <none>, <none>, <none>
+	key <AD08> { [ U0438, U0418, U0439, U0419 ] }; // CYRILLIC SMALL LETTER I, CYRILLIC CAPITAL LETTER I, <none>, CYRILLIC SMALL LETTER SHORT I, CYRILLIC CAPITAL LETTER SHORT I
+	key <AD09> { [ U043e, U041e, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER O, CYRILLIC CAPITAL LETTER O, <none>, <none>, <none>
+	key <AD10> { [ U043f, U041f, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER PE, CYRILLIC CAPITAL LETTER PE, <none>, <none>, <none>
+	key <AD11> { [ U005b, U007b, NoSymbol, NoSymbol ] }; // LEFT SQUARE BRACKET, LEFT CURLY BRACKET, <none>, <none>, <none>
+	key <AD12> { [ U005d, U007d, NoSymbol, NoSymbol ] }; // RIGHT SQUARE BRACKET, RIGHT CURLY BRACKET, <none>, <none>, <none>
+	key <AC01> { [ U0430, U0410, U044d, U042d ] }; // CYRILLIC SMALL LETTER A, CYRILLIC CAPITAL LETTER A, <none>, CYRILLIC SMALL LETTER E, CYRILLIC CAPITAL LETTER E
+	key <AC02> { [ U0441, U0421, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER ES, CYRILLIC CAPITAL LETTER ES, <none>, <none>, <none>
+	key <AC03> { [ U0434, U0414, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER DE, CYRILLIC CAPITAL LETTER DE, <none>, <none>, <none>
+	key <AC04> { [ U0444, U0424, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER EF, CYRILLIC CAPITAL LETTER EF, <none>, <none>, <none>
+	key <AC05> { [ U0433, U0413, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER GHE, CYRILLIC CAPITAL LETTER GHE, <none>, <none>, <none>
+	key <AC06> { [ U0445, U0425, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER HA, CYRILLIC CAPITAL LETTER HA, <none>, <none>, <none>
+	key <AC07> { [ U0436, U0416, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER ZHE, CYRILLIC CAPITAL LETTER ZHE, <none>, <none>, <none>
+	key <AC08> { [ U043a, U041a, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER KA, CYRILLIC CAPITAL LETTER KA, <none>, <none>, <none>
+	key <AC09> { [ U043b, U041b, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER EL, CYRILLIC CAPITAL LETTER EL, <none>, <none>, <none>
+	key <AC10> { [ U003b, U003a, NoSymbol, NoSymbol ] }; // SEMICOLON, COLON, <none>, <none>, <none>
+	key <AC11> { [ U0027, U0022, NoSymbol, NoSymbol ] }; // APOSTROPHE, QUOTATION MARK, <none>, <none>, <none>
+	key <TLDE> { [ U0060, U007e, NoSymbol, NoSymbol ] }; // GRAVE ACCENT, TILDE, <none>, <none>, <none>
+	key <BKSL> { [ U005c, U007c, NoSymbol, NoSymbol ] }; // REVERSE SOLIDUS, VERTICAL LINE, <none>, <none>, <none>
+	key <AB01> { [ U0437, U0417, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER ZE, CYRILLIC CAPITAL LETTER ZE, <none>, <none>, <none>
+	key <AB02> { [ U044c, U042c, U044a, U042a ] }; // CYRILLIC SMALL LETTER SOFT SIGN, CYRILLIC CAPITAL LETTER SOFT SIGN, <none>, CYRILLIC SMALL LETTER HARD SIGN, CYRILLIC CAPITAL LETTER HARD SIGN
+	key <AB03> { [ U0447, U0427, U0446, U0426 ] }; // CYRILLIC SMALL LETTER CHE, CYRILLIC CAPITAL LETTER CHE, <none>, CYRILLIC SMALL LETTER TSE, CYRILLIC CAPITAL LETTER TSE
+	key <AB04> { [ U0432, U0412, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER VE, CYRILLIC CAPITAL LETTER VE, <none>, <none>, <none>
+	key <AB05> { [ U0431, U0411, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER BE, CYRILLIC CAPITAL LETTER BE, <none>, <none>, <none>
+	key <AB06> { [ U043d, U041d, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER EN, CYRILLIC CAPITAL LETTER EN, <none>, <none>, <none>
+	key <AB07> { [ U043c, U041c, NoSymbol, NoSymbol ] }; // CYRILLIC SMALL LETTER EM, CYRILLIC CAPITAL LETTER EM, <none>, <none>, <none>
+	key <AB08> { [ U002c, U003c, NoSymbol, NoSymbol ] }; // COMMA, LESS-THAN SIGN, <none>, <none>, <none>
+	key <AB09> { [ U002e, U003e, NoSymbol, NoSymbol ] }; // FULL STOP, GREATER-THAN SIGN, <none>, <none>, <none>
+	key <AB10> { [ U002f, U003f, NoSymbol, NoSymbol ] }; // SOLIDUS, QUESTION MARK, <none>, <none>, <none>
+	key <SPCE> { [ U0020, U0020, NoSymbol, NoSymbol ] }; // SPACE, SPACE, <none>, <none>, <none>
+	key <KPDL> { [ U002e, U002e, NoSymbol, NoSymbol ] }; // FULL STOP, FULL STOP, , ,
+};
