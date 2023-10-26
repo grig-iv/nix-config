@@ -10,17 +10,17 @@ with lib; {
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./modules/my.nix
-    ./modules/nix.nix
-    ./modules/lf
-    ./modules/fzf.nix
-    ./modules/bat.nix
-    ./modules/git.nix
-    ./modules/gitui.nix
-    ./modules/fish.nix
-    ./modules/tmux.nix
-    ./modules/neovim.nix
-    ./modules/syncthing.nix
+    ./configs/my.nix
+    ./configs/nix.nix
+    ./configs/lf
+    ./configs/fzf.nix
+    ./configs/bat.nix
+    ./configs/git.nix
+    ./configs/gitui.nix
+    ./configs/fish.nix
+    ./configs/tmux.nix
+    ./configs/neovim.nix
+    ./configs/syncthing.nix
   ];
 
   xdg.enable = true;

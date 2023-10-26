@@ -1,11 +1,11 @@
 {pkgs, ...}: {
   imports = [
-    ./modules/my.nix
-    ./modules/git.nix
-    ./modules/fish.nix
-    ./modules/alacritty.nix
-    ./modules/redshift.nix
-    ./modules/unclutter.nix
+    ./configs/my.nix
+    ./configs/git.nix
+    ./configs/fish.nix
+    ./configs/alacritty.nix
+    ./configs/redshift.nix
+    ./configs/unclutter.nix
   ];
 
   home.packages = with pkgs; [

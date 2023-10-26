@@ -6,9 +6,9 @@
   imports = [
     ./grig-shared.nix
 
-    ./modules/wsl-vpnkit.nix
-    ./modules/dotnet.nix
-    ./modules/go.nix
+    ./configs/wsl-vpnkit.nix
+    ./configs/dotnet.nix
+    ./configs/go.nix
   ];
 
   home.packages = with pkgs; [

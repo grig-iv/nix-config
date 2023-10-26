@@ -15,18 +15,18 @@ in
 
       ./grig-shared.nix
 
-      ./modules/wezterm
-      ./modules/firefox.nix
-      #./modules/gtk.nix
-      #./modules/redshift.nix
-      ./modules/rofi.nix
-      ./modules/unclutter.nix
-      #./modules/dunst.nix
-      #./modules/picom.nix
-      ./modules/feh.nix
-      ./modules/wireguard.nix
-      ./modules/qmk.nix
-      ./modules/vscode.nix
+      ./configs/wezterm
+      ./configs/firefox.nix
+      #./configs/gtk.nix
+      #./configs/redshift.nix
+      ./configs/rofi.nix
+      ./configs/unclutter.nix
+      #./configs/dunst.nix
+      #./configs/picom.nix
+      ./configs/feh.nix
+      ./configs/wireguard.nix
+      ./configs/qmk.nix
+      ./configs/vscode.nix
     ];
 
     home.packages = with pkgs; [

@@ -7,16 +7,16 @@
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./modules/my.nix
-    ./modules/wsl-vpnkit.nix
-    ./modules/fish.nix
-    ./modules/git.nix
-    ./modules/tmux.nix
-    ./modules/neovim.nix
-    ./modules/lf
-    ./modules/lua.nix
-    ./modules/dotnet.nix
-    ./modules/syncthing.nix
+    ./configs/my.nix
+    ./configs/wsl-vpnkit.nix
+    ./configs/fish.nix
+    ./configs/git.nix
+    ./configs/tmux.nix
+    ./configs/neovim.nix
+    ./configs/lf
+    ./configs/lua.nix
+    ./configs/dotnet.nix
+    ./configs/syncthing.nix
   ];
 
   home.packages = with pkgs; [

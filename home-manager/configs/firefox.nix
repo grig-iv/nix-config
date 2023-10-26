@@ -3,21 +3,33 @@
 
   programs.firefox = {
     enable = true;
+    package = pkgs.firefox.override {cfg.enableTridactylNative = true;};
+
     profiles.default = {
       id = 0;
       isDefault = true;
       name = "Grig";
 
       # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
-      extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-        ublock-origin
-        vimium
-        bitwarden
-        i-dont-care-about-cookies
-        firefox-color # https://github.com/catppuccin/firefox
-        improved-tube
-      ];
+      extensions = with pkgs.nur.repos.rycee.firefox-addons;
+        [
+          ublock-origin
+          tridactyl
+          bitwarden
+          i-dont-care-about-cookies
+          firefox-color # https://github.com/catppuccin/firefox
+          improved-tube
+          buster-captcha-solver
+          clearurls
+          no-pdf-download
+          decentraleyes
+          stylus
+        ]
+        ++ (with pkgs.nur.repos.bandithedoge.firefoxAddons; [
+          material-icons-for-github
+        ]);
 
+      # TODO add real bookmarks
       bookmarks = [
         {
           name = "wikipedia";
@@ -45,6 +57,17 @@
           ];
         }
       ];
+
+      userChrome = ''
+        #TabsToolbar {
+          visibility: collapse;
+        }
+
+        #navigator-toolbox:hover #TabsToolbar,
+        #navigator-toolbox:active #TabsToolbar {
+          visibility: visible;
+        }
+      '';
 
       settings = {
         "app.update.auto" = false; # disable autoupdate
@@ -92,4 +115,11 @@
       };
     };
   };
+
+  xdg.configFile."tridactyl/tridactylrc".text = ''
+    bind <F14> back
+    bind <F17> forward
+    bind --mode=ex <ArrowUp> ex.prev_completion
+    bind --mode=ex <ArrowDown> ex.next_completion
+  '';
 }
