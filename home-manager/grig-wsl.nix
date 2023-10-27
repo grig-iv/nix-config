@@ -7,8 +7,6 @@
     ./grig-shared.nix
 
     ./configs/wsl-vpnkit.nix
-    ./configs/dotnet.nix
-    ./configs/go.nix
   ];
 
   home.packages = with pkgs; [
@@ -21,9 +19,8 @@
   my.hostInfo.isInWsl = true;
 
   home.activation = {
-    safeScoopList = config.lib.dag.entryBefore ["writeBoundary"] ''
-      #!/usr/bin/env bash
-      /mnt/c/Windows/System32/WindowsPowerShell/v1.0//powershell.exe scoop list | /usr/bin/awk '/----/,0 {if (NF && $0 !~ /----/) print $1}' > ~/extended-mind/data/scoop-list
+    copyFileTest = config.lib.dag.entryBefore ["writeBoundary"] ''
+        cp -f ${./configs/firefox/tridactylrc} /mnt/c/Users/abstr/.config/tridactyl/tridactylrc
     '';
   };
 

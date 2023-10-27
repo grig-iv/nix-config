@@ -1,6 +1,8 @@
 {pkgs, ...}: {
   home.sessionVariables."BROWSER" = "firefox";
 
+  xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
+
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {cfg.enableTridactylNative = true;};
@@ -115,11 +117,4 @@
       };
     };
   };
-
-  xdg.configFile."tridactyl/tridactylrc".text = ''
-    bind <F14> back
-    bind <F17> forward
-    bind --mode=ex <ArrowUp> ex.prev_completion
-    bind --mode=ex <ArrowDown> ex.next_completion
-  '';
 }
