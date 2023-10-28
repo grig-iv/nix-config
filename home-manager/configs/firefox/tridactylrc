@@ -1,4 +1,4 @@
-bind <F14> back
-bind <F17> forward
+bind <F19> back
+bind <F22> forward
 bind --mode=ex <ArrowUp> ex.prev_completion
 bind --mode=ex <ArrowDown> ex.next_completion
