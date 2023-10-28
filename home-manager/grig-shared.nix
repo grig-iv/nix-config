@@ -61,9 +61,6 @@ with lib; {
 
       # shortcuts
       e = "$EDITOR";
-
-      # utils
-      find-font = "fc-list | grep ";
     };
   };
 }

@@ -10,4 +10,9 @@ in {
     font-awesome
     roboto-mono
   ];
+
+  environment.shellAliases = {
+    font-list = "fc-list | sed 's|.*/||'";
+    font-find = "font-list | grep ";
+  };
 }

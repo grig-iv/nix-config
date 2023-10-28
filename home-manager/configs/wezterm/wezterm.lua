@@ -6,6 +6,11 @@ return {
     enable_tab_bar = false,
     disable_default_key_bindings = true,
 
+    font = wezterm.font_with_fallback {
+        { family = "JetBrainsMono Nerd Font" },
+        'Noto Sans Sinhala', -- amoungus font "ඞ"
+    },
+
     keys = {
         {
             key = 'Enter',
