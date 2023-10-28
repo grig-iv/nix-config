@@ -16,7 +16,7 @@ in
       ./grig-shared.nix
 
       ./configs/wezterm
-      ./configs/firefox.nix
+      ./configs/firefox
       #./configs/gtk.nix
       #./configs/redshift.nix
       ./configs/rofi.nix

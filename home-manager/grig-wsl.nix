@@ -20,7 +20,7 @@
 
   home.activation = {
     copyFileTest = config.lib.dag.entryBefore ["writeBoundary"] ''
-        cp -f ${./configs/firefox/tridactylrc} /mnt/c/Users/abstr/.config/tridactyl/tridactylrc
+      cp -f ${./configs/firefox/tridactylrc} /mnt/c/Users/abstr/.config/tridactyl/tridactylrc
     '';
   };
 

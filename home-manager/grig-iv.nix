@@ -14,7 +14,7 @@
     ./configs/notes.nix
 
     ./configs/development/scala.nix
-    ./configs/development/ocaml.nix
+    ./configs/development/go.nix
   ];
 
   home.packages = with pkgs; [
