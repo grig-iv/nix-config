@@ -17,8 +17,8 @@ return {
             mods = 'CTRL',
             action = act.SendKey { key = 'Enter', mods = 'CTRL' },
         },
-        -- paste from the clipboard
         { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+        { key = 'C', mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
     },
 
     mouse_bindings = {

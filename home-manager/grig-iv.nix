@@ -12,9 +12,10 @@
     ./configs/discord.nix
     ./configs/tidal-cycles.nix
     ./configs/notes.nix
+    ./configs/anki.nix
 
     ./configs/development/scala.nix
-    ./configs/development/go.nix
+#    ./configs/development/go.nix
   ];
 
   home.packages = with pkgs; [
@@ -22,5 +23,6 @@
     remmina
     diskonaut
     exercism
+    brave
   ];
 }

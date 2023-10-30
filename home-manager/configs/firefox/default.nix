@@ -15,17 +15,17 @@
       # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions = with pkgs.nur.repos.rycee.firefox-addons;
         [
+          firefox-color # https://github.com/catppuccin/firefox
+          stylus # https://github.com/catppuccin/userstyles
           ublock-origin
           tridactyl
           bitwarden
           i-dont-care-about-cookies
-          firefox-color # https://github.com/catppuccin/firefox
           improved-tube
           buster-captcha-solver
           clearurls
           no-pdf-download
           decentraleyes
-          stylus
         ]
         ++ (with pkgs.nur.repos.bandithedoge.firefoxAddons; [
           material-icons-for-github
@@ -60,7 +60,7 @@
         }
       ];
 
-      userChrome = ''
+/*      userChrome = ''
         #TabsToolbar {
           visibility: collapse;
         }
@@ -69,7 +69,7 @@
         #navigator-toolbox:active #TabsToolbar {
           visibility: visible;
         }
-      '';
+      '';*/
 
       settings = {
         "app.update.auto" = false; # disable autoupdate
@@ -90,6 +90,7 @@
         "browser.urlbar.showSearchSuggestionsFirst" = false; # search engien suggestion goes after history/bookmarks suggestions
         "browser.startup.page" = 3; # restore previous tabs on startup
         "browser.translations.neverTranslateLanguages" = "ru"; # do not translate ru pages
+        "layers.acceleration.force-enabled" = true; # should help with screen tearing
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;

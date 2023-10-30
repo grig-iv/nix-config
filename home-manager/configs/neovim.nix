@@ -12,6 +12,11 @@ with lib; {
       defaultEditor = true;
       viAlias = true;
       vimAlias = true;
+      withNodeJs = true;
+      withPython3 = true;
+      extraPackages = with pkgs; [
+        gcc
+      ];
     };
     #vscode.extensions = [pkgs.vscode-marketplace.asvetliakov.vscode-neovim];
   };
@@ -23,14 +28,10 @@ with lib; {
       curl
       unzip
       tree-sitter
-      clang
       ripgrep
       fd
       nodejs_20
-      gnumake
       nodePackages.cspell
-
-      #ltex-ls
     ];
 
     sessionVariables = {
@@ -40,6 +41,7 @@ with lib; {
     };
 
     shellAliases = {
+      gn = "cd $NVIMCONF";
       n = ''cd $NVIMCONF & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
     };
   };

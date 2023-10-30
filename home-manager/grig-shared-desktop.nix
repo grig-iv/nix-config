@@ -17,16 +17,18 @@ in
 
       ./configs/wezterm
       ./configs/firefox
-      #./configs/gtk.nix
-      #./configs/redshift.nix
+      ./configs/redshift.nix
+      ./configs/zathura.nix
       ./configs/rofi.nix
       ./configs/unclutter.nix
-      #./configs/dunst.nix
-      #./configs/picom.nix
       ./configs/feh.nix
       ./configs/wireguard.nix
       ./configs/qmk.nix
       ./configs/vscode.nix
+      ./configs/mpv.nix
+      #./configs/gtk.nix
+      #./configs/dunst.nix
+      #./configs/picom.nix
     ];
 
     home.packages = with pkgs; [

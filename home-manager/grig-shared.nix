@@ -13,7 +13,7 @@ with lib; {
     ./configs/my.nix
     ./configs/nix.nix
     ./configs/lf
-    ./configs/fzf.nix
+    ./configs/skim.nix
     ./configs/bat.nix
     ./configs/git.nix
     ./configs/gitui.nix
