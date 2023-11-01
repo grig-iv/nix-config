@@ -7,6 +7,7 @@
     ./grig-shared.nix
 
     ./configs/wsl-vpnkit.nix
+    ./configs/notes.nix
   ];
 
   home.packages = with pkgs; [
@@ -31,4 +32,6 @@
   home.sessionVariables = {
     NIXCONF = "${config.xdg.configHome}/nix-config";
   };
+
+  my.hostInfo.windowsUserPath = "/mnt/c/Users/abstr/";
 }

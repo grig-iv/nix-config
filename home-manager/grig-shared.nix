@@ -10,7 +10,8 @@ with lib; {
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./configs/my.nix
+    ./modules
+
     ./configs/nix.nix
     ./configs/lf
     ./configs/skim.nix

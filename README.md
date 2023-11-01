@@ -1,4 +1,4 @@
-# ⚙️ My nix-config
+# ❄️ My nix-config
 
-Other configs that i learned from:
-- https://github.com/fufexan/dotfiles
+Other configs I've learned from:
+https://github.com/stars/grig-iv/lists/nix-configs

@@ -4,7 +4,9 @@
   lib,
   ...
 }:
-with lib; {
+with lib; let
+  windowsHomeDir = config.my.hostInfo.windowsUserPath;
+in {
   options.my.lf.ctpv.enable = mkEnableOption "Enalbe ctpv - file previewer for a terminal";
 
   config = {
@@ -67,8 +69,9 @@ with lib; {
         "a" = "push :mkfile<space>";
         "A" = "push :mkdir<space>";
 
-        "gw" = "cd /mnt/c/Users/grig";
-        "gd" = "cd /mnt/c/Users/grig/Downloads";
+        "gwh" = "cd ${windowsHomeDir}";
+        "gwd" = "cd ${windowsHomeDir}/Downloads";
+        "gws" = "cd ${windowsHomeDir}/source";
         "gp" = "cd ~/projects";
         "gm" = "cd ~/extended-mind";
         "gc" = "cd ~/.config";

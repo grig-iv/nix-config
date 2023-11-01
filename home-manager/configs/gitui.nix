@@ -2,7 +2,9 @@
   programs.gitui = {
     enable = true;
     keyConfig = ''
-      exit: Some(( code: Char('q'), modifiers: ( bits: 2,),)),
+      (
+          exit: Some(( code: Char('q'), modifiers: ( bits: 2,),)),
+      )
     '';
     theme = ''
       (

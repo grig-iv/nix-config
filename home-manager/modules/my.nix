@@ -5,10 +5,18 @@
 }:
 with lib; {
   options.my = {
-    hostInfo.isInWsl = mkOption {
-      type = types.bool;
-      default = false;
-      description = "WSL indicator";
+    hostInfo = {
+      isInWsl = mkOption {
+        type = types.bool;
+        default = false;
+        description = "WSL indicator";
+      };
+
+      windowsUserPath = mkOption {
+        type = types.str;
+        default = "/mnt/c/Users/${config.home.username}";
+        description = "Path to windows user directory";
+      };
     };
 
     marginBase = mkOption {
