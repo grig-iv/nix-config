@@ -4,7 +4,7 @@
   lib,
   ...
 }:
-with lib; let
+with lib; with pkgs; let
   windowsHomeDir = config.my.hostInfo.windowsUserPath;
 in {
   options.my.lf.ctpv.enable = mkEnableOption "Enalbe ctpv - file previewer for a terminal";
@@ -26,27 +26,55 @@ in {
       commands = {
         mkdir = ''
           ''${{
-              ${pkgs.coreutils}/bin/mkdir "$@"
-              lf -remote "send $id select \"$@\""
+            mkdir "$@"
+            lf -remote "send $id select \"$@\""
           }}
         '';
 
         mkfile = ''
           ''${{
-              ${pkgs.coreutils}/bin/touch "$@"
-              lf -remote "send $id select \"$@\""
+            touch "$@"
+            lf -remote "send $id select \"$@\""
           }}
         '';
 
-        # TODO add condition that checks if it is a wsl config
-        open = "&wslview $f";
-
-        z = ''
+        fzf = ''
           ''${{
-            result="$(${pkgs.zoxide}/bin/zoxide query --exclude $PWD $@)"
-            lf -remote "send $id cd \"$result\""
+            res="$(${getExe fd} -d 1 | ${getExe skim} --reverse --header='Jump to location')"
+            if [ -n "$res" ]; then
+                if [ -d "$res" ]; then
+                    cmd="cd"
+                else
+                    cmd="select"
+                fi
+                res="$(printf '%s' "$res" | sed 's/\\/\\\\/g;s/"/\\"/g')"
+                lf -remote "send $id $cmd \"$res\""
+            fi
           }}
         '';
+
+        open =
+          if config.my.hostInfo.isInWsl
+          then "&wslview $f"
+          else ''
+            ''${{
+              case $(${getExe file} --mime-type -Lb $f) in
+                application/json|application/xml|text/*)
+                  $EDITOR "$f"
+                  ;;
+                image/*)
+                  ${getExe sxiv} "$f"
+                  ;;
+                *)
+                  xdg-open "$f"
+                  ;;
+              esac
+            }}
+          '';
+
+        z = "&wslview $f"; # fix
+
+        trash = "${getExe trashy} $f";
 
         yank-dirname = "$dirname -- \"$f\" | head -c-1 | xclip -i -selection clipboard";
         yank-path = "$printf '%s' \"$fx\" | xclip -i -selection clipboard";
@@ -56,8 +84,8 @@ in {
 
       keybindings = {
         "x" = "cut";
-        "d" = "delete";
-        "<delete>" = "delete";
+        "d" = null;
+        "dl" = "trash";
         "y" = null;
         "yy" = "copy";
         "q" = null;
@@ -72,16 +100,18 @@ in {
         "gwh" = "cd ${windowsHomeDir}";
         "gwd" = "cd ${windowsHomeDir}/Downloads";
         "gws" = "cd ${windowsHomeDir}/source";
+
         "gp" = "cd ~/projects";
         "gm" = "cd ~/extended-mind";
         "gc" = "cd ~/.config";
         "gx" = "cd ~/.config/nix-config";
         "gn" = "cd ~/.config/nvim";
+        "f" = "fzf";
       };
 
       previewer = mkIf config.my.lf.ctpv.enable {
         keybinding = "i";
-        source = "${pkgs.ctpv}/bin/ctpv";
+        source = "${ctpv}/bin/ctpv";
       };
 
       extraConfig =
@@ -89,9 +119,9 @@ in {
           set truncatechar ⋯
         ''
         + optionalString config.my.lf.ctpv.enable ''
-          &${pkgs.ctpv}/bin/ctpv -s $id
-          cmd on-quit %${pkgs.ctpv}/bin/ctpv -e $id
-          set cleaner ${pkgs.ctpv}/bin/ctpvclear
+          &${ctpv}/bin/ctpv -s $id
+          cmd on-quit %${ctpv}/bin/ctpv -e $id
+          set cleaner ${ctpv}/bin/ctpvclear
         '';
     };
 
