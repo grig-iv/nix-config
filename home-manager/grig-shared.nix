@@ -17,11 +17,13 @@ with lib; {
     ./configs/skim.nix
     ./configs/bat.nix
     ./configs/git.nix
+    ./configs/eza.nix
     ./configs/gitui.nix
     ./configs/fish.nix
     ./configs/tmux.nix
     ./configs/neovim.nix
     ./configs/syncthing.nix
+    ./configs/development/fennel.nix
   ];
 
   xdg.enable = true;
@@ -33,7 +35,6 @@ with lib; {
       curl
       unzip
       tldr
-      exa
       zip
       tree
     ];
@@ -54,7 +55,7 @@ with lib; {
       #      mkdir = "mkdir -pv";
 
       # Colorize commands when possible.
-      ls = "exa --icons";
+      #ls = "exa --icons";
       grep = "grep --color=auto";
       diff = "diff --color=auto";
       ccat = "highlight --out-format=ansi";

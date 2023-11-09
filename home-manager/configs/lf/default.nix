@@ -1,10 +1,12 @@
 {
   config,
   pkgs,
+  unstable,
   lib,
   ...
 }:
-with lib; with pkgs; let
+with lib;
+with pkgs; let
   windowsHomeDir = config.my.hostInfo.windowsUserPath;
 in {
   options.my.lf.ctpv.enable = mkEnableOption "Enalbe ctpv - file previewer for a terminal";
@@ -76,6 +78,15 @@ in {
 
         trash = "${getExe trashy} $f";
 
+/*
+        on-select = let
+          eza = getExe unstable.eza;
+        in ''
+          ''${{
+            lf -remote "send $id set statfmt \"$(${eza} -ld --color=always "$f")\""
+          }}
+        '';*/
+
         yank-dirname = "$dirname -- \"$f\" | head -c-1 | xclip -i -selection clipboard";
         yank-path = "$printf '%s' \"$fx\" | xclip -i -selection clipboard";
         yank-basename = "$basename -a -- $fx | head -c-1 | xclip -i -selection clipboard";
@@ -104,7 +115,7 @@ in {
         "gp" = "cd ~/projects";
         "gm" = "cd ~/extended-mind";
         "gc" = "cd ~/.config";
-        "gx" = "cd ~/.config/nix-config";
+        "gx" = "cd $NIXCONF";
         "gn" = "cd ~/.config/nvim";
         "f" = "fzf";
       };

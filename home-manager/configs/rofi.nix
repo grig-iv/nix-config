@@ -137,7 +137,6 @@ in {
       rofi-calc
       rofi-power-menu
       rofi-rbw
-      rofi-pulse-select
     ];
 
     extraConfig = {
