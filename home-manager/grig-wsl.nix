@@ -26,7 +26,8 @@
   };
 
   home.shellAliases = {
-    pwsh = "powershell.exe -Command";
+    "pwsh" = "powershell.exe";
+    "pwsh -c" = "powershell.exe -Command";
   };
 
   home.sessionVariables = {

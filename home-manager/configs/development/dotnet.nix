@@ -12,7 +12,7 @@
   toolString = lib.concatStringsSep " " tools;
 in {
   home = {
-    packages = with pkgs; [dotnet-sdk_7 fsharp];
+    packages = with pkgs; [dotnet-sdk_7];
 
     sessionVariables = {
       CLI_TELEMETRY_OPTOUT = "true";

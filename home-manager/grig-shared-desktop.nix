@@ -2,6 +2,7 @@
   pkgs,
   lib,
   inputs,
+  unstable,
   ...
 }: let
   autostart = pkgs.writeShellScriptBin "autostart" ''
@@ -34,7 +35,7 @@ in
     home.packages = with pkgs; [
       autostart
 
-      telegram-desktop
+      unstable.telegram-desktop
 
       xclip
       maim

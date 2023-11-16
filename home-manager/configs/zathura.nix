@@ -13,6 +13,9 @@
       sha256 = "02dhha1v7kqh9v087cr9gffndpw832dfqn1sbng2scrp59rdwxgw";
     };
 
-    mimeApps.defaultApplications."application/pdf" = "zathura.desktop";
+    mimeApps = {
+      enable = true;
+      defaultApplications."application/pdf" = "zathura.desktop";
+    };
   };
 }

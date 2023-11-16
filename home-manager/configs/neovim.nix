@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   lib,
   ...
@@ -21,6 +22,8 @@ with lib; {
     #vscode.extensions = [pkgs.vscode-marketplace.asvetliakov.vscode-neovim];
   };
 
+  my.shell.bookmarks.n = config.home.sessionVariables.NVIMCONF;
+
   home = {
     packages = with pkgs; [
       git
@@ -36,12 +39,11 @@ with lib; {
 
     sessionVariables = {
       EDITOR = mkDefault "nvim";
-      NVIMCONF = mkDefault "$CONFIG/nvim";
+      NVIMCONF = mkDefault "~/.config/nvim";
       EXTMIND = mkDefault "$HOME/extended-mind";
     };
 
     shellAliases = {
-      gn = "cd $NVIMCONF";
       n = ''cd $NVIMCONF & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
     };
   };

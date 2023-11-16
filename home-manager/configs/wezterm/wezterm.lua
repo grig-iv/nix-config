@@ -19,6 +19,7 @@ return {
         },
         { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
         { key = 'C', mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
+        { key = "F", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[1;6F" } },
     },
 
     mouse_bindings = {

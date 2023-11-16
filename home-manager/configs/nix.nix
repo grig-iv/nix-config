@@ -22,6 +22,8 @@
     manpages.enable = false;
   };
 
+  my.shell.bookmarks.x = config.home.sessionVariables.NIXCONF;
+
   home = {
     packages = [
       pkgs.alejandra
@@ -33,7 +35,6 @@
     };
 
     shellAliases = {
-      gx = "cd $NIXCONF";
       x = ''cd $NIXCONF & git add . & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
 
       shm = "home-manager switch --flake $NIXCONF#${config.home.username}";

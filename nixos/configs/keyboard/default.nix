@@ -12,6 +12,11 @@
     keycode 200 = F22 F22 F22 F22 F22 F22
     keycode 201 = F23 F23 F23 F23 F23 F23
     keycode 202 = F24 F24 F24 F24 F24 F24
+
+    key <RALT> {
+      type[Group1]="TWO_LEVEL",
+      [ ISO_Level3_Shift, Multi_key ]
+    };
   '';
 in {
   services.xserver = {

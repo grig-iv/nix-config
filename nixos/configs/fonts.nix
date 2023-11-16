@@ -13,6 +13,6 @@ in {
 
   environment.shellAliases = {
     font-list = "fc-list | sed 's|.*/||'";
-    font-find = "font-list | grep ";
+    font-find = "font-list | grep -i";
   };
 }

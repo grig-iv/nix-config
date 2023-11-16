@@ -60,7 +60,8 @@
         }
       ];
 
-/*      userChrome = ''
+      /*
+        userChrome = ''
         #TabsToolbar {
           visibility: collapse;
         }
@@ -69,7 +70,8 @@
         #navigator-toolbox:active #TabsToolbar {
           visibility: visible;
         }
-      '';*/
+      '';
+      */
 
       settings = {
         "app.update.auto" = false; # disable autoupdate

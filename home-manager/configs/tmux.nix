@@ -28,7 +28,7 @@ in {
       set-option -sa terminal-overrides ",xterm*:Tc"
       set-option -g status-position top
 
-      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+      bind rc source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
       bind c new-window -c "#{pane_current_path}"
       bind | split-window -h -c "#{pane_current_path}"
       bind _ split-window -v -c "#{pane_current_path}"
@@ -43,10 +43,17 @@ in {
       bind -n M-C-PgUp previous-window
       bind -n M-C-PgDn next-window
 
-      bind -n M-Up select-pane -U
-      bind -n M-Down select-pane -D
-      bind -n M-Left select-pane -L
-      bind -n M-Right select-pane -R
+      is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
+
+      bind-key -n "M-Left" if-shell "$is_vim" "send-keys M-Left" { if -F "#{pane_at_left}" "" "select-pane -L" }
+      bind-key -n "M-Down" if-shell "$is_vim" "send-keys M-Down" { if -F "#{pane_at_bottom}" "" "select-pane -D" }
+      bind-key -n "M-Up" if-shell "$is_vim" "send-keys M-Up" { if -F "#{pane_at_top}" "" "select-pane -U" }
+      bind-key -n "M-Right" if-shell "$is_vim" "send-keys M-Right" { if -F "#{pane_at_right}" "" "select-pane -R" }
+
+      bind-key -T copy-mode-vi "M-Left" if -F "#{pane_at_left}" "" "select-pane -L"
+      bind-key -T copy-mode-vi "M-Down" if -F "#{pane_at_bottom}" "" "select-pane -D"
+      bind-key -T copy-mode-vi "M-Up" if -F "#{pane_at_top}" "" "select-pane -U"
+      bind-key -T copy-mode-vi "M-Right" if -F "#{pane_at_right}" "" "select-pane -R"
     '';
   };
 
