@@ -28,6 +28,8 @@ with lib; {
 
   xdg.enable = true;
 
+  my.shell.bookmarks.h = "~/";
+
   home = {
     packages = with pkgs; [
       htop

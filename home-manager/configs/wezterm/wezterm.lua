@@ -12,14 +12,10 @@ return {
     },
 
     keys = {
-        {
-            key = 'Enter',
-            mods = 'CTRL',
-            action = act.SendKey { key = 'Enter', mods = 'CTRL' },
-        },
-        { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
-        { key = 'C', mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
-        { key = "F", mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[1;6F" } },
+        { key = "F",     mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[1;6F" } },
+        { key = "Enter", mods = "CTRL",       action = wezterm.action { SendString = "\x1b[5;5u" } },
+        { key = 'V',     mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+        { key = 'C',     mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
     },
 
     mouse_bindings = {

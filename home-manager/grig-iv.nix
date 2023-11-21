@@ -30,13 +30,14 @@
 
   home.packages = with pkgs; [
     qbittorrent
-    diskonaut
-    exercism
     brave
     gimp
     spotify
     obs-studio
     screenkey
+    love
+    diskonaut
+    exercism
 
     remmina
     putty

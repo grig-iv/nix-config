@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: let
   # Setup script for a non-nixos system
@@ -51,7 +52,8 @@ in {
       }
     ];
 
-    functions = {
+    functions = with lib;
+    with pkgs; {
       fish_greeting = "";
       fish_prompt = ''
         set_color -o a6e3a1
@@ -61,8 +63,25 @@ in {
         echo -n 'ඞ '
         set_color normal
       '';
+
       mkdircd = ''
         mkdir -pv $argv; and cd $argv
+      '';
+
+      jump = ''
+        if test (count $argv) -eq 0
+            echo "No target directory provided."
+            exit 1
+        end
+
+        set target_dir (eval echo $argv[1])
+        cd $target_dir; or exit
+
+        set selected_file (${getExe fd} -t f | ${getExe skim} --preview 'bat --color=always --line-range :100 {}')
+
+        if test -n "$selected_file"
+            eval $EDITOR $selected_file
+        end
       '';
     };
 

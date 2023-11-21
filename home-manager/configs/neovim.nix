@@ -44,7 +44,7 @@ with lib; {
     };
 
     shellAliases = {
-      n = ''cd $NVIMCONF & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
+      n = "jump $NVIMCONF";
     };
   };
 }

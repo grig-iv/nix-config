@@ -35,7 +35,7 @@
     };
 
     shellAliases = {
-      x = ''cd $NIXCONF & git add . & $EDITOR $(${pkgs.fd}/bin/fd -t f | ${pkgs.skim}/bin/sk --preview "${pkgs.bat}/bin/bat --color=always --style=numbers {}" )'';
+      x = "jump $NIXCONF";
 
       shm = "home-manager switch --flake $NIXCONF#${config.home.username}";
       snc = "sudo nixos-rebuild switch --flake $NIXCONF#nixos";
