@@ -7,7 +7,6 @@
 }: let
   autostart = pkgs.writeShellScriptBin "autostart" ''
     set-wallpaper
-    udiskie &
   '';
 in
   with lib; {
@@ -42,8 +41,6 @@ in
       sxiv
       pulsemixer
     ];
-
-    #qt.enable = true;
 
     colorScheme = {
       slug = "catppuccin";

@@ -93,6 +93,7 @@
         "browser.startup.page" = 3; # restore previous tabs on startup
         "browser.translations.neverTranslateLanguages" = "ru"; # do not translate ru pages
         "layers.acceleration.force-enabled" = true; # should help with screen tearing
+        "webgl.disabled" = false; # for shadertoy
 
         # disable telemetry settings
         "toolkit.telemetry.enabled" = false;
@@ -111,7 +112,6 @@
         "media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
         "network.dns.disablePrefetch" = true; # prevent Firefox from "prefetching" DNS requests
         "network.predictor.enabled" = false; # disable network prediction
-        "webgl.disabled" = true; # disable WebGL which can be used to fingerprint your device
         "media.peerconnection.enabled" = false; # disable WebRTC to prevent potential IP leaks
         "network.http.referer.trimmingPolicy" = 2; # send only the origin as a referrer instead of the full URL
         "network.http.referer.XOriginPolicy" = 2; # only send the referrer header with the origin when the origins will be same

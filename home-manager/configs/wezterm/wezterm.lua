@@ -5,6 +5,7 @@ return {
     color_scheme = "Catppuccin Mocha",
     enable_tab_bar = false,
     disable_default_key_bindings = true,
+    window_background_opacity = 0.95,
 
     font = wezterm.font_with_fallback {
         { family = "JetBrainsMono Nerd Font" },
@@ -12,7 +13,7 @@ return {
     },
 
     keys = {
-        { key = "F",     mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[1;6F" } },
+        { key = "F",     mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[70;5u" } },
         { key = "Enter", mods = "CTRL",       action = wezterm.action { SendString = "\x1b[5;5u" } },
         { key = 'V',     mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
         { key = 'C',     mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },

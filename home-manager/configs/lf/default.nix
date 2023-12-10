@@ -68,16 +68,11 @@ in {
         then "&wslview $f"
         else
           mkCmd ''
-            case $(${getExe file} --mime-type -Lb $f) in
-              application/json|application/xml|text/*)
-                $EDITOR "$f"
-                ;;
-              image/*)
-                ${getExe sxiv} "$f"
-                ;;
-              *)
-                xdg-open "$f"
-                ;;
+            case $(${getExe file} --mime-type -Lb "$f") in
+              text/*|application/json|application/xml) $EDITOR "$f";;
+              image/*) ${getExe sxiv} "$f";;
+              video/*) ${getExe mpv} --fullscreen "$f";;
+              *) echo "Unknown type: $f";;
             esac
           '';
 
@@ -119,9 +114,9 @@ in {
       "gws" = "cd ${windowsHomeDir}/source";
     };
 
-    previewer = mkIf isInWsl {
+    previewer = {
       keybinding = "i";
-      source = getExe ctpv;
+      source = getExe pistol;
     };
 
     extraConfig =
@@ -168,5 +163,15 @@ in {
     shellInit = pkgs.lib.mkAfter ''
       bind \ce 'lfcd; commandline -f execute'
     '';
+  };
+
+  programs.pistol = {
+    enable = true;
+    associations = [
+      {
+        mime = "image/*";
+        command = "wezterm imgcat %pistol-filename% --width %pistol-extra0% --heigth %pistol-extra1% %pistol-extra2% %pistol-extra3%";
+      }
+    ];
   };
 }

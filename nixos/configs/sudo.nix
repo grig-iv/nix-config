@@ -1,23 +1,29 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}:
+with pkgs;
+with lib; {
   security.sudo = {
     enable = true;
     extraRules = [
       {
         commands = [
           {
-            command = "${pkgs.systemd}/bin/systemctl suspend";
+            command = "${getExe systemd}";
             options = ["NOPASSWD"];
           }
           {
-            command = "${pkgs.systemd}/bin/reboot";
+            command = "${getExe systemd}";
             options = ["NOPASSWD"];
           }
           {
-            command = "${pkgs.systemd}/bin/poweroff";
+            command = "${getExe systemd}";
             options = ["NOPASSWD"];
           }
           {
-            command = "${pkgs.wireguard-tools}/bin/wg-quick";
+            command = "${getExe wireguard-tools}";
             options = ["NOPASSWD"];
           }
         ];

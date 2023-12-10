@@ -8,15 +8,17 @@
   };
 in {
   imports = [
+    ./steam.nix
+    ./picom.nix
+    ./fonts.nix
     ./keyboard
     ./nix.nix
     ./hardware-configuration.nix
     ./bootloader.nix
-    ./nvidia-close.nix
+    ./nvidia.nix
     ./wm.nix
     ./audio.nix
     ./sudo.nix
-    ./fonts.nix
     #    ./vm.nix
     ./sops.nix
     #    ./wireguard.nix

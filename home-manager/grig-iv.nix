@@ -37,7 +37,11 @@
     screenkey
     love
     diskonaut
-    exercism
+
+    audacity
+
+    glslviewer
+    glsl_analyzer
 
     remmina
     putty

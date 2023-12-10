@@ -15,6 +15,7 @@ with lib; {
     ./configs/nix.nix
     ./configs/lf
     ./configs/skim.nix
+    ./configs/udiskie.nix
     ./configs/bat.nix
     ./configs/git.nix
     ./configs/eza.nix

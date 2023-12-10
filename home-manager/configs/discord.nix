@@ -1,8 +1,9 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [(discord-ptb.override {withOpenASAR = true;})];
+  home.packages = with pkgs; [discord];
 
   # don't work
   /*
+  home.packages = with pkgs; [(discord-ptb.override {withOpenASAR = true;})];
   programs.discocss = {
     enable = true;
     discordPackage = pkgs.discord.override {withOpenASAR = true;};
