@@ -4,7 +4,7 @@
     initialPassword = user;
     description = name;
     shell = pkgs.fish;
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
   };
 in {
   imports = [
@@ -25,6 +25,8 @@ in {
   ];
 
   networking.firewall.enable = false;
+
+  virtualisation.docker.enable = true;
 
   # Networking
   networking.hostName = "nixos";
@@ -50,6 +52,7 @@ in {
     unzip
     sops
     age
+    docker-compose
   ];
 
   # USB mount
