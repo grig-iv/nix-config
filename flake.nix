@@ -16,6 +16,7 @@
     nix-colors.url = "github:misterio77/nix-colors";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    ollama.url = "github:havaker/ollama-nix";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
   };

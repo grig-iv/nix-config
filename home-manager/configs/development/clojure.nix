@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, ...}: 
   home.packages = with pkgs; [
     clojure
     clojure-lsp
@@ -6,4 +6,10 @@
   ];
 
   programs.java.enable = true;
+
+  programs.vscode = {
+    extensions = with pkgs.vscode-extensions; [
+      betterthantomorrow.calva
+    ];
+  };
 }

@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  unstable,
   lib,
   ...
 }:
@@ -78,6 +77,8 @@ in {
 
       trash = mkCmd ''${getExe trashy} "$f"'';
 
+      select-all = ":unselect; invert";
+
       yank-dirname = mkCmd ''dirname -- "$f" | head -c-1 | ${copyToClipboard}'';
       yank-path = mkCmd ''printf '%s' "$fx" | ${copyToClipboard}'';
       yank-basename = mkCmd ''basename -a -- "$fx" | head -c-1 | ${copyToClipboard}'';
@@ -101,17 +102,20 @@ in {
       "q" = null;
       "<c-q>" = "quit";
 
-      "x" = "cut";
-      "." = "set hidden!";
-      "<enter>" = "open";
-      "z<space>" = "push :z<space>";
-
       "a" = "push :mkfile<space>";
       "A" = "push :mkdir<space>";
 
       "gwh" = "cd ${windowsHomeDir}";
       "gwd" = "cd ${windowsHomeDir}/Downloads";
       "gws" = "cd ${windowsHomeDir}/source";
+
+      # misc
+      "<c-a>" = "select-all";
+      "<esc>" = "unselect";
+      "x" = "cut";
+      "." = "set hidden!";
+      "<enter>" = "open";
+      "z<space>" = "push :z<space>";
     };
 
     previewer = {
