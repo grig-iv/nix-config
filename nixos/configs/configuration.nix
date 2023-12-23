@@ -16,7 +16,7 @@ in {
     ./hardware-configuration.nix
     ./bootloader.nix
     ./nvidia.nix
-    ./wm.nix
+    ./xserver.nix
     ./audio.nix
     ./sudo.nix
     #    ./vm.nix

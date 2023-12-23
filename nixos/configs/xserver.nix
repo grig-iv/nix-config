@@ -23,7 +23,7 @@
         enable = true;
         mouse = {
           accelProfile = "flat";
-          accelSpeed = "-0.5";
+          accelSpeed = "-0.25";
         };
       };
 
