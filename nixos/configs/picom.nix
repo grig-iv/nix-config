@@ -11,6 +11,9 @@
       shadow-exclude = [
         "class_g = 'awesome'"
         "class_g = 'firefox' && argb"
+        "name = 'Notification'"
+        "class_g ?= 'Notify-osd'"
+        "_GTK_FRAME_EXTENTS@:c" # telegram dialog fix
       ];
     };
   };
