@@ -8,6 +8,7 @@
           inputs.nur.overlay
           inputs.tidal-cycles.overlays.tidal
           inputs.nix-vscode-extensions.overlays.default
+          inputs.ollama.overlays.default
           (import ./../overlays)
         ];
       };

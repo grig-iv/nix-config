@@ -1,9 +1,11 @@
-{...}: let
+{pkgs, ...}: let
   close = "nvidia";
   open = "nouveau";
   driver = close;
 in {
   services.xserver.videoDrivers = [driver];
+
+  environment.systemPackages = [pkgs.cudatoolkit];
 
   hardware = {
     opengl = {
