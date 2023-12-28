@@ -9,6 +9,7 @@
           inputs.tidal-cycles.overlays.tidal
           inputs.nix-vscode-extensions.overlays.default
           inputs.ollama.overlays.default
+          inputs.rust-overlay.overlays.default
           (import ./../overlays)
         ];
       };

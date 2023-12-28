@@ -21,9 +21,12 @@
       allowed-users = ["grig-iv" "grig-gn"];
     };
     gc = {
-      automatic = true;
+      # automatic = true;
       options = "--delete-older-than 5d";
     };
+    extraOptions = ''
+      warn-dirty = false
+    '';
   };
 
   nixpkgs.config = {

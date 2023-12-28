@@ -3,11 +3,16 @@
   pkgs,
   ...
 }: let
-  wallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
-    feh --randomize --bg-fill ${toString config.my.backgroundsDirPath}/*nature*
+  wallpaper = pkgs.fetchurl {
+    url = "https://w.wallhaven.cc/full/zx/wallhaven-zxepdo.jpg";
+    sha256 = "+qPJykyumycM1xGH7fqUZYaw+S+GJanRr5EAWVcqOz8=";
+  };
+
+  set-wallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
+    feh --bg-fill ${wallpaper}*
   '';
 in {
-  home.packages = [wallpaper];
+  home.packages = [set-wallpaper];
   programs.feh = {
     enable = true;
   };

@@ -5,20 +5,18 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
 
     nur.url = "github:nix-community/NUR";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     sops-nix.url = "github:Mic92/sops-nix";
-    grub2-themes.url = "github:vinceliuice/grub2-themes";
     nix-colors.url = "github:misterio77/nix-colors";
+
+    grub2-themes.url = "github:vinceliuice/grub2-themes";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     ollama.url = "github:havaker/ollama-nix";
-
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs:

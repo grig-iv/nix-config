@@ -14,8 +14,8 @@
     ./configs/notes.nix
     ./configs/anki.nix
 
-    ./configs/development/scala.nix
     ./configs/development/clojure.nix
+    ./configs/development/rust.nix
     ./configs/development/python.nix
     #    ./configs/development/dotnet.nix
     #    ./configs/development/go.nix
@@ -38,6 +38,8 @@
     screenkey
     love
     diskonaut
+
+    foliate
 
     ollama
     openai-whisper-cpp
