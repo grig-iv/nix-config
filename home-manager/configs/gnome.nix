@@ -1,26 +1,5 @@
 {pkgs, ...}: {
-  imports = [
-    ./configs/my.nix
-    ./configs/git.nix
-    ./configs/fish.nix
-    ./configs/alacritty.nix
-    ./configs/redshift.nix
-    ./configs/unclutter.nix
-  ];
-
   home.packages = with pkgs; [
-    telegram-desktop
-    discord
-    tor-browser-bundle-bin
-    firefox
-    spotify
-    tor
-    keepass
-    mpv-unwrapped
-
-    virt-manager
-    libvirt
-
     gnome-extension-manager
     gnomeExtensions.blur-my-shell
     gnomeExtensions.vitals
@@ -28,11 +7,6 @@
     gnomeExtensions.removable-drive-menu
     gnomeExtensions.user-themes
   ];
-
-  home.sessionVariables = {
-    BROWSER = "firefox";
-    TERMINAL = "alacritty";
-  };
 
   dconf = {
     enable = true;

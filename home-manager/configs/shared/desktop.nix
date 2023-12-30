@@ -13,22 +13,22 @@ in
     imports = [
       inputs.nix-colors.homeManagerModules.default
 
-      ./grig-shared.nix
+      ./shell.nix
 
-      ./configs/wezterm
-      ./configs/firefox
-      ./configs/redshift.nix
-      ./configs/zathura.nix
-      ./configs/rofi.nix
-      ./configs/unclutter.nix
-      ./configs/feh.nix
-      ./configs/wireguard.nix
-      ./configs/qmk.nix
-      ./configs/vscode.nix
-      ./configs/mpv.nix
-      #./configs/gtk.nix
-      #./configs/dunst.nix
-      #./configs/picom.nix
+      ./../wezterm
+      ./../firefox
+      ./../redshift.nix
+      ./../zathura.nix
+      ./../rofi.nix
+      ./../unclutter.nix
+      ./../feh.nix
+      ./../wireguard.nix
+      ./../qmk.nix
+      ./../vscode.nix
+      ./../mpv.nix
+      #./../gtk.nix
+      #./../dunst.nix
+      #./../picom.nix
     ];
 
     home.packages = with pkgs; [

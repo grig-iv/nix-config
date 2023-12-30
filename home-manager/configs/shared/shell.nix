@@ -10,21 +10,21 @@ with lib; {
   imports = [
     inputs.nix-colors.homeManagerModules.default
 
-    ./modules
+    ./../../modules
 
-    ./configs/nix.nix
-    ./configs/lf
-    ./configs/skim.nix
-    ./configs/udiskie.nix
-    ./configs/bat.nix
-    ./configs/git.nix
-    ./configs/eza.nix
-    ./configs/gitui.nix
-    ./configs/fish.nix
-    ./configs/tmux.nix
-    ./configs/neovim.nix
-    ./configs/syncthing.nix
-    ./configs/development/fennel.nix
+    ./../nix.nix
+    ./../lf
+    ./../skim.nix
+    ./../udiskie.nix
+    ./../bat.nix
+    ./../git.nix
+    ./../eza.nix
+    ./../gitui.nix
+    ./../fish.nix
+    ./../tmux.nix
+    ./../neovim.nix
+    ./../syncthing.nix
+    ./../development/fennel.nix
   ];
 
   xdg.enable = true;
@@ -32,6 +32,9 @@ with lib; {
   my.shell.bookmarks.h = "~/";
 
   home = {
+    username = lib.mkDefault "grig";
+    homeDirectory = lib.mkDefault "/home/grig";
+
     packages = with pkgs; [
       htop
       wget

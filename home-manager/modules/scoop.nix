@@ -2,12 +2,10 @@
   apps = {
     main = [
       "git"
-      "chezmoi"
-      "lsd"
+      "lsd" # remove maybe?
       "win32yank"
     ];
     extras = [
-      "age"
       "bitwarden"
       "firefox"
       "flow-launcher"

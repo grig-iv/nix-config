@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  unstable,
   lib,
   ...
 }: {
@@ -25,9 +24,9 @@
   my.shell.bookmarks.x = config.home.sessionVariables.NIXCONF;
 
   home = {
-    packages = [
-      pkgs.alejandra
-      unstable.nil
+    packages = with pkgs; [
+      alejandra
+      nil
     ];
 
     sessionVariables = {
@@ -37,8 +36,8 @@
     shellAliases = {
       x = "jump $NIXCONF";
 
-      shm = "home-manager switch --flake $NIXCONF#${config.home.username}";
-      snc = "sudo nixos-rebuild switch --flake $NIXCONF#$hostname";
+      shm = "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
+      snc = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
     };
 
     stateVersion = "23.05"; # lock. do not change

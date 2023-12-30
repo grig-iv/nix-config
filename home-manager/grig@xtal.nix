@@ -1,12 +1,6 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    inputs.nix-colors.homeManagerModules.default
-
-    ./grig-shared-desktop.nix
+    ./configs/shared/desktop.nix
 
     ./configs/awesome.nix
     ./configs/discord.nix
@@ -30,27 +24,25 @@
   };
 
   home.packages = with pkgs; [
+    # main
     qbittorrent
     brave
     gimp
     spotify
     obs-studio
     screenkey
-    love
-    diskonaut
+    audacity
 
+    diskonaut
     foliate
 
+    # ai
     ollama
     openai-whisper-cpp
     ffmpeg
     alsa-utils
 
-    audacity
-
-    glslviewer
-    glsl_analyzer
-
+    # work
     remmina
     putty
     libreoffice
