@@ -1,18 +1,15 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    <nixos-wsl/modules>
     ./configs/nix.nix
-    # ./configs/sops.nix
+    ./configs/sops.nix
   ];
 
   wsl = {
     enable = true;
     defaultUser = "grig-wsl";
   };
+
+  networking.hostName = "xtal";
 
   environment.systemPackages = with pkgs; [
     neovim
@@ -22,6 +19,5 @@
     unzip
   ];
 
-  # nixpkgs.hostPlatform = "x86_64-linux";
-  # system.stateVersion = "23.11";
+  system.stateVersion = "23.11";
 }
