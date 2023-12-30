@@ -1,5 +1,9 @@
-{pkgs, ...}: {
-  system.stateVersion = "23.05";
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  system.stateVersion = lib.mkDefault "23.05";
 
   nix = {
     package = pkgs.nixFlakes;

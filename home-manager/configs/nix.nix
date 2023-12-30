@@ -38,7 +38,7 @@
       x = "jump $NIXCONF";
 
       shm = "home-manager switch --flake $NIXCONF#${config.home.username}";
-      snc = "sudo nixos-rebuild switch --flake $NIXCONF#nixos";
+      snc = "sudo nixos-rebuild switch --flake $NIXCONF#$hostname";
     };
 
     stateVersion = "23.05"; # lock. do not change

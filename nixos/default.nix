@@ -1,10 +1,17 @@
 {inputs, ...}: {
   flake.nixosConfigurations = {
-    nixos = inputs.nixpkgs.lib.nixosSystem {
+    xtal = inputs.nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./configs/configuration.nix
+        ./xtal.nix
         inputs.grub2-themes.nixosModules.default
+        inputs.sops-nix.nixosModules.sops
+      ];
+    };
+    tha = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      modules = [
+        ./tha.nix
         inputs.sops-nix.nixosModules.sops
       ];
     };
