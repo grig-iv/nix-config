@@ -13,7 +13,7 @@ with lib; {
     ./../../modules
 
     ./../nix.nix
-    ./../lf
+    ./../lf.nix
     ./../skim.nix
     ./../udiskie.nix
     ./../bat.nix
@@ -31,9 +31,10 @@ with lib; {
 
   my.shell.bookmarks.h = "~/";
 
-  home = {
+  home = rec {
+    # FIXME
     username = lib.mkDefault "grig";
-    homeDirectory = lib.mkDefault "/home/grig";
+    homeDirectory = lib.mkDefault "/home/${username}";
 
     packages = with pkgs; [
       htop

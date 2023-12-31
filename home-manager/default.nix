@@ -23,17 +23,17 @@ in {
   flake.homeConfigurations = {
     "grig@xtal" = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs extraSpecialArgs;
-      modules = [(./. + "grig@xtal.nix")];
+      modules = [(./. + "/grig@xtal.nix.nix")];
     };
 
     "grig@tha-wsl" = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs extraSpecialArgs;
-      modules = [(./. + "grig@tha-wsl")];
+      modules = [(./. + "/grig@tha-wsl.nix")];
     };
 
     "grig@work-wsl" = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs extraSpecialArgs;
-      modules = [(./. + "grig@work-wsl")];
+      modules = [(./. + "/grig@work-wsl.nix")];
     };
   };
 }

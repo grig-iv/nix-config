@@ -5,7 +5,7 @@
 }: {
   imports = [
     ./shell.nix
-    ./configs/wsl-vpnkit.nix
+    ./../wsl-vpnkit.nix
   ];
 
   home = {
