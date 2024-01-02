@@ -23,7 +23,7 @@ with pkgs; let
       (x: "$" + "{{" + x + "\n}}\n")
     ];
 in {
-  imports = [../trashy.nix];
+  imports = [./trashy.nix];
 
   programs.lf = {
     enable = true;

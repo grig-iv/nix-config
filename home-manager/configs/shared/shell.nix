@@ -44,6 +44,7 @@ with lib; {
       tldr
       zip
       tree
+      babashka
     ];
 
     sessionVariables = {

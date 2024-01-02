@@ -1,4 +1,9 @@
-{...}: let
+{
+  config,
+  lib,
+  ...
+}:
+with lib; let
   apps = {
     main = [
       "git"
@@ -28,5 +33,13 @@
     nonportable = ["wireguard-np"];
     nerd-fonts = ["JetBrainsMono-NF-Mono"];
   };
+
+  addBuckets = concatStrings (
+    map (bucket: "scoop bucket add ${bucket};\n") (attrNames apps)
+  );
+
+  powershell = "/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe";
+
+  toPowershellCmd = cmd: ''${powershell} -C "${cmd}"'';
 in {
 }
