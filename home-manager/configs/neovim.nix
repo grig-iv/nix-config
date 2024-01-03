@@ -20,6 +20,7 @@ with lib; {
       ];
     };
     #vscode.extensions = [pkgs.vscode-marketplace.asvetliakov.vscode-neovim];
+    ripgrep.enable = true;
   };
 
   my.shell.bookmarks.n = config.home.sessionVariables.NVIMCONF;
@@ -31,7 +32,6 @@ with lib; {
       curl
       unzip
       tree-sitter
-      ripgrep
       fd
       nodejs_20
       nodePackages.cspell

@@ -11,18 +11,6 @@ with lib; {
       {
         commands = [
           {
-            command = "${getExe systemd}";
-            options = ["NOPASSWD"];
-          }
-          {
-            command = "${getExe systemd}";
-            options = ["NOPASSWD"];
-          }
-          {
-            command = "${getExe systemd}";
-            options = ["NOPASSWD"];
-          }
-          {
             command = "${getExe wireguard-tools}";
             options = ["NOPASSWD"];
           }

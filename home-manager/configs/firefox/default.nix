@@ -5,7 +5,9 @@
 
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox.override {cfg.enableTridactylNative = true;};
+    package = pkgs.firefox.override {
+      cfg.nativeMessagingHosts.packages = [pkgs.tridactyl-native];
+    };
 
     profiles.default = {
       id = 0;

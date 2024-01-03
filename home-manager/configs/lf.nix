@@ -69,7 +69,7 @@ in {
           mkCmd ''
             case $(${getExe file} --mime-type -Lb "$f") in
               text/*|application/json|application/xml) $EDITOR "$f";;
-              image/*) ${getExe sxiv} "$f";;
+              image/*) ${getExe' sxiv "sxiv"} "$f";;
               video/*) ${getExe mpv} --fullscreen "$f";;
               *) echo "Unknown type: $f";;
             esac

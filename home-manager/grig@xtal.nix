@@ -10,7 +10,7 @@
 
     ./configs/development/clojure.nix
     ./configs/development/rust.nix
-    ./configs/development/python.nix
+    # ./configs/development/python.nix
     #    ./configs/development/dotnet.nix
     #    ./configs/development/go.nix
   ];
@@ -26,6 +26,7 @@
   home.packages = with pkgs; [
     # main
     qbittorrent
+    tor-browser
     brave
     gimp
     spotify
@@ -56,6 +57,6 @@
   home = {
     username = "grig-iv";
     homeDirectory = "/home/grig-iv";
-    shellAliases.shm = "home-manager switch --flake $NIXCONF#$grig@$(hostname)";
+    shellAliases.shm = "home-manager switch --flake $NIXCONF#grig@$(hostname)";
   };
 }
