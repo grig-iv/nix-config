@@ -36,7 +36,7 @@
     shellAliases = {
       x = "jump $NIXCONF";
 
-      shm = "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
+      shm = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
       snc = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
     };
 

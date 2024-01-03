@@ -32,9 +32,11 @@
     obs-studio
     screenkey
     audacity
+    electrum
+    keepass
+    freetube
 
     diskonaut
-    foliate
 
     # ai
     ollama
@@ -49,4 +51,11 @@
     skypeforlinux
     slack
   ];
+
+  # FIXME on next reinstall
+  home = {
+    username = "grig-iv";
+    homeDirectory = "/home/grig-iv";
+    shellAliases.shm = "home-manager switch --flake $NIXCONF#$grig@$(hostname)";
+  };
 }
