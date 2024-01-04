@@ -1,8 +1,5 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: let
+{pkgs, ...}: let
+  # maybe rework for nixos-wsl?
   wslVpnkitSetup = pkgs.writeShellScriptBin "wsl-vpnkit-setup" ''
     if [[ $EUID -ne 0 ]]; then
         echo "This script must be run as root."
@@ -14,7 +11,7 @@
     Description=wsl-vpnKit service
 
     [Service]
-    ExecStart=${unstable.wsl-vpnkit}/bin/wsl-vpnkit
+    ExecStart=${pkgs.wsl-vpnkit}/bin/wsl-vpnkit
     Restart=always
     User=root
     RemainAfterExit=yes
@@ -32,6 +29,6 @@
 in {
   home.packages = [
     wslVpnkitSetup
-    unstable.wsl-vpnkit
+    pkgs.wsl-vpnkit
   ];
 }

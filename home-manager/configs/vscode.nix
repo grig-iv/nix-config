@@ -1,11 +1,7 @@
-{
-  pkgs,
-  unstable,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = unstable.vscode;
+    package = pkgs.vscode;
     userSettings = {
       "files.autoSave" = "afterDelay";
       "extensions.experimental.affinity" = {

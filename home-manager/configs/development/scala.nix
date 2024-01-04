@@ -1,5 +1,5 @@
-{unstable, ...}: {
-  home.packages = with unstable; [
+{pkgs, ...}: {
+  home.packages = with pkgs; [
     scala_3
     scala-cli
     sbt
