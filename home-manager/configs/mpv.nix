@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.mpv = {
     enable = true;
     bindings = {
@@ -20,6 +20,12 @@
       "PGDWN" = "add chapter 1";
 
       "S" = "cycle sub";
+    };
+    config = {
+      save-position-on-quit = true; # save last position
+      pause = true; # start on pause
+      slang = "en"; # subtitels language priority
+      subs-fallback = true; # select some subtitels even if there is no match for slang
     };
   };
 }

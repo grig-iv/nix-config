@@ -5,6 +5,7 @@ return {
     color_scheme = "Catppuccin Mocha",
     enable_tab_bar = false,
     disable_default_key_bindings = true,
+    enable_csi_u_key_encoding = true,
     window_background_opacity = 0.95,
 
     font = wezterm.font_with_fallback {
@@ -13,10 +14,10 @@ return {
     },
 
     keys = {
-        { key = "F",     mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[70;5u" } },
-        { key = "Enter", mods = "CTRL",       action = wezterm.action { SendString = "\x1b[5;5u" } },
-        { key = 'V',     mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
-        { key = 'C',     mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
+        -- { key = "F",     mods = "CTRL|SHIFT", action = wezterm.action { SendString = "\x1b[70;5u" } },
+        -- { key = "Enter", mods = "CTRL",       action = wezterm.action { SendString = "\x1b[5;5u" } },
+        { key = 'V', mods = 'CTRL|SHIFT', action = act.PasteFrom 'Clipboard' },
+        { key = 'C', mods = 'CTRL|SHIFT', action = act.CopyTo 'ClipboardAndPrimarySelection' },
     },
 
     mouse_bindings = {
