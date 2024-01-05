@@ -7,14 +7,17 @@
     "ssh/hf".path = ".ssh/hf";
   };
 
-  programs.ssh.matchBlocks = {
-    hf = {
-      hostName = "hf.co";
-      identityFile = ".ssh/hf";
-    };
-    vps-nl = {
-      hostName = "37.1.221.231";
-      identityFile = ".ssh/vps-nl";
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      hf = {
+        hostname = "hf.co";
+        identityFile = ".ssh/hf";
+      };
+      vps-nl = {
+        hostname = "37.1.221.231";
+        identityFile = ".ssh/vps-nl";
+      };
     };
   };
 }

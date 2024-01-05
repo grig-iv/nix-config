@@ -17,8 +17,11 @@
   };
 
   sops.secrets."ssh/github".path = ".ssh/github";
-  programs.ssh.matchBlocks.github = {
-    hostName = "github.com";
-    identityFile = ".ssh/github";
+  programs.ssh = {
+    enable = true;
+    matchBlocks.github = {
+      hostname = "github.com";
+      identityFile = ".ssh/github";
+    };
   };
 }
