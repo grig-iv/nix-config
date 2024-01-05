@@ -1,4 +1,6 @@
-{...}: {
+{inputs, ...}: {
+  imports = [inputs.grub2-themes.nixosModules.default];
+
   boot.loader = {
     timeout = 10;
     efi = {

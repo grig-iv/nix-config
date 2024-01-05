@@ -7,6 +7,7 @@
     ./configs/tidal-cycles.nix
     ./configs/notes.nix
     ./configs/anki.nix
+    ./configs/ssh.nix
 
     ./configs/development/clojure.nix
     ./configs/development/rust.nix

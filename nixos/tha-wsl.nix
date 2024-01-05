@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
+    inputs.nixos-wsl.nixosModules.default
+
     ./configs/nix.nix
-    ./configs/sops.nix
   ];
 
   wsl = {
