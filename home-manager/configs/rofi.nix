@@ -142,7 +142,7 @@ in {
     extraConfig = {
       show-icons = true;
       sort = true;
-      matching = "fuzzy";
+      matching = "prefix";
 
       modi = "run,drun,window";
       icon-theme = "Oranchelo";

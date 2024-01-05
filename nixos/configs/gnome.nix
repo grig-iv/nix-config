@@ -1,9 +1,12 @@
 {pkgs, ...}: {
-  services.xserver = {
-    enable = true;
-    autorun = true;
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+  services = {
+    gnome.gnome-keyring.enable = true;
+    xserver = {
+      enable = true;
+      autorun = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
   };
 
   environment = {

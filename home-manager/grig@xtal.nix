@@ -60,4 +60,6 @@
     homeDirectory = "/home/grig-iv";
     shellAliases.shm = "home-manager switch --flake $NIXCONF#grig@$(hostname)";
   };
+
+  news.display = "show";
 }

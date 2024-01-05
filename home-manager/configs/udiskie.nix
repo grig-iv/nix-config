@@ -1,6 +1,7 @@
 {config, ...}: {
   services.udiskie = {
     enable = true;
+    tray = "never";
   };
 
   my.shell.bookmarks = {
