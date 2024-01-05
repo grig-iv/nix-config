@@ -20,8 +20,8 @@
   programs.ssh = {
     enable = true;
     matchBlocks.github = {
-      hostname = "github.com";
-      identityFile = ".ssh/github";
+      host = "github.com";
+      identityFile = "~/.ssh/github";
     };
   };
 }

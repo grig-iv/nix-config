@@ -11,12 +11,13 @@
     enable = true;
     matchBlocks = {
       hf = {
-        hostname = "hf.co";
-        identityFile = ".ssh/hf";
+        host = "hf.co";
+        identityFile = "~/.ssh/hf";
       };
       vps-nl = {
-        hostname = "37.1.221.231";
-        identityFile = ".ssh/vps-nl";
+        host = "37.1.221.231";
+        identityFile = "~/.ssh/vps-nl";
+        hostname = "vps-nl";
       };
     };
   };
