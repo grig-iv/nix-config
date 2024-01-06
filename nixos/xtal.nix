@@ -20,8 +20,8 @@ in {
     ./configs/xserver.nix
     ./configs/audio.nix
     ./configs/sudo.nix
+    ./configs/wireguard.nix
     #    ./configs/vm.nix
-    #    ./configs/wireguard.nix
   ];
 
   networking = {

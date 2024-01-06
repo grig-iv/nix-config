@@ -19,6 +19,11 @@
         identityFile = "~/.ssh/vps-nl";
         hostname = "vps-nl";
       };
+      vps-no = {
+        host = "38.180.77.225";
+        identityFile = "~/.ssh/vps-no";
+        hostname = "vps-no";
+      };
     };
   };
 }

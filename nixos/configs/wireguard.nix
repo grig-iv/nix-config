@@ -2,29 +2,28 @@
   config,
   pkgs,
   ...
-}: let
-  listenPort = 51820;
-  publicKey = "LBrqCYtKPNZYvoGj5pk3PKW2pzTQQxd1ZoLGnh8RmhY=";
-in {
-  environment.systemPackages = with pkgs; [wireguard-tools];
-
-  sops.secrets."wireguard/privateKey" = {};
+}: {
+  sops.secrets."wireguard/config-xtal" = {};
 
   networking = {
-    firewall.allowedUDPPorts = [listenPort];
-    nameservers = ["94.140.14.14" "94.140.15.15"];
-    wireguard.interfaces.wg0 = {
-      ips = ["192.168.40.12/24"];
-      privateKeyFile = config.sops.secrets."wireguard/privateKey".path;
-      listenPort = listenPort;
-      postSetup = ["wg set wg0 peer ${publicKey} persistent-keepalive 25"];
-      peers = [
-        {
-          inherit publicKey;
-          allowedIPs = ["0.0.0.0/0"];
-          endpoint = "37.1.221.231:51820";
+    firewall.allowedUDPPorts = [51820];
+    wg-quick.interfaces.wg0.configFile = config.sops.secrets."wireguard/config-xtal".path;
+  };
+
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (action.id == "org.freedesktop.systemd1.manage-units" &&
+            subject.user == "grig-iv") {
+          return polkit.Result.YES;
         }
-      ];
-    };
+      });
+    '';
+  };
+
+  environment.shellAliases = {
+    vpn-on = "systemctl start wg-quick-wg0.service";
+    vpn-off = "systemctl stop wg-quick-wg0.service";
   };
 }

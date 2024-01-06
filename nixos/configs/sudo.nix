@@ -2,16 +2,14 @@
   pkgs,
   lib,
   ...
-}:
-with pkgs;
-with lib; {
+}: {
   security.sudo = {
     enable = true;
     extraRules = [
       {
         commands = [
           {
-            command = "${getExe wireguard-tools}";
+            command = lib.getExe pkgs.nixos-rebuild;
             options = ["NOPASSWD"];
           }
         ];

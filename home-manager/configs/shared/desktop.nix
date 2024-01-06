@@ -21,7 +21,6 @@ in
       ./../rofi.nix
       ./../unclutter.nix
       ./../feh.nix
-      ./../wireguard.nix
       ./../udiskie.nix
       ./../qmk.nix
       ./../vscode.nix
