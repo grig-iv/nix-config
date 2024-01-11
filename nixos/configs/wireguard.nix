@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   sops.secrets."wireguard/config-xtal" = {};
 
   networking = {

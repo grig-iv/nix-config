@@ -25,9 +25,8 @@ in
       ./../qmk.nix
       ./../vscode.nix
       ./../mpv.nix
-      #./../gtk.nix
+      ./../gtk.nix
       #./../dunst.nix
-      #./../picom.nix
     ];
 
     home.packages = with pkgs; [

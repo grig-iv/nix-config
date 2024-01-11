@@ -8,6 +8,7 @@
       rust-bin.nightly.latest.rust-analyzer
 
       evcxr
+      openssl
 
       gcc
     ];

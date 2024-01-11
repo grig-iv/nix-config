@@ -17,12 +17,12 @@
       vps-nl = {
         host = "37.1.221.231";
         identityFile = "~/.ssh/vps-nl";
-        hostname = "vps-nl";
+        hostname = "37.1.221.231";
       };
       vps-no = {
         host = "38.180.77.225";
         identityFile = "~/.ssh/vps-no";
-        hostname = "vps-no";
+        hostname = "38.180.77.225";
       };
     };
   };
