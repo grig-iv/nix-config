@@ -22,7 +22,6 @@ with lib; {
     ./../fish.nix
     ./../tmux.nix
     ./../neovim.nix
-    ./../syncthing.nix
     ./../development/fennel.nix
   ];
 

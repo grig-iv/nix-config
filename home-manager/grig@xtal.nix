@@ -17,11 +17,10 @@
   ];
 
   my.shell.bookmarks = {
-    b = "~/books";
-    p = "~/projects";
+    b = "~/Books";
     d = "~/Downloads";
-    m = "~/extended-mind";
     c = "~/.config";
+    p = "~/projects";
   };
 
   home.packages = with pkgs; [

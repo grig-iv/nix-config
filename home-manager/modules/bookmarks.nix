@@ -14,12 +14,12 @@ in
     config = {
       programs.lf.keybindings =
         lib.mapAttrs'
-        (name: value: nameValuePair ("g" + name) ("cd " + value))
+        (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
         cfg.bookmarks;
 
       home.shellAliases =
         lib.mapAttrs'
-        (name: value: nameValuePair ("g" + name) ("cd " + value))
+        (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
         cfg.bookmarks;
     };
   }
