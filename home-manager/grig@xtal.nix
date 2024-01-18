@@ -28,6 +28,7 @@
     qbittorrent
     tor-browser
     brave
+    chromium
     gimp
     spotify
     obs-studio
