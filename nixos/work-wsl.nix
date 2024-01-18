@@ -14,7 +14,7 @@
     defaultUser = "grig";
   };
 
-  networking.hostName = "xtal-wsl";
+  networking.hostName = "work-wsl";
 
   environment.systemPackages = with pkgs; [
     neovim

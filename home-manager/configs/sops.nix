@@ -6,7 +6,7 @@
   imports = [inputs.sops-nix.homeManagerModules.sops];
 
   sops = {
-    age.keyFile = "/home/grig-iv/.config/sops/age/keys.txt";
+    age.keyFile = "/var/lib/sops/keys.txt";
     defaultSopsFile = ../../secrets.yaml;
   };
 

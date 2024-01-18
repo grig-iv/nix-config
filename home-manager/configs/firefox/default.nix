@@ -17,20 +17,20 @@
       # https://github.com/nix-community/nur-combined/blob/master/repos/rycee/pkgs/firefox-addons/generated-firefox-addons.nix
       extensions = with pkgs.nur.repos.rycee.firefox-addons;
         [
-          firefox-color # https://github.com/catppuccin/firefox
-          stylus # https://github.com/catppuccin/userstyles
-          ublock-origin
-          tridactyl
-          bitwarden
-          i-dont-care-about-cookies
-          improved-tube
-          buster-captcha-solver
-          clearurls
-          no-pdf-download
-          decentraleyes
+          firefox-color # color-scheme https://github.com/catppuccin/firefox
+          stylus # sites color-scheme https://github.com/catppuccin/userstyles
+          ublock-origin # adblocker
+          tridactyl # vim motions
+          bitwarden # password manager
+          i-dont-care-about-cookies # cookies popup disabler
+          libredirect # redirect to freetube
+          clearurls # remove tracking part of urls
+          no-pdf-download # disable auto download for some pdfs
+          decentraleyes # local js libraries, instead of Google Hosted Libraries
+          foxyproxy-standard # proxy managemnt tool
         ]
         ++ (with pkgs.nur.repos.bandithedoge.firefoxAddons; [
-          material-icons-for-github
+          material-icons-for-github # material icons for github
         ]);
 
       # TODO add real bookmarks

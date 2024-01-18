@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./shell.nix
     ./../wsl-vpnkit.nix
@@ -14,10 +10,6 @@
     shellAliases = {
       "pwsh" = "powershell.exe";
       "pwshc" = "powershell.exe -Command";
-    };
-
-    sessionVariables = {
-      NIXCONF = "${config.xdg.configHome}/nix-config";
     };
 
     # activation = {

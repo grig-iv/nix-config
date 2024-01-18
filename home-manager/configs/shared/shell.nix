@@ -22,7 +22,6 @@ with lib; {
     ./../fish.nix
     ./../tmux.nix
     ./../neovim.nix
-    ./../development/fennel.nix
   ];
 
   xdg.enable = true;
@@ -32,7 +31,7 @@ with lib; {
   home = rec {
     # FIXME
     username = lib.mkDefault "grig";
-    homeDirectory = lib.mkDefault "/home/${username}";
+    homeDirectory = lib.mkDefault "/home/grig";
 
     packages = with pkgs; [
       htop
@@ -66,9 +65,6 @@ with lib; {
       diff = "diff --color=auto";
       ccat = "highlight --out-format=ansi";
       ip = "ip -color=auto";
-
-      # shortcuts
-      e = "$EDITOR";
     };
   };
 }

@@ -1,14 +1,10 @@
 {...}: {
   imports = [
     ./configs/shared/wsl.nix
-    ./configs/development/rust.nix
     ./configs/notes.nix
-    ./modules/scoop.nix
-  ];
+    ./configs/ssh.nix
+    ./configs/sops.nix
 
-  # FIXME
-  home = {
-    username = "grig-wsl";
-    homeDirectory = "/home/grig-wsl";
-  };
+    ./configs/development/rust.nix
+  ];
 }
