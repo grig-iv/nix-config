@@ -1,4 +1,6 @@
 {config, ...}: {
+  imports = [./sops.nix];
+
   sops.secrets."wireguard/config-xtal" = {};
 
   networking = {

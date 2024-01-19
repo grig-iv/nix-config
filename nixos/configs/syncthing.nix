@@ -1,6 +1,8 @@
 {config, ...}: let
   host = config.networking.hostName;
 in {
+  imports = [./sops.nix];
+
   sops.secrets."syncthing/key-${host}" = {};
   sops.secrets."syncthing/cert-${host}" = {};
   services.syncthing = {

@@ -7,7 +7,6 @@
 in {
   imports = [
     ./configs/nix.nix
-    ./configs/sops.nix
     ./configs/steam.nix
     ./configs/picom.nix
     ./configs/fonts.nix

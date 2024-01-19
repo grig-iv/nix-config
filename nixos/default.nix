@@ -10,5 +10,10 @@
       system = "x86_64-linux";
       modules = [./tha-wsl.nix];
     };
+    work-wsl = inputs.nixpkgs.lib.nixosSystem {
+      specialArgs = {inherit inputs;};
+      system = "x86_64-linux";
+      modules = [./work-wsl.nix];
+    };
   };
 }
