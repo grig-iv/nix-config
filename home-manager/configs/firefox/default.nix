@@ -62,19 +62,6 @@
         }
       ];
 
-      /*
-        userChrome = ''
-        #TabsToolbar {
-          visibility: collapse;
-        }
-
-        #navigator-toolbox:hover #TabsToolbar,
-        #navigator-toolbox:active #TabsToolbar {
-          visibility: visible;
-        }
-      '';
-      */
-
       settings = {
         "app.update.auto" = false; # disable autoupdate
         "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # enable userChrome
@@ -107,18 +94,18 @@
         "toolkit.telemetry.firstShutdownPing.enabled" = false;
         "datareporting.healthreport.uploadEnabled" = false;
 
-        # Additional privacy settings
-        "privacy.resistFingerprinting" = true; # make Firefox more resistant to browser fingerprinting
+        # # Additional privacy settings
         "privacy.firstparty.isolate" = true; # prevent cookies and web data from being shared between domains
         "network.cookie.cookieBehavior" = 1; # allow cookies from originating sites only (block third-party cookies)
         "media.navigator.enabled" = false; # prevent websites from accessing your device's microphone and camera
         "network.dns.disablePrefetch" = true; # prevent Firefox from "prefetching" DNS requests
         "network.predictor.enabled" = false; # disable network prediction
         "media.peerconnection.enabled" = false; # disable WebRTC to prevent potential IP leaks
-        "network.http.referer.trimmingPolicy" = 2; # send only the origin as a referrer instead of the full URL
         "network.http.referer.XOriginPolicy" = 2; # only send the referrer header with the origin when the origins will be same
         "network.http.referer.XOriginTrimmingPolicy" = 2; # when sending the referrer across origins, send only the origin, not the full URL
         "privacy.donottrackheader.enabled" = true; # enable the Do Not Track header
+        # "privacy.resistFingerprinting" = true; # make Firefox more resistant to browser fingerprinting | dns-shop.ru dosen't work with this one on
+        # "network.http.referer.trimmingPolicy" = 2; # send only the origin as a referrer instead of the full URL | gpt-4 dosent' work with this
       };
     };
   };
