@@ -16,12 +16,12 @@ in {
     openDefaultPorts = true;
     key = config.sops.secrets."syncthing/key-${host}".path;
     cert = config.sops.secrets."syncthing/cert-${host}".path;
-    configDir = "/home/${config.services.syncthing.user}/.config/syncthing";
+    configDir = "/home/${user}/.config/syncthing";
     extraFlags = ["--no-default-folder"];
     settings = {
       gui.theme = "black";
       options = {
-        globalAnnounceEnabled = false;
+        globalAnnounceEnabled = true;
         urAccepted = -1;
       };
       devices = {
