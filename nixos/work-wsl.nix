@@ -13,7 +13,10 @@ in {
     ./configs/syncthing.nix
   ];
 
-  services.syncthing.user = user;
+  services.syncthing = {
+    user = user;
+    settings.folders.".config-win".path = "/mnt/c/Users/abstr/.config";
+  };
 
   wsl = {
     enable = true;
