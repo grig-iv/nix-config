@@ -8,6 +8,7 @@
       nix-vscode-extensions.overlays.default
       ollama.overlays.default
       rust-overlay.overlays.default
+      yazi.overlays.default
       (import ./../overlays)
     ];
   };

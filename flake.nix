@@ -18,6 +18,7 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
     ollama.url = "github:havaker/ollama-nix";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    yazi.url = "github:sxyazi/yazi";
   };
 
   outputs = inputs:

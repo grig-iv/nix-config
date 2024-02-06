@@ -145,7 +145,7 @@ in {
     };
     "ctpv/config" = mkIf isInWsl {
       text = ''
-        set forcechafa
+        set force chafa
       '';
     };
   };
@@ -169,10 +169,6 @@ in {
     shellAliases = {
       lf = "lfcd";
     };
-
-    shellInit = pkgs.lib.mkAfter ''
-      bind \ce 'lfcd; commandline -f execute'
-    '';
   };
 
   programs.pistol = {

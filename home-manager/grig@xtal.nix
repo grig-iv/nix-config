@@ -37,6 +37,7 @@
     electrum
     keepass
     freetube
+    whatsapp-for-linux
 
     diskonaut
 

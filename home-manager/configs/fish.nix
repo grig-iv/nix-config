@@ -91,7 +91,10 @@ in {
     '';
 
     interactiveShellInit = ''
-      fish_config theme save "Catppuccin Mocha"
+      if not set -q CATPPUCCIN_MOCHA_THEME_SET
+          fish_config theme save "Catppuccin Mocha"
+          set -U CATPPUCCIN_MOCHA_THEME_SET yes
+      end
     '';
   };
 

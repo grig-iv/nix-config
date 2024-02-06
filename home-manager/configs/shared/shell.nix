@@ -14,6 +14,7 @@ with lib; {
 
     ./../nix.nix
     ./../lf.nix
+    ./../yazi
     ./../skim.nix
     ./../bat.nix
     ./../git.nix
