@@ -41,6 +41,11 @@ in {
           path = "/home/${user}/Quick Share";
           devices = ["phone" "xtal" "tha-wsl" "work-wsl"];
         };
+        ".config-win" = {
+          id = "wutmt-nb32y";
+          # each config should set path by itself
+          devices = ["phone" "tha-wsl" "work-wsl"];
+        };
         "Books" = {
           id = "ztshj-sh3ra";
           path = "/home/${user}/Books";
