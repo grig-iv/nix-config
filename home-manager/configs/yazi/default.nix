@@ -1,4 +1,21 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  catppuccin = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/yazi-rs/themes/main/catppuccin-mocha/theme.toml";
+    sha256 = "zGCUtlyA1k7S+VivPHv7tMt4GgE4UcYyiKfeH35/TFI=";
+  };
+
+  icons = pkgs.writeText "icons" ''
+    [icon]
+    rules = [
+    	{ name = "Cloud/"    , text = "" },
+    ]
+  '';
+
+  theme = pkgs.runCommand "theme" {} ''
+    cat ${catppuccin} > $out
+    # cat ${icons} >> $out
+  '';
+in {
   programs.yazi = {
     enable = true;
     package = pkgs.yazi;
@@ -7,6 +24,8 @@
       manager = {
         ratio = [0 2 3];
         show_symlink = false;
+        sort_by = "natural";
+        sort_reverse = false;
       };
       plugin = {
         prepend_previewers = [
@@ -54,10 +73,7 @@
 
   xdg.configFile = {
     "yazi/init.lua".source = ./init.lua;
-    "yazi/theme.toml".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/yazi-rs/themes/main/catppuccin-mocha/theme.toml";
-      sha256 = "zGCUtlyA1k7S+VivPHv7tMt4GgE4UcYyiKfeH35/TFI=";
-    };
+    "yazi/theme.toml".source = theme;
     "yazi/plugins/glow.yazi/init.lua".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/Reledia/glow.yazi/main/init.lua";
       sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
