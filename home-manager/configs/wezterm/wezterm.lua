@@ -7,6 +7,7 @@ return {
     disable_default_key_bindings = true,
     enable_csi_u_key_encoding = true,
     window_background_opacity = 0.95,
+    warn_about_missing_glyphs = false,
 
     font = wezterm.font_with_fallback {
         { family = "JetBrainsMono Nerd Font" },
