@@ -58,6 +58,11 @@ in {
           exec = "arrow 50%";
           desc = "Move cursor down half page";
         }
+        {
+          on = ["<Enter>"];
+          exec = "plugin --sync smart-enter";
+          desc = "Enter the child directory, or open the file";
+        }
       ];
     };
   };
@@ -78,5 +83,13 @@ in {
       url = "https://raw.githubusercontent.com/Reledia/glow.yazi/main/init.lua";
       sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
     };
+    "yazi/plugins/smart-enter.yazi/init.lua".text = ''
+      return {
+      	entry = function()
+      		local h = cx.active.current.hovered
+      		ya.manager_emit(h and h.cha.is_dir and "enter" or "open", {})
+      	end,
+      }
+    '';
   };
 }
