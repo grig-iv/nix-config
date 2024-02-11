@@ -1,10 +1,24 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
+  mainSession = pkgs.writeText "main.yaml" ''
+    session_name: main
+    windows:
+      - panes:
+          - cd "Extended Mind" & $EDITOR index.norg
+      - panes:
+          - exit
+  '';
   tmuxRun = pkgs.writeShellScriptBin "tmux-run" ''
     if [ -z "$TMUX" ]; then
-        tmux attach -t main || tmux new -s main
+        tmux attach -t main || tmuxp load ${mainSession}
     fi
   '';
 in {
+  home.packages = [tmuxRun];
+
   programs.tmux = {
     enable = true;
     prefix = "M-Space";
@@ -14,7 +28,8 @@ in {
     newSession = true;
     mouse = true;
     terminal = "tmux-256color";
-    shell = "${pkgs.fish}/bin/fish";
+    shell = lib.getExe pkgs.fish;
+    tmuxp.enable = true;
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = catppuccin;
@@ -70,15 +85,4 @@ in {
       bind -T copy-mode-vi M-C-Right resize-pane -R 1
     '';
   };
-
-  home.packages = with pkgs; [
-    teamocil
-    tmuxRun
-  ];
-
-  home.file.".teamocil/main.yml".text = ''
-    windows:
-      - name: shell
-        root: ~/
-  '';
 }
