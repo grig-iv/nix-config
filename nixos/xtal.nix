@@ -20,6 +20,7 @@ in {
     ./configs/wireguard.nix
     ./configs/syncthing.nix
     ./configs/shadowsocks.nix
+    ./configs/docker.nix
     #    ./configs/vm.nix
   ];
 
