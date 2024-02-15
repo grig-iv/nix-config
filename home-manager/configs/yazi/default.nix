@@ -6,14 +6,18 @@
 
   icons = pkgs.writeText "icons" ''
     [icon]
-    rules = [
-    	{ name = "Cloud/"    , text = "" },
+    prepend_rules = [
+    	{ name = "Cloud/"         , text = "󰅣" },
+    	{ name = "Books/"         , text = "󱉟" },
+    	{ name = "Camera/"        , text = "󰄀" },
+    	{ name = "Quick Share/"   , text = "󰒗" },
+    	{ name = "Extended Mind/" , text = "󰧑" },
     ]
   '';
 
   theme = pkgs.runCommand "theme" {} ''
     cat ${catppuccin} > $out
-    # cat ${icons} >> $out
+    cat ${icons} >> $out
   '';
 in {
   programs.yazi = {
