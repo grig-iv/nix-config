@@ -9,6 +9,7 @@
 
       evcxr
       openssl
+      lldb_17 # debbuger
 
       gcc
     ];
