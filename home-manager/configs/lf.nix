@@ -123,15 +123,9 @@ in {
       source = getExe pistol;
     };
 
-    extraConfig =
-      ''
-        set truncatechar ⋯
-      ''
-      + optionalString isInWsl ''
-        &${ctpv}/bin/ctpv -s $id
-        cmd on-quit %${getExe ctpv} -e $id
-        set cleaner ${ctpv}/bin/ctpvclear
-      '';
+    extraConfig = ''
+      set truncatechar ⋯
+    '';
   };
 
   xdg.configFile = {
@@ -142,11 +136,6 @@ in {
     "lf/icons".source = builtins.fetchurl {
       url = "https://raw.githubusercontent.com/gokcehan/lf/488294588e5e9310295d9de8e2080c9cd625cd3f/etc/icons.example";
       sha256 = "0hxbniw1avl02sdbjx4jdr80kbrlnbm86crfm44rfrs9bkjapda1";
-    };
-    "ctpv/config" = mkIf isInWsl {
-      text = ''
-        set force chafa
-      '';
     };
   };
 
