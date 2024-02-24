@@ -15,7 +15,7 @@ in {
 
   services.syncthing = {
     user = user;
-    settings.folders.".config-win".path = "/mnt/c/Users/abstr/.config";
+    settings.folders.".config-win".path = "/mnt/c/Users/grig/.config";
   };
 
   wsl = {
