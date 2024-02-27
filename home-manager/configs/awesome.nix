@@ -9,7 +9,7 @@
     packages = [pkgs.sxhkd];
 
     shellAliases = {
-      a = "cd $CONFIG/awesome & e rc.lua";
+      a = "cd $CONFIG/awesome & $EDITOR rc.lua";
     };
   };
 }

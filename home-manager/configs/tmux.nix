@@ -7,7 +7,7 @@
     session_name: main
     windows:
       - panes:
-          - cd "Extended Mind" & $EDITOR index.norg
+          - cd "Extended Mind" & nvim index.md
       - panes:
           - exit
   '';

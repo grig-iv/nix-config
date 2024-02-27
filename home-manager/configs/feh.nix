@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   catppuccin = {
     christmas = pkgs.fetchurl {
       url = "https://w.wallhaven.cc/full/zx/wallhaven-zxepdo.jpg";

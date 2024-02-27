@@ -10,7 +10,6 @@
     ./configs/ssh.nix
 
     ./configs/development/clojure.nix
-    ./configs/development/rust.nix
     # ./configs/development/python.nix
     #    ./configs/development/dotnet.nix
     #    ./configs/development/go.nix
