@@ -13,14 +13,14 @@ in {
     ./configs/syncthing.nix
   ];
 
-  services.syncthing = {
-    user = user;
-    settings.folders.".config-win".path = "/mnt/c/Users/grig/.config";
-  };
-
   wsl = {
     enable = true;
     defaultUser = user;
+  };
+
+  services.syncthing = {
+    user = user;
+    settings.folders.".config-win".path = "/mnt/c/Users/grig/.config";
   };
 
   networking.hostName = "work-wsl";

@@ -1,6 +1,6 @@
 {
   pkgs,
-  config,
+  inputs,
   ...
 }: let
   user = "grig-iv";
@@ -66,4 +66,17 @@ in {
   # USB mount
   services.udisks2.enable = true;
   boot.supportedFilesystems = ["ntfs"];
+
+  # autoUpgrade
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L" # print build logs
+    ];
+    dates = "10:00";
+    randomizedDelaySec = "45min";
+  };
 }

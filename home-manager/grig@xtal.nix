@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   imports = [
     ./configs/shared/desktop.nix
 
@@ -10,9 +14,10 @@
     ./configs/ssh.nix
 
     ./configs/development/clojure.nix
+    ./configs/development/rust.nix
+    ./configs/development/go.nix
     # ./configs/development/python.nix
     #    ./configs/development/dotnet.nix
-    #    ./configs/development/go.nix
   ];
 
   my.shell.bookmarks = {
@@ -35,7 +40,7 @@
     audacity
     electrum
     keepass
-    freetube
+    unstable.freetube
     whatsapp-for-linux
 
     diskonaut
