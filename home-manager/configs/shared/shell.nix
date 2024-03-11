@@ -29,7 +29,7 @@ with lib; {
 
   my.shell.bookmarks.h = "~/";
 
-  home = rec {
+  home = {
     # FIXME
     username = lib.mkDefault "grig";
     homeDirectory = lib.mkDefault "/home/grig";
@@ -63,7 +63,6 @@ with lib; {
       bc = "bc -ql";
 
       # Colorize commands when possible.
-      #ls = "exa --icons";
       grep = "grep --color=auto";
       diff = "diff --color=auto";
       ccat = "highlight --out-format=ansi";
