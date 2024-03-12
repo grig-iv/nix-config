@@ -13,7 +13,6 @@ with lib; {
     ./../../modules
 
     ./../nix.nix
-    ./../lf.nix
     ./../yazi
     ./../skim.nix
     ./../bat.nix

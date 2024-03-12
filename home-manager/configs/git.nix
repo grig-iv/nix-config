@@ -1,8 +1,5 @@
 {...}: {
-  imports = [
-    ./gitui.nix
-    ./sops.nix
-  ];
+  imports = [./sops.nix];
 
   programs.git = {
     enable = true;
