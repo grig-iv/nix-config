@@ -31,11 +31,6 @@
     '';
   };
 
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
-  };
-
   environment.systemPackages = with pkgs; [
     home-manager
   ];

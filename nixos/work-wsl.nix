@@ -35,10 +35,6 @@ in {
     settings.folders.".config-win".path = "/mnt/c/Users/grig/.config";
   };
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-25.9.0"
-  ];
-
   environment.systemPackages = with pkgs; [
     neovim
     git
