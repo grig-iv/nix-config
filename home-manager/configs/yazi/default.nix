@@ -1,7 +1,7 @@
 {pkgs, ...}: let
   catppuccin = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/yazi-rs/themes/main/catppuccin-mocha/theme.toml";
-    sha256 = "zGCUtlyA1k7S+VivPHv7tMt4GgE4UcYyiKfeH35/TFI=";
+    sha256 = "POdf9fYYjqIzx2t/QR64QvWcWaJu4l6tbALbgGkzp7Q=";
   };
 
   icons = pkgs.writeText "icons" ''
