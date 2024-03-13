@@ -19,7 +19,7 @@ in {
     }
 
     ./configs/nix.nix
-    # ./configs/syncthing.nix
+    ./configs/syncthing.nix
   ];
 
   wsl = {
@@ -27,13 +27,12 @@ in {
     defaultUser = user;
   };
 
-  # services.syncthing = {
-  #   user = user;
-  #   settings.folders.".config-win".path = "/mnt/c/Users/abstr/.config";
-  #   openDefaultPorts = false;
-  #   extraFlags = ["--listen" "0.0.0.0:22001"];
-  #   localAnnouncePort = 21028;
-  # };
+  services.syncthing = {
+    user = user;
+    settings.folders.".config-win".path = "/mnt/c/Users/abstr/.config";
+    guiAddress = "127.0.0.1:8385";
+    openDefaultPorts = false;
+  };
 
   networking.hostName = "tha-wsl";
 
