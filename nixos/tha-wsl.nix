@@ -8,6 +8,15 @@ in {
   imports = [
     inputs.nixos-wsl.nixosModules.default
     inputs.home-manager.nixosModules.home-manager
+    {
+      home-manager = {
+        sharedModules = [inputs.sops-nix.homeManagerModules.sops];
+        extraSpecialArgs = {inherit inputs;};
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        users."${user}" = import (../home-manager + "/grig@tha-wsl.nix");
+      };
+    }
 
     ./configs/nix.nix
     # ./configs/syncthing.nix
@@ -16,12 +25,6 @@ in {
   wsl = {
     enable = true;
     defaultUser = user;
-  };
-
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.${user} = import (../home-manager + "/grig@tha-wsl.nix");
   };
 
   # services.syncthing = {
