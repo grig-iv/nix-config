@@ -51,10 +51,9 @@ in {
 
   programs.fish.enable = true;
 
-  services.syncthing.user = "grig-iv";
+  services.syncthing.user = user;
   users.users = {
-    "grig-iv" = {
-      hashedPassword = "$y$j9T$0.SupuqUwYCulmsOKZ9l9.$W0GA7D8PRmGGxE/H2nHDzfQtTmbOO5dUWJNitadvY3A";
+    "${user}" = {
       isNormalUser = true;
       initialPassword = user;
       description = "Grig";

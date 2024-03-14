@@ -1,5 +1,5 @@
 {pkgs, ...}: {
-  home.sessionVariables."BROWSER" = "firefox";
+  home.sessionVariables.BROWSER = "firefox";
 
   xdg.configFile."tridactyl/tridactylrc".source = ./tridactylrc;
 

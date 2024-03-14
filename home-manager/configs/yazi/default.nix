@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  unstable,
+  ...
+}: let
   catppuccin = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/yazi-rs/themes/main/catppuccin-mocha/theme.toml";
     sha256 = "POdf9fYYjqIzx2t/QR64QvWcWaJu4l6tbALbgGkzp7Q=";
@@ -22,7 +26,7 @@
 in {
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
+    package = unstable.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {

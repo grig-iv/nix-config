@@ -56,9 +56,4 @@ with lib; {
       base0F = "f2cdcd"; # flamingo
     };
   };
-
-  home.sessionVariables = {
-    BROWSER = "firefox";
-    TERMINAL = "wezterm";
-  };
 }

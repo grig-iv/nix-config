@@ -10,7 +10,13 @@
   };
 
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    noto-fonts # amoungus font "ඞ"
-  ];
+
+  home = {
+    packages = with pkgs; [
+      noto-fonts # amoungus font "ඞ"
+    ];
+    sessionVariables = {
+      TERMINAL = "wezterm";
+    };
+  };
 }
