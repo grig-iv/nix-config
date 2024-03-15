@@ -3,14 +3,14 @@
 function Status:name()
     local h = cx.active.current.hovered
     if h == nil then
-        return ui.Span("")
+        return ui.Span('')
     end
 
-    local linked = ""
+    local linked = ''
     if h.link_to ~= nil then
-        linked = " -> " .. tostring(h.link_to)
+        linked = ' -> ' .. tostring(h.link_to)
     end
-    return ui.Span(" " .. h.name .. linked)
+    return ui.Span(' ' .. h.name .. linked)
 end
 
 -- }}
@@ -41,8 +41,8 @@ function Manager:render(area)
 
         -- bar("┬", chunks[1].right - 1, chunks[1].y),
         -- bar("┴", chunks[1].right - 1, chunks[1].bottom - 1),
-        bar("┬", chunks[2].right, chunks[2].y),
-        bar("┴", chunks[2].right, chunks[1].bottom - 1),
+        bar('┬', chunks[2].right, chunks[2].y),
+        bar('┴', chunks[2].right, chunks[1].bottom - 1),
 
         -- Parent
         -- Parent:render(chunks[1]:padding(ui.Padding.xy(1))),

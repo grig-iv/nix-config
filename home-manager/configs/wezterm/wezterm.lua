@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local act = wezterm.action
 
 return {
-    color_scheme = "Catppuccin Mocha",
+    color_scheme = 'Catppuccin Mocha',
     enable_tab_bar = false,
     disable_default_key_bindings = true,
     enable_csi_u_key_encoding = true,
@@ -10,8 +10,18 @@ return {
     warn_about_missing_glyphs = false,
 
     font = wezterm.font_with_fallback {
-        { family = "JetBrainsMono Nerd Font" },
+        { family = 'JetBrainsMono Nerd Font' },
         'Noto Sans Sinhala', -- amoungus font "ඞ"
+    },
+
+    font_rules = {
+        {
+            intensity = 'Bold',
+            font = wezterm.font {
+                family = 'JetBrainsMono Nerd Font',
+                weight = 'ExtraBold',
+            },
+        },
     },
 
     keys = {
