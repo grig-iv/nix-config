@@ -35,12 +35,153 @@ in {
         sort_by = "natural";
         sort_dir_first = true;
         sort_reverse = false;
+        visibility_rules = [
+          {
+            dir = "~/";
+            hide = [
+              "go"
+              "steam"
+            ];
+            show = [
+              "\.config"
+            ];
+          }
+        ];
       };
       plugin = {
         prepend_previewers = [
           {
             name = "*.md";
-            exec = "glow";
+            run = "glow";
+          }
+        ];
+      };
+      opener = {
+        edit = [
+          {
+            run = ''$EDITOR "$@"'';
+            desc = "$EDITOR";
+            block = true;
+          }
+        ];
+        open = [
+          {
+            run = "xdg-open \"$@\"";
+            desc = "Open";
+          }
+        ];
+        reveal = [
+          {
+            run = ''exiftool "$1"; echo "Press enter to exit"; read _'';
+            block = true;
+            desc = "Show EXIF";
+          }
+        ];
+        extract = [
+          {
+            run = "unar \"$1\"";
+            desc = "Extract here";
+          }
+        ];
+        play = [
+          {
+            run = "mpv \"$@\"";
+            orphan = true;
+          }
+          {
+            run = ''mediainfo "$1"; echo "Press enter to exit"; read _'';
+            block = true;
+            desc = "Show media info";
+          }
+        ];
+        books = [
+          {
+            run = ''zathura "$0"'';
+            desc = "Open a book";
+            orphan = true;
+          }
+        ];
+      };
+      open = {
+        rules = [
+          {
+            mime = "application/pdf";
+            use = "books";
+          }
+          {
+            mime = "application/epub+zip";
+            use = "books";
+          }
+          {
+            name = "*/";
+            use = ["edit" "open" "reveal"];
+          }
+          {
+            mime = "text/*";
+            use = ["edit" "reveal"];
+          }
+          {
+            mime = "image/*";
+            use = ["open" "reveal"];
+          }
+          {
+            mime = "video/*";
+            use = ["play" "reveal"];
+          }
+          {
+            mime = "audio/*";
+            use = ["play" "reveal"];
+          }
+          {
+            mime = "inode/x-empty";
+            use = ["edit" "reveal"];
+          }
+
+          {
+            mime = "application/json";
+            use = ["edit" "reveal"];
+          }
+          {
+            mime = "*/javascript";
+            use = ["edit" "reveal"];
+          }
+
+          {
+            mime = "application/zip";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/gzip";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/x-tar";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/x-bzip";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/x-bzip2";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/x-7z-compressed";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/x-rar";
+            use = ["extract" "reveal"];
+          }
+          {
+            mime = "application/xz";
+            use = ["extract" "reveal"];
+          }
+
+          {
+            mime = "*";
+            use = ["open" "reveal"];
           }
         ];
       };
@@ -49,27 +190,27 @@ in {
       manager.prepend_keymap = [
         {
           on = ["<C-PageUp>"];
-          exec = "arrow -99999999";
+          run = "arrow -99999999";
           desc = "Move cursor to the top";
         }
         {
           on = ["<C-PageDown>"];
-          exec = "arrow 99999999";
+          run = "arrow 99999999";
           desc = "Move cursor to the bottom";
         }
         {
           on = ["<PageUp>"];
-          exec = "arrow -50%";
+          run = "arrow -50%";
           desc = "Move cursor up half page";
         }
         {
           on = ["<PageDown>"];
-          exec = "arrow 50%";
+          run = "arrow 50%";
           desc = "Move cursor down half page";
         }
         {
           on = ["<Enter>"];
-          exec = "plugin --sync smart-enter";
+          run = "plugin --sync smart-enter";
           desc = "Enter the child directory, or open the file";
         }
       ];
