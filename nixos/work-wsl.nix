@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  unstable,
   ...
 }: let
   user = "grig";
@@ -11,10 +12,10 @@ in {
     {
       home-manager = {
         sharedModules = [inputs.sops-nix.homeManagerModules.sops];
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit inputs unstable;};
         useGlobalPkgs = true;
         useUserPackages = true;
-        users.grig = import (../home-manager + "/grig@work-wsl.nix");
+        users."${user}" = import (../home-manager + "/grig@work-wsl.nix");
       };
     }
 
@@ -41,6 +42,8 @@ in {
     wget
     curl
     unzip
+
+    zathura
   ];
 
   system.stateVersion = "23.11";
