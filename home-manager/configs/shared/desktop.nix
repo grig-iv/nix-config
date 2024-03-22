@@ -22,6 +22,7 @@ with lib; {
     ./../vscode.nix
     ./../mpv.nix
     ./../gtk.nix
+    ./../sxiv.nix
     #./../dunst.nix
   ];
 
@@ -30,7 +31,6 @@ with lib; {
 
     xclip
     maim
-    sxiv
     pulsemixer
   ];
 

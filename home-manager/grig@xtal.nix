@@ -31,7 +31,6 @@
     # main
     qbittorrent
     tor-browser
-    brave
     chromium
     gimp
     spotify
