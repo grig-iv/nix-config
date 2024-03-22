@@ -6,8 +6,10 @@
   mainSession = pkgs.writeText "main.yaml" ''
     session_name: main
     windows:
-      - panes:
-          - cd "Extended Mind" & nvim index.md
+      - shell_command_before:
+          - cd "/home/grig/Extended Mind/"
+        panes:
+          - nvim index.md
       - panes:
           - exit
   '';
