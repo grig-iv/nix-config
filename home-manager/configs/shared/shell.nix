@@ -34,7 +34,7 @@ with lib; {
     homeDirectory = lib.mkDefault "/home/grig";
 
     packages = with pkgs; [
-      htop
+      bottom
       wget
       curl
       unzip

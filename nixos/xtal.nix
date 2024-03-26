@@ -33,7 +33,8 @@ in {
     ./configs/syncthing.nix
     ./configs/shadowsocks.nix
     ./configs/docker.nix
-    #    ./configs/vm.nix
+    ./configs/dictd.nix
+    ./configs/vm.nix
   ];
 
   networking = {
@@ -61,7 +62,6 @@ in {
       extraGroups = [
         "wheel"
         "networkmanager"
-        "docker"
       ];
     };
   };
@@ -78,4 +78,6 @@ in {
   # USB mount
   services.udisks2.enable = true;
   boot.supportedFilesystems = ["ntfs"];
+
+  system.stateVersion = "23.05";
 }

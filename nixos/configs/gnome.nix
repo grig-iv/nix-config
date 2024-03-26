@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   services = {
     gnome.gnome-keyring.enable = true;
+    dbus.packages = [pkgs.gnome.seahorse];
     xserver = {
       enable = true;
       autorun = true;
@@ -9,9 +10,9 @@
     };
   };
 
-  environment = {
-    gnome.excludePackages = with pkgs;
-    with pkgs.gnome; [
+  environment = with pkgs; {
+    systemPackages = [libsecret];
+    gnome.excludePackages = with pkgs.gnome; [
       gnome-photos
       gnome-tour
       cheese

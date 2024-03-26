@@ -3,19 +3,9 @@
   lib,
   ...
 }: let
-  mainSession = pkgs.writeText "main.yaml" ''
-    session_name: main
-    windows:
-      - shell_command_before:
-          - cd "/home/grig/Extended Mind/"
-        panes:
-          - nvim index.md
-      - panes:
-          - exit
-  '';
   tmuxRun = pkgs.writeShellScriptBin "tmux-run" ''
     if [ -z "$TMUX" ]; then
-        tmux attach -t main || tmuxp load ${mainSession}
+        tmux attach -t main || tmuxp load main
     fi
   '';
 in {
@@ -85,6 +75,24 @@ in {
       bind -T copy-mode-vi M-C-Down resize-pane -D 1
       bind -T copy-mode-vi M-C-Up resize-pane -U 1
       bind -T copy-mode-vi M-C-Right resize-pane -R 1
+    '';
+  };
+
+  xdg.configFile = {
+    "tmuxp/main.yaml".text = ''
+      session_name: main
+      windows:
+        - shell_command_before:
+            - cd "$HOME/Extended Mind/"
+          panes:
+            - nvim index.md
+    '';
+    "tmuxp/reading.yaml".text = ''
+      session_name: reading
+      windows:
+        - panes:
+            -
+            - nvim ~/Extended\ Mind/areas/english/words-list.txt
     '';
   };
 }

@@ -32,7 +32,7 @@ in {
       manager = {
         ratio = [0 2 3];
         show_symlink = false;
-        sort_by = "natural";
+        sort_by = "extension";
         sort_dir_first = true;
         sort_reverse = false;
         visibility_rules = [

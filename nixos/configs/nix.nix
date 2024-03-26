@@ -1,10 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
-  system.stateVersion = lib.mkDefault "23.05";
-
+{pkgs, ...}: {
   nix = {
     package = pkgs.nixFlakes;
 
@@ -24,7 +18,8 @@
       ];
     };
     gc = {
-      options = "--delete-older-than 5d";
+      automatic = true;
+      options = "--delete-older-than 7d";
     };
     extraOptions = ''
       warn-dirty = false
