@@ -1,29 +1,15 @@
-{
-  pkgs,
-  inputs,
-  unstable,
-  ...
-}: let
-  user = "grig-iv";
-in {
+{pkgs, ...}: {
   imports = [
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        sharedModules = [inputs.sops-nix.homeManagerModules.sops];
-        extraSpecialArgs = {inherit inputs unstable;};
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        users.grig-iv = import (../home-manager + "/grig@xtal.nix");
-      };
-    }
-
+    ./modules
+    ./configs/hardware-configuration.nix
+    ./configs/user.nix
+    ./configs/networking.nix
     ./configs/nix.nix
+    ./configs/home-manager.nix
     ./configs/steam.nix
     ./configs/picom.nix
     ./configs/fonts.nix
     ./configs/keyboard
-    ./configs/hardware-configuration.nix
     ./configs/bootloader.nix
     ./configs/nvidia.nix
     ./configs/xserver.nix
@@ -37,10 +23,9 @@ in {
     ./configs/vm.nix
   ];
 
-  networking = {
-    hostName = "xtal";
-    networkmanager.enable = true;
-    firewall.enable = false;
+  my = {
+    user = "grig-iv";
+    host = "xtal";
   };
 
   # Internationalisation
@@ -49,22 +34,6 @@ in {
 
   # fix windows clock async
   time.hardwareClockInLocalTime = true;
-
-  programs.fish.enable = true;
-
-  services.syncthing.user = user;
-  users.users = {
-    "${user}" = {
-      isNormalUser = true;
-      initialPassword = user;
-      description = "Grig";
-      shell = pkgs.fish;
-      extraGroups = [
-        "wheel"
-        "networkmanager"
-      ];
-    };
-  };
 
   # System packages
   environment.systemPackages = with pkgs; [

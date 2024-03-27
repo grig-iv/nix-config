@@ -42,5 +42,13 @@ in {
       system = "x86_64-linux";
       modules = [./work-wsl.nix];
     };
+    vps-nl = inputs.nixpkgs.lib.nixosSystem {
+      inherit pkgs specialArgs;
+      system = "x86_64-linux";
+      modules = [
+        "${pkgs}/nixos/modules/installer/cd-dvd/installation-cd-minimal.nix"
+        ./vps-nl.nix
+      ];
+    };
   };
 }

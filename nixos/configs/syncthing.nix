@@ -4,7 +4,7 @@
   ...
 }: let
   host = config.networking.hostName;
-  user = config.services.syncthing.user;
+  user = config.my.user;
 in {
   imports = [./sops.nix];
 
@@ -12,6 +12,7 @@ in {
   sops.secrets."syncthing/cert-${host}" = {};
   services.syncthing = {
     enable = true;
+    user = user;
     group = "wheel";
     openDefaultPorts = lib.mkDefault true;
     key = config.sops.secrets."syncthing/key-${host}".path;
@@ -44,7 +45,7 @@ in {
         };
         ".config-win" = {
           id = "wutmt-nb32y";
-          # each config should set path by itself
+          path = "/mnt/c/Users/" + config.my.windows.user + "/.config";
           devices = ["phone" "tha-wsl" "work-wsl"];
         };
         "Books" = {

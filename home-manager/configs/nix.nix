@@ -39,8 +39,6 @@
       shm = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
       snc = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
     };
-
-    stateVersion = "23.05"; # lock. do not change
   };
 
   systemd.user.startServices = "sd-switch";

@@ -1,17 +1,13 @@
 {
   pkgs,
   lib,
-  inputs,
   ...
 }:
 with lib; {
-  colorScheme = inputs.nix-colors.colorSchemes.catppuccin-mocha;
-
   imports = [
-    inputs.nix-colors.homeManagerModules.default
-
     ./../../modules
 
+    ./../nix-colors.nix
     ./../nix.nix
     ./../yazi
     ./../skim.nix

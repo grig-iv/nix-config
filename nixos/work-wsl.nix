@@ -1,48 +1,21 @@
-{
-  pkgs,
-  inputs,
-  unstable,
-  ...
-}: let
-  user = "grig";
-in {
+{pkgs, ...}: {
   imports = [
-    inputs.nixos-wsl.nixosModules.default
-    inputs.home-manager.nixosModules.home-manager
-    {
-      home-manager = {
-        sharedModules = [inputs.sops-nix.homeManagerModules.sops];
-        extraSpecialArgs = {inherit inputs unstable;};
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        users."${user}" = import (../home-manager + "/grig@work-wsl.nix");
-      };
-    }
-
+    ./modules
+    ./configs/wsl.nix
+    ./configs/home-manager.nix
+    ./configs/system-packages.nix
     ./configs/nix.nix
     ./configs/shadowsocks.nix
     ./configs/syncthing.nix
   ];
 
-  networking.hostName = "work-wsl";
-
-  wsl = {
-    enable = true;
-    defaultUser = user;
-  };
-
-  services.syncthing = {
-    user = user;
-    settings.folders.".config-win".path = "/mnt/c/Users/grig/.config";
+  my = {
+    user = "grig";
+    host = "work-wsl";
+    windows.user = "grig";
   };
 
   environment.systemPackages = with pkgs; [
-    neovim
-    git
-    wget
-    curl
-    unzip
-
     zathura
   ];
 

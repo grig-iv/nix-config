@@ -27,42 +27,44 @@
     p = "~/projects";
   };
 
-  home.packages = with pkgs; [
-    # main
-    qbittorrent
-    tor-browser
-    chromium
-    gimp
-    spotify
-    obs-studio
-    screenkey
-    audacity
-    electrum
-    keepass
-    unstable.freetube
-    whatsapp-for-linux
-
-    diskonaut
-
-    # ai
-    ollama
-    openai-whisper-cpp
-    ffmpeg
-    alsa-utils
-
-    # work
-    remmina
-    putty
-    libreoffice
-    skypeforlinux
-    slack
-  ];
-
   # FIXME on next reinstall
   home = {
     username = "grig-iv";
     homeDirectory = "/home/grig-iv";
+
+    packages = with pkgs; [
+      # main
+      qbittorrent
+      tor-browser
+      chromium
+      gimp
+      spotify
+      obs-studio
+      screenkey
+      audacity
+      electrum
+      keepass
+      unstable.freetube
+      whatsapp-for-linux
+
+      diskonaut
+
+      # ai
+      ollama
+      openai-whisper-cpp
+      ffmpeg
+      alsa-utils
+
+      # work
+      remmina
+      putty
+      libreoffice
+      skypeforlinux
+      slack
+    ];
     shellAliases.shm = "home-manager switch --flake $NIXCONF#grig@$(hostname)";
+
+    stateVersion = "23.05";
   };
 
   news.display = "show";
