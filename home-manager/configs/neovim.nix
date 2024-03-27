@@ -33,6 +33,7 @@ with lib; {
       unzip
       tree-sitter
       fd
+      jq
       nodejs_20
       nodePackages.cspell
     ];
