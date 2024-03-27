@@ -11,11 +11,13 @@ with lib; {
   options.my = {
     user = mkOption {
       type = types.str;
-      default = "grig";
     };
     host = mkOption {
-      default = config.networking.hostName;
       type = types.str;
     };
+  };
+
+  config = {
+    networking.hostName = config.my.host;
   };
 }

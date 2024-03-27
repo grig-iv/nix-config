@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./modules
-
     ./configs/wsl.nix
     ./configs/nix.nix
     ./configs/shared/shell.nix # remove
@@ -16,12 +15,12 @@
     ./configs/skim.nix
     ./configs/eza.nix
     ./configs/bat.nix
+    ./configs/nix-colors.nix
   ];
 
   home = {
     username = "grig";
     homeDirectory = "/home/grig";
+    stateVersion = "23.05";
   };
-
-  system.stateVersion = "23.05";
 }

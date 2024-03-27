@@ -5,19 +5,15 @@
 }: {
   imports = [
     ./configs/shared/desktop.nix
-
     ./configs/awesome.nix
     ./configs/discord.nix
     ./configs/tidal-cycles.nix
     ./configs/notes.nix
     ./configs/anki.nix
     ./configs/ssh.nix
-
     ./configs/development/clojure.nix
     ./configs/development/rust.nix
     ./configs/development/go.nix
-    # ./configs/development/python.nix
-    #    ./configs/development/dotnet.nix
   ];
 
   my.shell.bookmarks = {

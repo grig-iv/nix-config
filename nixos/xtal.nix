@@ -3,7 +3,6 @@
     ./modules
     ./configs/hardware-configuration.nix
     ./configs/user.nix
-    ./configs/networking.nix
     ./configs/nix.nix
     ./configs/home-manager.nix
     ./configs/steam.nix
@@ -21,12 +20,15 @@
     ./configs/docker.nix
     ./configs/dictd.nix
     ./configs/vm.nix
+    ./configs/nix-colors.nix
   ];
 
   my = {
     user = "grig-iv";
     host = "xtal";
   };
+
+  networking.firewall.enable = true;
 
   # Internationalisation
   time.timeZone = "Europe/Moscow";

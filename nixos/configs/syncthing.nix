@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  host = config.networking.hostName;
+  host = config.my.host;
   user = config.my.user;
 in {
   imports = [./sops.nix];

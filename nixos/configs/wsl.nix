@@ -10,6 +10,4 @@
     enable = true;
     defaultUser = config.my.user;
   };
-
-  networking.firewall.enable = lib.mkForce false;
 }
