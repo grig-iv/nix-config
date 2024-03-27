@@ -18,7 +18,7 @@ with lib; {
     ./../bat.nix
     ./../git.nix
     ./../eza.nix
-    ./../gitui.nix
+    ./../lazygit.nix
     ./../fish.nix
     ./../tmux.nix
     ./../neovim.nix

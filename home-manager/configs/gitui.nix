@@ -33,7 +33,5 @@
     '';
   };
 
-  home.shellAliases = {
-    g = "gitui";
-  };
+  home.shellAliases.g = "gitui";
 }
