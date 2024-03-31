@@ -1,120 +1,99 @@
 {
-  config,
   pkgs,
+  config,
   ...
 }: let
-  my = config.my;
-  catppuccin = builtins.toFile "rofi-theme.rasi" ''
+  colors = config.my.colors;
+  theme = builtins.toFile "rofi-theme.rasi" ''
+    /* taken from https://github.com/lr-tech/rofi-themes-collection */
+
     * {
-        bg-col:  #1e1e2e;
-        bg-col-light: #1e1e2e;
-        border-col: #1e1e2e;
-        selected-col: #1e1e2e;
-        blue: #89b4fa;
-        fg-col: #cdd6f4;
-        fg-col2: #f38ba8;
-        grey: #6c7086;
+        font:   "JetBrainsMono Nerd Font 14";
 
-        width: 600;
-        font: "JetBrainsMono Nerd Font 14";
-    }
+        bg0:     ${colors.mantle};
+        bg1:     ${colors.base};
+        bg2:     ${colors.surface0};
+        fg0:     ${colors.text};
 
-    element-text, element-icon , mode-switcher {
-        background-color: inherit;
-        text-color:       inherit;
+        accent-color:     ${colors.primary};
+        urgent-color:     ${colors.critical};
+
+        background-color:   transparent;
+        text-color:         @fg0;
+
+        margin:     0;
+        padding:    0;
+        spacing:    0;
     }
 
     window {
-        height: 360px;
-        border: 3px;
-        border-color: @border-col;
-        background-color: @bg-col;
-    }
+        location:   center;
+        width:      500;
 
-    mainbox {
-        background-color: @bg-col;
+        background-color:   @bg0;
     }
 
     inputbar {
-        children: [prompt,entry];
-        background-color: @bg-col;
-        border-radius: 5px;
-        padding: 2px;
+        spacing:    8px;
+        padding:    8px;
+
+        background-color:   @bg1;
+    }
+
+    prompt, entry, element-icon, element-text {
+        vertical-align: 0.5;
     }
 
     prompt {
-        background-color: @blue;
-        padding: 6px;
-        text-color: @bg-col;
-        border-radius: 3px;
-        margin: 20px 0px 0px 20px;
-    }
-
-    textbox-prompt-colon {
-        expand: false;
-        str: ":";
-    }
-
-    entry {
-        padding: 6px;
-        margin: 20px 0px 0px 10px;
-        text-color: @fg-col;
-        background-color: @bg-col;
-    }
-
-    listview {
-        border: 0px 0px 0px;
-        padding: 6px 0px 0px;
-        margin: 10px 0px 0px 20px;
-        columns: 2;
-        lines: 5;
-        background-color: @bg-col;
-    }
-
-    element {
-        padding: 5px;
-        background-color: @bg-col;
-        text-color: @fg-col  ;
-    }
-
-    element-icon {
-        size: 25px;
-    }
-
-    element selected {
-        background-color:  @selected-col ;
-        text-color: @fg-col2  ;
-    }
-
-    mode-switcher {
-        spacing: 0;
-      }
-
-    button {
-        padding: 10px;
-        background-color: @bg-col-light;
-        text-color: @grey;
-        vertical-align: 0.5;
-        horizontal-align: 0.5;
-    }
-
-    button selected {
-      background-color: @bg-col;
-      text-color: @blue;
-    }
-
-    message {
-        background-color: @bg-col-light;
-        margin: 2px;
-        padding: 2px;
-        border-radius: 5px;
+        text-color: @accent-color;
     }
 
     textbox {
-        padding: 6px;
-        margin: 20px 0px 0px 20px;
-        text-color: @blue;
-        background-color: @bg-col-light;
+        padding:            8px;
+        background-color:   @bg1;
+    }
+
+    listview {
+        padding:    4px 0;
+        lines:      8;
+        columns:    1;
+
+        fixed-height:   true;
+    }
+
+    element {
+        padding:    8px;
+        spacing:    8px;
+    }
+
+    element normal normal {
+        text-color: @fg0;
+    }
+
+    element normal urgent {
+        text-color: @urgent-color;
+    }
+
+    element normal active {
+        text-color: @accent-color;
+    }
+
+    element selected normal, element selected active {
+        text-color:         @accent-color;
+        background-color:   @bg2;
+    }
+
+    element selected urgent {
+        text-color:         @urgent-color;
+        background-color:   @bg2;
+    }
+
+    element-icon {
+        size:   0.8em;
+    }
+
+    element-text {
+        text-color: inherit;
     }
   '';
 in {
@@ -130,7 +109,7 @@ in {
 
   programs.rofi = {
     enable = true;
-    theme = catppuccin;
+    theme = theme;
 
     plugins = with pkgs; [
       rofi-emoji
@@ -144,18 +123,15 @@ in {
       sort = true;
       matching = "prefix";
 
-      modi = "run,drun,window";
+      modi = "drun";
       icon-theme = "Oranchelo";
       terminal = "wezterm";
       drun-display-format = "{icon} {name}";
       location = 0;
       disable-history = false;
       hide-scrollbar = true;
-      display-drun = "   Apps ";
-      display-run = "   Run ";
-      display-window = " 﩯  Window";
-      display-Network = " 󰤨  Network";
-      sidebar-mode = true;
+      display-drun = "󱄅  ";
+      sidebar-mode = false;
     };
   };
 }

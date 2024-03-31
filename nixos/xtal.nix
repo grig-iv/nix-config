@@ -20,7 +20,6 @@
     ./configs/docker.nix
     ./configs/dictd.nix
     ./configs/vm.nix
-    ./configs/nix-colors.nix
   ];
 
   my = {

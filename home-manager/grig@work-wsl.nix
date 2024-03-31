@@ -15,7 +15,6 @@
     ./configs/skim.nix
     ./configs/eza.nix
     ./configs/bat.nix
-    ./configs/nix-colors.nix
   ];
 
   home = {

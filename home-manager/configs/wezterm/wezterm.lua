@@ -1,13 +1,25 @@
 local wezterm = require 'wezterm'
 local act = wezterm.action
 
+package.path = package.path .. ';' .. os.getenv('HOME') .. '/.config/colors/?.lua'
+local ok, nix_colors = pcall(require, 'colors')
+local colors = {}
+if ok then
+    colors.foreground = nix_colors.text
+    colors.background = nix_colors.base
+    colors.cursor_bg = nix_colors.accent
+    colors.cursor_fg = nix_colors.base
+end
+
 return {
-    color_scheme = 'Catppuccin Mocha',
     enable_tab_bar = false,
     disable_default_key_bindings = true,
     enable_csi_u_key_encoding = true,
     window_background_opacity = 0.95,
     warn_about_missing_glyphs = false,
+
+    color_scheme = 'Catppuccin Mocha',
+    colors = colors,
 
     font = wezterm.font_with_fallback {
         { family = 'JetBrainsMono Nerd Font' },

@@ -7,7 +7,6 @@ with lib; {
   imports = [
     ./../../modules
 
-    ./../nix-colors.nix
     ./../nix.nix
     ./../yazi
     ./../skim.nix

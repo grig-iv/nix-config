@@ -5,7 +5,6 @@
   ...
 }: {
   programs = {
-    home-manager.enable = true;
     vscode = {
       userSettings = {
         nix.enableLanguageServer = true;
@@ -21,7 +20,9 @@
     manpages.enable = false;
   };
 
-  my.shell.bookmarks.x = config.home.sessionVariables.NIXCONF;
+  my.shell.bookmarks = {
+    "x" = config.home.sessionVariables.NIXCONF;
+  };
 
   home = {
     packages = with pkgs; [
@@ -30,21 +31,16 @@
     ];
 
     sessionVariables = {
-      NIXCONF = lib.mkDefault "/etc/nixos";
+      "NIXCONF" = lib.mkDefault "/etc/nixos";
     };
 
     shellAliases = {
-      x = "jump $NIXCONF";
+      "x" = "jump $NIXCONF";
 
-      shm = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
-      snc = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
+      "shm" = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
+      "snc" = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
     };
   };
 
   systemd.user.startServices = "sd-switch";
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    allowUnfreePredicate = _: true; # Workaround for https://github.com/nix-community/home-manager/issues/2942
-  };
 }

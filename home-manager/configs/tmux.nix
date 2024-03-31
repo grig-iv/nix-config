@@ -1,13 +1,34 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: let
+  c = config.my.colors;
+
   tmuxRun = pkgs.writeShellScriptBin "tmux-run" ''
     if [ -z "$TMUX" ]; then
         tmux attach -t main || tmuxp load main
     fi
   '';
+
+  activeWindow = lib.concatStrings [
+    "#[fg=${c.surface0},bg=default]"
+    "#[fg=${c.primary},bg=${c.surface0},bold]#{b:pane_current_path}"
+    "#[fg=${c.surface0},bg=default]"
+  ];
+
+  inactiveWindow = lib.concatStrings [
+    "#[fg=${c.subtext0}] #{b:pane_current_path} "
+  ];
+
+  statusLeft = lib.concatStrings [
+    "#[fg=${c.primary}]󱂬 "
+  ];
+
+  statusRight = lib.concatStrings [
+    "#[fg=${c.primary}]#{session_name}  "
+  ];
 in {
   home.packages = [tmuxRun];
 
@@ -22,23 +43,24 @@ in {
     terminal = "tmux-256color";
     shell = lib.getExe pkgs.fish;
     tmuxp.enable = true;
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = catppuccin;
-        extraConfig = ''
-          set -g @catppuccin_flavour 'mocha'
-        '';
-      }
-    ];
-
     extraConfig = ''
-      set-option -sa terminal-overrides ",xterm*:Tc"
-      set-option -g status-position top
+      set -sa terminal-overrides ",xterm*:Tc"
 
-      set -g status-bg default
+      # theme
+      set -g status-position top
       set -g status-style bg=default
+      set -g status-justify left
+      set -g window-status-format "${inactiveWindow}"
+      set -g window-status-separator ""
+      set -g window-status-current-format "${activeWindow}"
+      set -g status-left "${statusLeft}"
+      set -g status-right "${statusRight}"
+      set -g pane-active-border-style fg=${c.primary}
+      set -g pane-border-style fg=${c.overlay0}
+      set -g message-style fg=${c.accent},bg=default
+      set -g message-command-style fg=${c.accent},bg=default
 
-      bind rc source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
+      bind -n M-F5 source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
 
       # Tmux only bindings
       bind -n M-n new-window -c "#{pane_current_path}"

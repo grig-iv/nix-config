@@ -1,13 +1,41 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}: let
+  colors = config.my.colors;
+in {
   home = {
     packages = [pkgs.fd];
     sessionVariables = {
-      SKIM_DEFAULT_OPTIONS = "--color=fg:#cdd6f4,bg:#1e1e2e,matched:#313244,matched_bg:#f2cdcd,current:#cdd6f4,current_bg:#45475a,current_match:#1e1e2e,current_match_bg:#f5e0dc,spinner:#a6e3a1,info:#cba6f7,prompt:#89b4fa,cursor:#f38ba8,selected:#eba0ac,header:#94e2d5,border:#6c7086";
+      "SKIM_DEFAULT_OPTIONS" =
+        "--color="
+        + lib.concatStringsSep "," [
+          ("fg:" + colors.text)
+          ("bg:" + "empty")
+          ("matched:" + colors.primary)
+          ("matched_bg:" + colors.base)
+          ("current:" + colors.accent)
+          ("current_bg:" + colors.surface0)
+          ("current_match:" + colors.base)
+          ("current_match_bg:" + colors.primary)
+          ("spinner:" + colors.green)
+          ("info:" + colors.subtext1)
+          ("prompt:" + colors.text)
+          ("cursor:" + colors.accent)
+          ("selected:" + colors.maroon)
+          ("header:" + colors.teal)
+          ("border:" + colors.overlay0)
+        ]
+        + " --bind 'ctrl-q:abort'";
     };
   };
 
   programs = {
-    skim.enable = true;
+    skim = {
+      enable = true;
+    };
     fish = {
       functions = {
         goToProject = ''

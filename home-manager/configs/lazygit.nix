@@ -1,6 +1,8 @@
 # https://github.com/jesseduffield/lazygit/
 # TODO: add delta
-{...}: {
+{config, ...}: let
+  colors = config.my.colors;
+in {
   home.shellAliases.g = "lazygit";
 
   programs = {
@@ -24,15 +26,15 @@
           showBottomLine = false;
           showListFooter = false;
           theme = {
-            activeBorderColor = ["#89dceb" "bold"];
-            inactiveBorderColor = ["#a6adc8"];
-            optionsTextColor = ["#89b4fa"];
-            selectedLineBgColor = ["#313244"];
-            cherryPickedCommitBgColor = ["#45475a"];
-            cherryPickedCommitFgColor = ["#89dceb"];
-            unstagedChangesColor = ["#f38ba8"];
-            defaultFgColor = ["#cdd6f4"];
-            searchingActiveBorderColor = ["#f9e2af"];
+            activeBorderColor = [colors.accent "bold"];
+            inactiveBorderColor = [colors.subtext0];
+            optionsTextColor = [colors.primary];
+            selectedLineBgColor = [colors.surface0];
+            cherryPickedCommitBgColor = [colors.surface1];
+            cherryPickedCommitFgColor = [colors.accent];
+            unstagedChangesColor = [colors.critical];
+            defaultFgColor = [colors.text];
+            searchingActiveBorderColor = [colors.yellow];
           };
         };
       };
