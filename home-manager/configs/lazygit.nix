@@ -27,7 +27,7 @@ in {
           showListFooter = false;
           theme = {
             activeBorderColor = [colors.accent "bold"];
-            inactiveBorderColor = [colors.subtext0];
+            inactiveBorderColor = [colors.overlay0];
             optionsTextColor = [colors.primary];
             selectedLineBgColor = [colors.surface0];
             cherryPickedCommitBgColor = [colors.surface1];

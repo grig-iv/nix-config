@@ -5,25 +5,8 @@
   ...
 }: let
   colors' = config.my.colors';
-
-  # Setup script for a non-nixos system
-  fishSetup = pkgs.writeShellScriptBin "fish-setup" ''
-    if [[ $EUID -ne 0 ]]; then
-        echo "This script must be run as root."
-        exit 1
-    fi
-
-    if ! grep -q "${pkgs.fish}/bin/fish" /etc/shells; then
-        echo "${pkgs.fish}/bin/fish" | sudo tee -a /etc/shells
-    fi
-
-    # Change the shell to fish
-    chsh -s "${pkgs.fish}/bin/fish" ${config.home.username}
-  '';
 in {
-  home.packages = [
-    fishSetup
-  ];
+  imports = [./starship.nix];
 
   programs.fish = {
     enable = true;
@@ -57,14 +40,6 @@ in {
     functions = with lib;
     with pkgs; {
       fish_greeting = "";
-      fish_prompt = ''
-        set_color ${colors'.primary}
-        echo -n (prompt_pwd)
-        echo -n ' '
-        set_color ${colors'.red}
-        echo -n 'ඞ '
-        set_color normal
-      '';
 
       mkdircd = ''
         mkdir -pv $argv; and cd $argv
