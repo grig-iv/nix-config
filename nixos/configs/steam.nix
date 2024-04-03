@@ -4,6 +4,9 @@
     steam-tui
   ];
 
+  # apparently fixes steam
+  programs.nix-ld.enable = true;
+
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
