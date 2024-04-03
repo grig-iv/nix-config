@@ -4,7 +4,20 @@
   ...
 }: {
   imports = [
-    ./configs/shared/desktop.nix
+    ./configs/shared/shell.nix
+    ./configs/wezterm
+    ./configs/firefox
+    ./configs/redshift.nix
+    ./configs/zathura.nix
+    ./configs/rofi.nix
+    ./configs/unclutter.nix
+    ./configs/feh.nix
+    ./configs/udiskie.nix
+    ./configs/qmk.nix
+    ./configs/vscode.nix
+    ./configs/mpv.nix
+    ./configs/gtk.nix
+    ./configs/sxiv.nix
     ./configs/awesome.nix
     ./configs/discord.nix
     ./configs/tidal-cycles.nix
@@ -42,7 +55,10 @@
       keepass
       unstable.freetube
       whatsapp-for-linux
-
+      telegram-desktop
+      xclip
+      maim
+      pulsemixer
       diskonaut
 
       # ai
