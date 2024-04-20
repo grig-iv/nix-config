@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   xmodmap = pkgs.writeText ".Xmodmap" ''
     keycode 191 = F13 F13 F13 F13 F13 F13
     keycode 192 = F14 F14 F14 F14 F14 F14
@@ -26,4 +30,12 @@ in {
   };
 
   hardware.keyboard.qmk.enable = true;
+
+  systemd.services.keylogger = {
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      ExecStart = "/bin/sh -c '${lib.getExe pkgs.hid-listen} | egrep --line-buffered \"(0x[A-F0-9]+,)?[0-9]+,[0-9]+,[0-9]{1,2}\"'";
+      StandardOutput = "append:/var/log/keylog.csv";
+    };
+  };
 }
