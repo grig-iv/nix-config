@@ -20,6 +20,13 @@
       "PGDWN" = "add chapter 1";
 
       "S" = "cycle sub";
+
+      "Ctrl+-" = "add video-zoom -0.25";
+      "Ctrl++" = "add video-zoom 0.25";
+      "Ctrl+LEFT" = "add video-pan-x 0.05";
+      "Ctrl+RIGHT" = "add video-pan-x -0.05";
+      "Ctrl+UP" = "add video-pan-y 0.05";
+      "Ctrl+DOWN" = "add video-pan-y -0.05";
     };
     config = {
       save-position-on-quit = true; # save last position
