@@ -24,6 +24,7 @@
     ./configs/anki.nix
     ./configs/ssh.nix
     ./configs/cursor.nix
+    ./configs/bitwarden.nix
     ./configs/development/clojure.nix
     ./configs/development/rust.nix
     ./configs/development/go.nix
