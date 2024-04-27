@@ -10,7 +10,6 @@
     ./configs/redshift.nix
     ./configs/zathura.nix
     ./configs/rofi.nix
-    ./configs/unclutter.nix
     ./configs/feh.nix
     ./configs/udiskie.nix
     ./configs/qmk.nix
@@ -24,6 +23,7 @@
     ./configs/notes.nix
     ./configs/anki.nix
     ./configs/ssh.nix
+    ./configs/cursor.nix
     ./configs/development/clojure.nix
     ./configs/development/rust.nix
     ./configs/development/go.nix
