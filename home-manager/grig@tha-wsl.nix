@@ -16,4 +16,10 @@
     ./configs/eza.nix
     ./configs/bat.nix
   ];
+
+  home = {
+    username = "grig";
+    homeDirectory = "/home/grig";
+    stateVersion = "23.11";
+  };
 }
