@@ -3,19 +3,22 @@
   unstable,
   ...
 }: let
+  # TODO replace with my own file
   catppuccin = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/yazi-rs/themes/main/catppuccin-mocha/theme.toml";
-    sha256 = "POdf9fYYjqIzx2t/QR64QvWcWaJu4l6tbALbgGkzp7Q=";
+    url = "https://raw.githubusercontent.com/yazi-rs/flavors/main/catppuccin-mocha.yazi/flavor.toml";
+    sha256 = "ZjafhQCs+6pkCAU7FzW6quehFqE7DsfzvVMQaXrPhHE=";
   };
 
   icons = pkgs.writeText "icons" ''
     [icon]
     prepend_rules = [
-    	{ name = "Cloud/"         , text = "󰅣" },
-    	{ name = "Books/"         , text = "󱉟" },
-    	{ name = "Camera/"        , text = "󰄀" },
-    	{ name = "Quick Share/"   , text = "󰒗" },
-    	{ name = "Extended Mind/" , text = "󰧑" },
+    	{ name = "Cloud/",          text = "󰅣" },
+    	{ name = "Books/",          text = "󱉟" },
+    	{ name = "Camera/",         text = "󰄀" },
+    	{ name = "Quick Share/",    text = "󰒗" },
+    	{ name = "Extended Mind/",  text = "󰧑" },
+    	{ name = "*.torrent",       text = "󰇚" },
+    	{ name = "*.epub",          text = "󰂾" },
     ]
   '';
 
