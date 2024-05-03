@@ -79,10 +79,14 @@ in
       wantedBy = ["multi-user.target"];
       after = ["multi-user.target"];
       script = ''
-        ln -f "${cloudPath}/FreeTube/history.db" "${homePath}/.config/FreeTube/history.db"
-        ln -f "${cloudPath}/FreeTube/playlists.db" "${homePath}/.config/FreeTube/playlists.db"
-        ln -f "${cloudPath}/FreeTube/profiles.db" "${homePath}/.config/FreeTube/profiles.db"
-        ln -f "${cloudPath}/FreeTube/settings.db" "${homePath}/.config/FreeTube/settings.db"
+        echo "Linking FreeTube databases..."
+        ln -sf "${cloudPath}/FreeTube/history.db" "${homePath}/.config/FreeTube/history.db"
+        ln -sf "${cloudPath}/FreeTube/playlists.db" "${homePath}/.config/FreeTube/playlists.db"
+        ln -sf "${cloudPath}/FreeTube/profiles.db" "${homePath}/.config/FreeTube/profiles.db"
+        ln -sf "${cloudPath}/FreeTube/settings.db" "${homePath}/.config/FreeTube/settings.db"
+
+        echo "Linking Fish history..."
+        ln -sf "${cloudPath}/Fish/fish_history" "${homePath}/.local/share/fish/fish_history"
       '';
     };
   }
