@@ -14,7 +14,7 @@
     };
   };
   set-wallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
-    feh --bg-fill ${catppuccin.mounatins-2k}*
+    feh --bg-fill ${catppuccin.mounatins-2}
   '';
 in {
   home.packages = [set-wallpaper];
