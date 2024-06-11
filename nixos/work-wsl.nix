@@ -7,6 +7,7 @@
     ./configs/nix.nix
     ./configs/shadowsocks.nix
     ./configs/syncthing.nix
+    ./configs/docker.nix
   ];
 
   my = {
@@ -18,6 +19,8 @@
   environment.systemPackages = with pkgs; [
     zathura
   ];
+
+  hardware.keyboard.qmk.enable = true;
 
   system.stateVersion = "23.11";
 }

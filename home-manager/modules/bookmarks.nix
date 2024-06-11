@@ -21,5 +21,14 @@ in
         lib.mapAttrs'
         (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
         cfg.bookmarks;
+
+      programs.yazi.keymap.manager.append_keymap =
+        lib.mapAttrsToList
+        (name: value: {
+          on = ["g" name];
+          run = "cd " + (lib.escape [" "] value);
+          desc = "Go to " + value;
+        })
+        (lib.filterAttrs (n: v: n != "h" && n != "c" && n != "d") cfg.bookmarks);
     };
   }

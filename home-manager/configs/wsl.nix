@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}: {
   home = {
     packages = with pkgs; [wslu];
 
@@ -8,8 +13,13 @@
     };
   };
 
-  my.hostInfo = {
-    isInWsl = true;
-    windowsUserPath = "/mnt/c/Users/abstr/";
+  my = {
+    hostInfo = {
+      isInWsl = true;
+      windowsUserPath = lib.mkDefault "/mnt/c/Users/abstr/";
+    };
+    shell.bookmarks = {
+      "w" = config.my.hostInfo.windowsUserPath;
+    };
   };
 }

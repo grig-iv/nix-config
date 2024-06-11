@@ -1,3 +1,7 @@
+require('session'):setup {
+    sync_yanked = true,
+}
+
 -- {{ show symlink in status bar
 
 function Status:name()

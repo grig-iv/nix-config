@@ -15,6 +15,7 @@
     ./configs/skim.nix
     ./configs/eza.nix
     ./configs/bat.nix
+    ./configs/qmk.nix
   ];
 
   home = {
@@ -22,4 +23,6 @@
     homeDirectory = "/home/grig";
     stateVersion = "23.05";
   };
+  my.hostInfo. windowsUserPath = "/mnt/c/Users/grig/";
+
 }
