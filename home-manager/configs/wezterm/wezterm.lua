@@ -7,13 +7,14 @@ local colors = {}
 if ok then
     colors.foreground = nix_colors.text
     colors.background = nix_colors.base
-    colors.cursor_bg = nix_colors.accent
+    colors.cursor_bg = nix_colors.text
     colors.cursor_fg = nix_colors.base
 end
 
 return {
     enable_tab_bar = false,
     disable_default_key_bindings = true,
+    disable_default_mouse_bindings = true,
     enable_csi_u_key_encoding = true,
     window_background_opacity = 0.95,
     warn_about_missing_glyphs = false,
