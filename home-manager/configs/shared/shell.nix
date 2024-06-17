@@ -17,6 +17,7 @@ with lib; {
     ./../fish.nix
     ./../tmux.nix
     ./../neovim.nix
+    ./../direnv.nix
   ];
 
   xdg.enable = true;
