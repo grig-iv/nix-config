@@ -61,6 +61,7 @@
       maim
       pulsemixer
       diskonaut
+      calcurse
 
       # ai
       ollama

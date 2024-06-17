@@ -99,5 +99,16 @@ in
           ln -sf "${cloudPath}/fish/fish_history" "${homePath}/.local/share/fish/fish_history"
         '';
       };
+
+      syncthing-calcurse = mkIf hasCloud {
+        wantedBy = ["multi-user.target"];
+        after = ["multi-user.target"];
+        script = ''
+          mkdir -p "${homePath}/.local/share/calcurse"
+
+          ln -sf "${cloudPath}/calcurse/apts" "${homePath}/.local/share/calcurse/apts"
+          ln -sf "${cloudPath}/calcurse/todo" "${homePath}/.local/share/calcurse/todo"
+        '';
+      };
     };
   }
