@@ -29,10 +29,6 @@
 
       windowManager = {
         awesome.enable = true;
-        xmonad = {
-          enable = true;
-          enableContribAndExtras = true;
-        };
       };
     };
   };
