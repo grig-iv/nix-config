@@ -25,6 +25,7 @@
     ./configs/ssh.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
+    ./configs/darktable.nix
     ./configs/development/clojure.nix
     ./configs/development/rust.nix
     ./configs/development/go.nix
@@ -61,7 +62,6 @@
       maim
       pulsemixer
       diskonaut
-      darktable
       calcurse
 
       # ai
