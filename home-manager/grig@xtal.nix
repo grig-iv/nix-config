@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   unstable,
   ...
@@ -35,7 +36,7 @@
     b = "~/Books";
     d = "~/Downloads";
     c = "~/.config";
-    p = "~/projects";
+    p = "~/Projects";
   };
 
   # FIXME on next reinstall
@@ -60,9 +61,12 @@
       telegram-desktop
       xclip
       maim
+      flameshot
       pulsemixer
       diskonaut
       calcurse
+      krusader
+      scribus
 
       # ai
       ollama

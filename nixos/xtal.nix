@@ -29,6 +29,8 @@
 
   networking.firewall.enable = true;
 
+  boot.tmp.cleanOnBoot = true;
+
   # Internationalisation
   time.timeZone = "Europe/Moscow";
   i18n.defaultLocale = "en_US.UTF-8";

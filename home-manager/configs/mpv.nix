@@ -19,6 +19,7 @@
       "PGUP" = "add chapter -1";
       "PGDWN" = "add chapter 1";
 
+      "s" = "screenshot no-sub";
       "S" = "cycle sub";
 
       "Ctrl+-" = "add video-zoom -0.25";
@@ -33,6 +34,7 @@
       pause = true; # start on pause
       slang = "en"; # subtitels language priority
       subs-fallback = true; # select some subtitels even if there is no match for slang
+      screenshot-directory = "~/Screenshots";
     };
   };
 }
