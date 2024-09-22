@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   inputs,
   ...
 }: let
@@ -34,7 +33,7 @@ in {
 
   programs.yazi = {
     enable = true;
-    package = unstable.yazi;
+    package = pkgs.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {
@@ -113,7 +112,7 @@ in {
       sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
     };
     "yazi/plugins/full-border.yazi/init.lua".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/yazi-rs/plugins/main/full-border.yazi/init.lua";
+      url = "https://raw.githubusercontent.com/yazi-rs/plugins/a3ee7173bff700214bc2d993ef605c3c41d800c9/full-border.yazi/init.lua";
       sha256 = "+ODHUicNTv0NYBpsbA+JeLFOD8YD8Qw+7kCGmY9xT+k=";
     };
     "yazi/plugins/smart-enter.yazi/init.lua".text = ''
