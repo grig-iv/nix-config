@@ -1,22 +1,23 @@
 {pkgs, ...}: {
   imports = [
-    ./modules
-    ./configs/hardware-configuration.nix
-    ./configs/user.nix
-    ./configs/nix.nix
-    ./configs/home-manager.nix
-    ./configs/steam.nix
-    ./configs/picom.nix
-    ./configs/fonts.nix
-    ./configs/keyboard
-    ./configs/bootloader.nix
-    ./configs/nvidia.nix
-    ./configs/xserver.nix
-    ./configs/audio.nix
-    ./configs/sudo.nix
-    ./configs/syncthing.nix
-    ./configs/shadowsocks.nix
-    ./configs/docker.nix
+    ./disko.nix
+    ./hardware-configuration.nix
+    ./bootloader.nix
+    .././modules
+    .././configs/user.nix
+    .././configs/nix.nix
+    .././configs/home-manager.nix
+    .././configs/steam.nix
+    .././configs/picom.nix
+    .././configs/fonts.nix
+    .././configs/keyboard
+    .././configs/nvidia.nix
+    .././configs/xserver.nix
+    .././configs/audio.nix
+    .././configs/sudo.nix
+    .././configs/syncthing.nix
+    .././configs/shadowsocks.nix
+    .././configs/docker.nix
   ];
 
   my = {
