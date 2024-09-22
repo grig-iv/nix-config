@@ -21,7 +21,7 @@ in {
     xtal = inputs.nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;
       system = "x86_64-linux";
-      modules = [./xtal];
+      modules = [./xtal inputs.disko.nixosModules.disko];
     };
     tha-wsl = inputs.nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;
