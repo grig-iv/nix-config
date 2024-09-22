@@ -43,13 +43,12 @@
       chromium
       gimp
       spotify
-      obs-studio
-      screenkey
+      # obs-studio
+      # screenkey
       audacity
       electrum
       keepass
       unstable.freetube
-      whatsapp-for-linux
       telegram-desktop
       xclip
       maim
@@ -57,12 +56,6 @@
       diskonaut
       darktable
       calcurse
-
-      # ai
-      ollama
-      openai-whisper-cpp
-      ffmpeg
-      alsa-utils
 
       # work
       remmina
