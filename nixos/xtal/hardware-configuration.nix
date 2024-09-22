@@ -27,7 +27,7 @@
   nix.settings.max-jobs = 12;
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
 
   powerManagement.cpuFreqGovernor = "performance";
   hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
