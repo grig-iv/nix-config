@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./modules
     ./configs/wsl.nix
@@ -21,5 +21,9 @@
     username = "grig";
     homeDirectory = "/home/grig";
     stateVersion = "23.11";
+    packages = with pkgs; [
+      putty
+      yt-dlp
+    ];
   };
 }
