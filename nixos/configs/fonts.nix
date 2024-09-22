@@ -9,6 +9,8 @@ in {
     nerdfonts
     font-awesome
     roboto-mono
+    times-newer-roman
+    # google-fonts
   ];
 
   environment.shellAliases = {

@@ -1,5 +1,8 @@
 {pkgs, ...}: {
-  imports = [./gnome.nix]; # i don't know why, but all works fine only if gnome also installed
+  imports = [
+    ./gnome.nix # i don't know why, but all works fine only if gnome also installed
+    ./wacom.nix
+  ];
 
   programs.dconf.enable = true;
 
@@ -9,8 +12,6 @@
   };
 
   services = {
-    gnome.gnome-keyring.enable = true;
-
     dbus = {
       enable = true;
       packages = [pkgs.dconf];
@@ -25,6 +26,14 @@
           accelProfile = "flat";
           accelSpeed = "-0.25";
         };
+      };
+    };
+
+    libinput = {
+      enable = true;
+      mouse = {
+        accelProfile = "flat";
+        accelSpeed = "-0.25";
       };
     };
   };

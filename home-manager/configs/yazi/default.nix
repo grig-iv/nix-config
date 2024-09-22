@@ -112,6 +112,10 @@ in {
       url = "https://raw.githubusercontent.com/Reledia/glow.yazi/4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc/init.lua";
       sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
     };
+    "yazi/plugins/full-border.yazi/init.lua".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/yazi-rs/plugins/main/full-border.yazi/init.lua";
+      sha256 = "+ODHUicNTv0NYBpsbA+JeLFOD8YD8Qw+7kCGmY9xT+k=";
+    };
     "yazi/plugins/smart-enter.yazi/init.lua".text = ''
       return {
       	entry = function()

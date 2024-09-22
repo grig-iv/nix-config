@@ -43,6 +43,12 @@ in {
     terminal = "tmux-256color";
     shell = lib.getExe pkgs.fish;
     tmuxp.enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = tmux-fzf;
+        extraConfig = "";
+      }
+    ];
     extraConfig = ''
       set -sa terminal-overrides ",xterm*:Tc"
 
@@ -72,8 +78,10 @@ in {
       bind -n M-C-PgUp previous-window
       bind -n M-C-PgDn next-window
 
-      # Vim pass through
+      bind -n M-C-S-PgUp switch-client -p
+      bind -n M-C-S-PgDn switch-client -n
 
+      # Vim pass through
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
 
       # Navigation
