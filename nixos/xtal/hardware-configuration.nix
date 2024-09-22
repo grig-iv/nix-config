@@ -14,6 +14,7 @@
       "usbhid"
       "sd_mod"
     ];
+    kernelModules = [ "kvm-intel" ];
   };
 
   fileSystems = {
@@ -24,6 +25,7 @@
   };
 
   nix.settings.max-jobs = 12;
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   networking.useDHCP = true;
 
