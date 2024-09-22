@@ -109,7 +109,7 @@ in {
     "yazi/theme.toml".source = theme;
     "yazi/plugins/glow.yazi/init.lua".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/Reledia/glow.yazi/4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc/init.lua";
-      sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
+      sha256 = "29g2Fj6C+SkjaYAw2x9vjcfZdcP0vPC2NPOC7uAckVY=";
     };
     "yazi/plugins/full-border.yazi/init.lua".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/yazi-rs/plugins/a3ee7173bff700214bc2d993ef605c3c41d800c9/full-border.yazi/init.lua";
