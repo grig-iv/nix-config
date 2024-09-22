@@ -13,20 +13,15 @@
     ./configs/feh.nix
     ./configs/udiskie.nix
     ./configs/qmk.nix
-    ./configs/vscode.nix
     ./configs/mpv.nix
     ./configs/gtk.nix
     ./configs/sxiv.nix
-    ./configs/awesome.nix
     ./configs/discord.nix
-    ./configs/tidal-cycles.nix
     ./configs/notes.nix
     ./configs/anki.nix
     ./configs/ssh.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
-    ./configs/development/clojure.nix
-    ./configs/development/rust.nix
     ./configs/development/go.nix
   ];
 
@@ -37,10 +32,9 @@
     p = "~/projects";
   };
 
-  # FIXME on next reinstall
   home = {
-    username = "grig-iv";
-    homeDirectory = "/home/grig-iv";
+    username = "grig";
+    homeDirectory = "/home/grig";
 
     packages = with pkgs; [
       # main
@@ -77,9 +71,8 @@
       skypeforlinux
       slack
     ];
-    shellAliases.shm = "home-manager switch --flake $NIXCONF#grig@$(hostname)";
 
-    stateVersion = "23.05";
+    stateVersion = "24.05";
   };
 
   news.display = "show";

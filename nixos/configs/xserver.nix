@@ -26,10 +26,6 @@
           accelSpeed = "-0.25";
         };
       };
-
-      windowManager = {
-        awesome.enable = true;
-      };
     };
   };
 }

@@ -5,7 +5,7 @@
 }: let
   # TODO replace with my own file
   catppuccin = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/yazi-rs/flavors/main/catppuccin-mocha.yazi/flavor.toml";
+    url = "https://raw.githubusercontent.com/yazi-rs/flavors/d479f67a5bde91ccd3cddc927144b442c6e885e5/catppuccin-mocha.yazi/flavor.toml";
     sha256 = "ZjafhQCs+6pkCAU7FzW6quehFqE7DsfzvVMQaXrPhHE=";
   };
 
@@ -104,7 +104,7 @@ in {
     "yazi/init.lua".source = ./init.lua;
     "yazi/theme.toml".source = theme;
     "yazi/plugins/glow.yazi/init.lua".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/Reledia/glow.yazi/main/init.lua";
+      url = "https://raw.githubusercontent.com/Reledia/glow.yazi/4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc/init.lua";
       sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
     };
     "yazi/plugins/smart-enter.yazi/init.lua".text = ''

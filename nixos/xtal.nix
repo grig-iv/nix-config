@@ -14,16 +14,13 @@
     ./configs/xserver.nix
     ./configs/audio.nix
     ./configs/sudo.nix
-    ./configs/wireguard.nix
     ./configs/syncthing.nix
     ./configs/shadowsocks.nix
     ./configs/docker.nix
-    ./configs/dictd.nix
-    ./configs/vm.nix
   ];
 
   my = {
-    user = "grig-iv";
+    user = "grig";
     host = "xtal";
   };
 
@@ -49,5 +46,5 @@
   services.udisks2.enable = true;
   boot.supportedFilesystems = ["ntfs"];
 
-  system.stateVersion = "23.05";
+  system.stateVersion = "24.05";
 }

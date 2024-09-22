@@ -7,6 +7,5 @@
 
   users.extraGroups."libvirtd".members = [
     "grig"
-    "grig-iv" # remove on reinstall
   ];
 }

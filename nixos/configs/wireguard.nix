@@ -16,7 +16,7 @@
     extraConfig = ''
       polkit.addRule(function(action, subject) {
         if (action.id == "org.freedesktop.systemd1.manage-units" &&
-            subject.user == "grig-iv") {
+            subject.user == "${config.my.user}") {
           return polkit.Result.YES;
         }
       });
