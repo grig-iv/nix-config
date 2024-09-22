@@ -2,7 +2,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-    ./bootloader.nix
+    #    ./bootloader.nix ## remove if woked without
     .././modules
     .././configs/user.nix
     .././configs/nix.nix
@@ -23,6 +23,11 @@
   my = {
     user = "grig";
     host = "xtal";
+  };
+
+  boot.loader = {
+    systemd-boot.enable = true;
+    timeout = 10;
   };
 
   networking.firewall.enable = true;
