@@ -7,6 +7,9 @@
         "electron-25.9.0"
       ];
     };
+    overlays = with inputs; [
+      nur.overlay
+    ];
   };
 
   specialArgs = {
