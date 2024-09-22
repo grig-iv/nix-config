@@ -1,6 +1,7 @@
 {
   pkgs,
   unstable,
+  inputs,
   ...
 }: let
   # TODO replace with my own file
@@ -27,6 +28,10 @@
     cat ${icons} >> $out
   '';
 in {
+  nixpkgs.overlays = [
+    inputs.yazi.overlays.default
+  ];
+
   programs.yazi = {
     enable = true;
     package = unstable.yazi;

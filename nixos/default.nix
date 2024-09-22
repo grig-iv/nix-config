@@ -7,15 +7,6 @@
         "electron-25.9.0"
       ];
     };
-    overlays = with inputs; [
-      nur.overlay
-      tidal-cycles.overlays.tidal
-      nix-vscode-extensions.overlays.default
-      ollama.overlays.default
-      rust-overlay.overlays.default
-      yazi.overlays.default
-      (import ./../overlays)
-    ];
   };
 
   specialArgs = {

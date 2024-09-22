@@ -1,4 +1,12 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  nixpkgs.overlays = [
+    inputs.rust-overlay.overlays.default
+  ];
+
   home = {
     packages = with pkgs; [
       rust-bin.stable.latest.minimal
