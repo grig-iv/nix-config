@@ -20,7 +20,7 @@
 
 > sudo chown -R grig /etc/nixos
 > cd /etc/nixos
-> git remote set-url 
+> git remote set-url git@github.com:grig-iv/nix-config.git
 
 > git clone https://github.com/grig-iv/nvim.git ~/.config/nvim
 > cd ~/.config/nvim
