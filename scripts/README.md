@@ -7,9 +7,22 @@
 > bash /tpm/xtal-install.sh
 ```
 
-2. Secrets install
+2. Install secrets
 ```
 > mkdir /mnt/var/lib/sops/
 > vi /mnt/var/lib/sops/key
-> nixos-install -flake /mnt/etc/nixos#xtal
+> nixos-install --flake /mnt/etc/nixos#xtal
+```
+
+3. In brand new nixos
+```
+> sudo passwd grig
+
+> sudo chown -R grig /etc/nixos
+> cd /etc/nixos
+> git remote set-url 
+
+> git clone https://github.com/grig-iv/nvim.git ~/.config/nvim
+> cd ~/.config/nvim
+> git remote set-url git@github.com:grig-iv/nvim.git
 ```
