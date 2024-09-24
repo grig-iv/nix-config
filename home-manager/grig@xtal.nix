@@ -61,6 +61,8 @@
       krusader
       scribus
 
+      st
+
       # work
       remmina
       putty
