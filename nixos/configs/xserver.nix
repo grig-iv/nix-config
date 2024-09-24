@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./gnome.nix # i don't know why, but all works fine only if gnome also installed
-    ./wacom.nix
     ./dwm.nix
   ];
 
@@ -20,14 +19,6 @@
 
     xserver = {
       enable = true;
-
-      libinput = {
-        enable = true;
-        mouse = {
-          accelProfile = "flat";
-          accelSpeed = "-0.25";
-        };
-      };
     };
 
     libinput = {

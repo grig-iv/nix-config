@@ -2,6 +2,7 @@
   imports = [./sops.nix];
 
   sops.secrets = {
+    "ssh/github".path = ".ssh/github";
     "ssh/vps-nl".path = ".ssh/vps-nl";
     "ssh/vps-no".path = ".ssh/vps-no";
     "ssh/vps-golden-ratio".path = ".ssh/vps-golden-ratio";
@@ -11,9 +12,8 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      hf = {
-        host = "hf.co";
-        identityFile = "~/.ssh/hf";
+      github = {
+        identityFile = "~/.ssh/github";
       };
       vps-nl = {
         host = "37.1.221.231";
@@ -29,6 +29,10 @@
         host = "5.8.51.147";
         identityFile = "~/.ssh/vps-golden-ratio";
         hostname = "5.8.51.147";
+      };
+      hf = {
+        host = "hf.co";
+        identityFile = "~/.ssh/hf";
       };
     };
   };
