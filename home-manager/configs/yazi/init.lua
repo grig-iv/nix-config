@@ -2,8 +2,8 @@ require('session'):setup {
     sync_yanked = true,
 }
 
-require('full-border'):setup {
-}
+-- require('full-border'):setup {
+-- }
 
 -- {{ show symlink in status bar
 

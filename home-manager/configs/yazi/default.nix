@@ -27,9 +27,9 @@
     cat ${icons} >> $out
   '';
 in {
-  nixpkgs.overlays = [
-    inputs.yazi.overlays.default
-  ];
+  # nixpkgs.overlays = [
+  #   inputs.yazi.overlays.default
+  # ];
 
   programs.yazi = {
     enable = true;
