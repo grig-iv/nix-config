@@ -157,6 +157,21 @@
         "type": "github"
       }
     },
+    "grig-dwm": {
+      "locked": {
+        "lastModified": 1727379936,
+        "narHash": "sha256-yr83VFbxeh/AJQcxpnej2DJfd+AesWZiECHunLx8IEE=",
+        "owner": "grig-iv",
+        "repo": "dwm",
+        "rev": "ce9b2165ee393200c12e90761f701c9c65b31aa0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "grig-iv",
+        "repo": "dwm",
+        "type": "github"
+      }
+    },
     "grub2-themes": {
       "inputs": {
         "nixpkgs": "nixpkgs_2"
@@ -497,6 +512,7 @@
       "inputs": {
         "disko": "disko",
         "flake-parts": "flake-parts",
+        "grig-dwm": "grig-dwm",
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "nix-vscode-extensions": "nix-vscode-extensions",
