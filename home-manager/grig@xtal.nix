@@ -3,7 +3,9 @@
   pkgs,
   unstable,
   ...
-}: {
+}: let
+  user = "grig";
+in {
   imports = [
     ./configs/shared/shell.nix
     ./configs/wezterm
@@ -35,8 +37,8 @@
   };
 
   home = {
-    username = "grig";
-    homeDirectory = "/home/grig";
+    username = user;
+    homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
       # main
@@ -86,7 +88,7 @@
     Service = {
       ExecStart = "${pkgs.writeShellScript "watch-store" ''
         #!/run/current-system/sw/bin/bash
-        ln -sf "/run/media/grig-iv" "$HOME/media"
+        ln -sf "/run/media/${user}" "$HOME/media"
       ''}";
     };
   };
