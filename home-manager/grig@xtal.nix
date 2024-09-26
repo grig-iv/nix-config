@@ -10,7 +10,6 @@ in {
     ./configs/shared/shell.nix
     ./configs/wezterm
     ./configs/firefox
-    ./configs/redshift.nix
     ./configs/zathura.nix
     ./configs/rofi.nix
     ./configs/feh.nix
