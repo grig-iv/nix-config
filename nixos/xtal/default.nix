@@ -8,7 +8,6 @@
     .././configs/nix.nix
     .././configs/home-manager.nix
     .././configs/steam.nix
-    .././configs/picom.nix
     .././configs/fonts.nix
     .././configs/keyboard
     .././configs/nvidia.nix
