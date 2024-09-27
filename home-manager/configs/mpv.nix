@@ -19,7 +19,7 @@
       "PGUP" = "add chapter -1";
       "PGDWN" = "add chapter 1";
 
-      "s" = "screenshot no-sub";
+      "s" = "screenshot video";
       "S" = "cycle sub";
 
       "Ctrl+-" = "add video-zoom -0.25";
