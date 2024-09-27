@@ -24,6 +24,19 @@
     host = "xtal";
   };
 
+  services = {
+    displayManager.defaultSession = "dwm";
+    xserver.displayManager = {
+      session = [
+        {
+          manage = "desktop";
+          name = "dwm";
+          start = ''exec $HOME/.xsession'';
+        }
+      ];
+    };
+  };
+
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;

@@ -8,8 +8,10 @@
 in {
   imports = [
     ./configs/shared/shell.nix
+    ./configs/dwm.nix
     ./configs/wezterm
     ./configs/firefox
+    ./configs/dmenu.nix
     ./configs/zathura.nix
     ./configs/rofi.nix
     ./configs/feh.nix

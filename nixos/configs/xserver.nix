@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./gnome.nix # i don't know why, but all works fine only if gnome also installed
-    ./dwm.nix
   ];
 
   programs.dconf.enable = true;
