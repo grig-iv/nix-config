@@ -79,6 +79,10 @@ in {
 
   news.display = "show";
 
+  services.sxhkd.keybindings = {
+    "super + alt + s" = "audio-cycle-output";
+  };
+
   systemd.user.services.easy-mounts = {
     Unit = {
       Description = "Create link to /run/media";
