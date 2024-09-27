@@ -81,6 +81,9 @@ in {
       bind -n M-C-S-PgUp switch-client -p
       bind -n M-C-S-PgDn switch-client -n
 
+      bind -n M-s display-popup -E "$EDITOR /tmp/scratchpad.md"
+      bind -n M-g display-popup -w 80% -h 80% -d "#{pane_current_path}" -E "lazygit"
+
       # Vim pass through
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
 
