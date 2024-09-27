@@ -17,6 +17,7 @@ in {
     ./configs/feh.nix
     ./configs/udiskie.nix
     ./configs/qmk.nix
+    ./configs/flameshot.nix
     ./configs/mpv.nix
     ./configs/gtk.nix
     ./configs/sxiv.nix
@@ -57,7 +58,6 @@ in {
       telegram-desktop
       xclip
       maim
-      flameshot
       pulsemixer
       diskonaut
       calcurse
