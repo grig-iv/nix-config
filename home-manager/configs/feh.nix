@@ -13,12 +13,16 @@
       sha256 = "sha256-9yms2LOMfPXgXKciDi1QoWly3adt04Ybq1dWgwU/Wdk=";
     };
   };
-  set-wallpaper = pkgs.writeShellScriptBin "set-wallpaper" ''
-    feh --bg-fill ${catppuccin.mounatins-2}
-  '';
 in {
-  home.packages = [set-wallpaper];
   programs.feh = {
     enable = true;
   };
+
+  xsession.initExtra = ''
+    if [ -f $HOME/.config/wallpaper.tif ]; then
+        feh --bg-fill $HOME/.config/wallpaper.tif
+    else
+        feh --bg-fill ${catppuccin.mounatins-2}
+    fi
+  '';
 }
