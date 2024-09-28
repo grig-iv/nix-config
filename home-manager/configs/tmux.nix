@@ -83,6 +83,7 @@ in {
 
       bind -n M-s display-popup -E "$EDITOR /tmp/scratchpad.md"
       bind -n M-g display-popup -w 80% -h 80% -d "#{pane_current_path}" -E "lazygit"
+      bind -n M-t display-popup -d "#{pane_current_path}" -E "fish"
 
       # Vim pass through
       is_vim="ps -o state= -o comm= -t '#{pane_tty}' | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?\.?(view|n?vim?x?)(-wrapped)?(diff)?$'"
