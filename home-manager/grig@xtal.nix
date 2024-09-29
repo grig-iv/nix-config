@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   unstable,
   ...
@@ -25,6 +24,7 @@ in {
     ./configs/notes.nix
     ./configs/anki.nix
     ./configs/ssh.nix
+    ./configs/audio.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
     ./configs/darktable.nix
@@ -78,10 +78,6 @@ in {
   };
 
   news.display = "show";
-
-  services.sxhkd.keybindings = {
-    "super + alt + s" = "audio-cycle-output";
-  };
 
   systemd.user.services.easy-mounts = {
     Unit = {
