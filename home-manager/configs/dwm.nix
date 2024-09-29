@@ -3,10 +3,16 @@
   lib,
   inputs,
   ...
-}: {
+}: let
+  dwm-exe = lib.getExe inputs.grig-dwm.packages.${pkgs.system}.dwm;
+  dwm-log = "$HOME/.local/share/dwm.log";
+in {
   xsession = {
     enable = true;
-    windowManager.command = lib.getExe inputs.grig-dwm.packages.${pkgs.system}.dwm;
+    windowManager.command = "${dwm-exe} &> ${dwm-log}";
+    initExtra = ''
+      rm ${dwm-log}
+    '';
   };
 
   services.dwm-status = {
