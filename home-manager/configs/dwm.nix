@@ -17,11 +17,21 @@ in {
 
   services.dwm-status = {
     enable = true;
+    package = pkgs.dwm-status.override {enableNetwork = false;};
     order = [
       "audio"
       "time"
     ];
+    extraConfig = {
+      separator = " | ";
+      time.format = "%d %A %H:%M";
+      audio.template = " 󰕾 {VOL}%";
+    };
   };
+
+  home.packages = with pkgs; [
+    alsa-utils
+  ];
 
   services.sxhkd.enable = true;
 }
