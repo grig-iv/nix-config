@@ -17,6 +17,7 @@
     .././configs/syncthing.nix
     .././configs/shadowsocks.nix
     .././configs/docker.nix
+    .././configs/printing.nix
   ];
 
   my = {
