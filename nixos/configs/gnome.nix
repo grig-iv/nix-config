@@ -4,7 +4,6 @@
     dbus.packages = [pkgs.gnome.seahorse];
     xserver = {
       enable = true;
-      autorun = true;
       displayManager.gdm.enable = true;
       desktopManager.gnome.enable = true;
     };
@@ -18,7 +17,7 @@
       cheese
       gnome-music
       gnome-terminal
-      gedit
+      pkgs.gedit
       epiphany
       geary
       evince

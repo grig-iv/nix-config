@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  keyFile = "/var/lib/sops/keys.txt";
+  keyFile = "/var/lib/sops/key";
 in {
   imports = [inputs.sops-nix.nixosModules.sops];
 

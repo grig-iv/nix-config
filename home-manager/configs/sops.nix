@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   sops = {
-    age.keyFile = "/var/lib/sops/keys.txt";
+    age.keyFile = "/var/lib/sops/key";
     defaultSopsFile = ../../secrets.yaml;
   };
 

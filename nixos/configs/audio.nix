@@ -19,7 +19,7 @@
       ${pactl} move-sink-input "''$stream" ''${sinks[''$next_index]}
     done
 
-    echo "Audio output switched to ''${sinks[''$next_index]}"
+    ${pkgs.ffmpeg}/bin/ffplay -v 0 -volume 50 -nodisp -autoexit ${../../assets/minecraft-item-pop.mp3}
   '';
 in {
   environment.systemPackages = [audio-cycle-output];

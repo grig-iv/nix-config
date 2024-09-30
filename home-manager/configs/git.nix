@@ -7,6 +7,7 @@
     userName = "grig-iv";
     userEmail = "abstractgrig@gmail.com";
     extraConfig = {
+      pull.rebase = false;
       safe = {
         "directory" = "/etc/nixos";
       };

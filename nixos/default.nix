@@ -9,12 +9,6 @@
     };
     overlays = with inputs; [
       nur.overlay
-      tidal-cycles.overlays.tidal
-      nix-vscode-extensions.overlays.default
-      ollama.overlays.default
-      rust-overlay.overlays.default
-      yazi.overlays.default
-      (import ./../overlays)
     ];
   };
 
@@ -30,7 +24,7 @@ in {
     xtal = inputs.nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;
       system = "x86_64-linux";
-      modules = [./xtal.nix];
+      modules = [./xtal inputs.disko.nixosModules.disko];
     };
     tha-wsl = inputs.nixpkgs.lib.nixosSystem {
       inherit pkgs specialArgs;

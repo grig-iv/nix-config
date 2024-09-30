@@ -1,4 +1,3 @@
-# https://github.com/jesseduffield/lazygit/
 # TODO: add delta
 {config, ...}: let
   colors = config.my.colors;
@@ -13,8 +12,12 @@ in {
         keybinding = {
           universal = {
             quit = "<c-q>";
-            # nextTab = "<c-pgup>";
-            # prevTab = "<c-pgdown>";
+            prevTab = "<left>";
+            nextTab = "<right>";
+            prevBlock = "<pgup>";
+            nextBlock = "<pgdown>";
+            scrollUpMain = "<home>";
+            scrollDownMain = "<end>";
           };
         };
         gui = {

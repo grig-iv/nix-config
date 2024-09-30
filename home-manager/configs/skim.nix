@@ -39,7 +39,7 @@ in {
     fish = {
       functions = {
         goToProject = ''
-          set selected_folder (command ls -d ~/projects/*/ | sk)
+          set selected_folder (command ls -d ~/Projects/*/ | sk)
 
           if test -n "$selected_folder"
               cd "$selected_folder"

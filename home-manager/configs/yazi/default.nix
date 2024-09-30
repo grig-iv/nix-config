@@ -1,11 +1,11 @@
 {
   pkgs,
-  unstable,
+  inputs,
   ...
 }: let
   # TODO replace with my own file
   catppuccin = pkgs.fetchurl {
-    url = "https://raw.githubusercontent.com/yazi-rs/flavors/main/catppuccin-mocha.yazi/flavor.toml";
+    url = "https://raw.githubusercontent.com/yazi-rs/flavors/d479f67a5bde91ccd3cddc927144b442c6e885e5/catppuccin-mocha.yazi/flavor.toml";
     sha256 = "ZjafhQCs+6pkCAU7FzW6quehFqE7DsfzvVMQaXrPhHE=";
   };
 
@@ -27,9 +27,13 @@
     cat ${icons} >> $out
   '';
 in {
+  # nixpkgs.overlays = [
+  #   inputs.yazi.overlays.default
+  # ];
+
   programs.yazi = {
     enable = true;
-    package = unstable.yazi;
+    package = pkgs.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {
@@ -104,8 +108,12 @@ in {
     "yazi/init.lua".source = ./init.lua;
     "yazi/theme.toml".source = theme;
     "yazi/plugins/glow.yazi/init.lua".source = pkgs.fetchurl {
-      url = "https://raw.githubusercontent.com/Reledia/glow.yazi/main/init.lua";
-      sha256 = "b5y4l2hpVDauncIsBQ+TjQt4nauoHosfOqyH2ntuRzE=";
+      url = "https://raw.githubusercontent.com/Reledia/glow.yazi/4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc/init.lua";
+      sha256 = "29g2Fj6C+SkjaYAw2x9vjcfZdcP0vPC2NPOC7uAckVY=";
+    };
+    "yazi/plugins/full-border.yazi/init.lua".source = pkgs.fetchurl {
+      url = "https://raw.githubusercontent.com/yazi-rs/plugins/a3ee7173bff700214bc2d993ef605c3c41d800c9/full-border.yazi/init.lua";
+      sha256 = "+ODHUicNTv0NYBpsbA+JeLFOD8YD8Qw+7kCGmY9xT+k=";
     };
     "yazi/plugins/smart-enter.yazi/init.lua".text = ''
       return {

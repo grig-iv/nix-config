@@ -3,8 +3,6 @@
   open = "nouveau";
   driver = close;
 in {
-  imports = [./cuda.nix];
-
   services.xserver.videoDrivers = [driver];
 
   hardware = {

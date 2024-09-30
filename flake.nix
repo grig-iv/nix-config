@@ -2,15 +2,18 @@
   description = "My nixos config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
 
     nur.url = "github:nix-community/NUR";
     flake-parts.url = "github:hercules-ci/flake-parts";
     sops-nix.url = "github:Mic92/sops-nix";
     nixos-wsl.url = "github:nix-community/NixOS-WSL";
+    disko.url = "github:nix-community/disko";
+
+    grig-dwm.url = "github:grig-iv/dwm";
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";

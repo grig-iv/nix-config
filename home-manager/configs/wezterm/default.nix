@@ -5,7 +5,7 @@
 }: {
   programs.wezterm = {
     enable = true;
-    package = unstable.wezterm;
+    # package = unstable.wezterm;
     extraConfig = builtins.readFile ./wezterm.lua;
   };
 

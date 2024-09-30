@@ -11,10 +11,6 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      hf = {
-        host = "hf.co";
-        identityFile = "~/.ssh/hf";
-      };
       vps-nl = {
         host = "37.1.221.231";
         identityFile = "~/.ssh/vps-nl";
@@ -29,6 +25,10 @@
         host = "5.8.51.147";
         identityFile = "~/.ssh/vps-golden-ratio";
         hostname = "5.8.51.147";
+      };
+      hf = {
+        host = "hf.co";
+        identityFile = "~/.ssh/hf";
       };
     };
   };
