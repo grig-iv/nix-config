@@ -1,18 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  redshift-toggle = pkgs.writeShellScriptBin "redshift-toggle" ''
-    if systemctl --user is-active --quiet redshift.service; then
-        echo "Stopping Redshift service..."
-        systemctl --user stop redshift.service
-    else
-        echo "Starting Redshift service..."
-        systemctl --user start redshift.service
-    fi
-  '';
-in {
+{...}: {
   services.redshift = {
     enable = true;
     temperature.night = 2800;
@@ -20,9 +6,23 @@ in {
     longitude = 30.342980;
   };
 
-  services.sxhkd.keybindings = {
-    "super + t; r" = lib.getExe redshift-toggle;
+  xsession.initExtra = ''
+    systemctl --user stop redshift.service
+  '';
+
+  systemd.user.services.start-redshift = {
+    Unit.Description = "start redshift";
+    Service.ExecStart = "systemctl --user start redshift.service";
   };
 
-  home.packages = [redshift-toggle];
+  systemd.user.timers.start-redshift = {
+    Unit.Description = "start redshift";
+    Timer = {
+      OnCalendar = [
+        "Sun,Mon..Thu *-*-* 22:30:00"
+        "Fri..Sat *-*-* 23:30:00"
+      ];
+      Unit = "start-redshift.service";
+    };
+  };
 }

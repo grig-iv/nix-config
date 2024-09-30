@@ -12,6 +12,7 @@ in {
     ./configs/firefox
     ./configs/dmenu.nix
     ./configs/zathura.nix
+    ./configs/redshift.nix
     ./configs/rofi.nix
     ./configs/feh.nix
     ./configs/udiskie.nix
