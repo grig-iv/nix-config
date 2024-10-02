@@ -17,6 +17,7 @@
 
   systemd.user.timers.start-redshift = {
     Unit.Description = "start redshift";
+    Install.WantedBy = ["timers.target"];
     Timer = {
       OnCalendar = [
         "Sun,Mon..Thu *-*-* 22:30:00"
