@@ -37,6 +37,7 @@ in {
     d = "~/Downloads";
     c = "~/.config";
     p = "~/Projects";
+    t = "~/media/T7/torrents";
   };
 
   home = {

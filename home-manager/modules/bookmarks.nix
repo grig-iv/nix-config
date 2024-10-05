@@ -22,7 +22,7 @@ in
         (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
         cfg.bookmarks;
 
-      programs.yazi.keymap.manager.append_keymap =
+      programs.yazi.keymap.manager.prepend_keymap =
         lib.mapAttrsToList
         (name: value: {
           on = ["g" name];
