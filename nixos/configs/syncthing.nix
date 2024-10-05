@@ -81,6 +81,10 @@ in
         wantedBy = ["multi-user.target"];
         after = ["multi-user.target"];
         script = ''
+          if [ ! -d "$CONFIG/FreeTube" ]; then
+            exit
+          fi
+
           mkdir -p "${cloudPath}/FreeTube"
 
           ln -sf "${cloudPath}/FreeTube/history.db"     "${homePath}/.config/FreeTube/history.db"
