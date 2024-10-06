@@ -25,7 +25,7 @@ in {
     ./configs/discord.nix
     ./configs/notes.nix
     ./configs/anki.nix
-    ./configs/ssh.nix
+    ./configs/ssh
     ./configs/audio.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix

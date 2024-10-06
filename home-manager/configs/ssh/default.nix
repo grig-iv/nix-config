@@ -1,5 +1,5 @@
 {...}: {
-  imports = [./sops.nix];
+  imports = [../sops.nix];
 
   sops.secrets = {
     "ssh/vps-nl".path = ".ssh/vps-nl";
@@ -10,6 +10,7 @@
 
   programs.ssh = {
     enable = true;
+    userKnownHostsFile = "~/.ssh/known_hosts ${./known_hosts}";
     matchBlocks = {
       vps-nl = {
         host = "37.1.221.231";
