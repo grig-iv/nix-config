@@ -12,6 +12,7 @@
 
   systemd.user.services.start-redshift = {
     Unit.Description = "start redshift";
+    Install.WantedBy = ["hm-graphical-session.target"];
     Service.ExecStart = "systemctl --user start redshift.service";
   };
 
