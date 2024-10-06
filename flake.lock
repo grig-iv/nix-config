@@ -220,11 +220,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1727811768,
-        "narHash": "sha256-Vhd37+b3J58rYQqYa9KZ4ZxV6gr3riGCCzfWXb3wmsk=",
+        "lastModified": 1728202803,
+        "narHash": "sha256-hB/m/E+AghR7OrFkxIRZpUMyuP97DMGzLvLZvdUIEug=",
         "owner": "grig-iv",
         "repo": "dwm",
-        "rev": "a6f0dd3bee744610f40e5c9b316ea767d855e60a",
+        "rev": "904610feeaa03dd37e8c5d8b431994d1901c0fc0",
         "type": "github"
       },
       "original": {
