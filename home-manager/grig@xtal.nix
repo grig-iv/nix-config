@@ -11,6 +11,7 @@ in {
     ./configs/wezterm
     ./configs/firefox
     ./configs/dmenu.nix
+    ./configs/dunst.nix
     ./configs/zathura.nix
     ./configs/redshift.nix
     ./configs/rofi.nix

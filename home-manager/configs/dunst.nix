@@ -1,7 +1,12 @@
 # https://dunst-project.org/documentation/
-{config, ...}: let
-  colors = config.my.colors.base16;
+{
+  pkgs,
+  config,
+  ...
+}: let
+  colors = config.my.colors;
 in {
+  home.packages = with pkgs; [dunst];
   services.dunst = {
     enable = true;
     settings = {
@@ -22,34 +27,34 @@ in {
         startup_notification = true;
 
         # placement
-        offset = "0x${toString (config.my.marginBase * 2)}";
+        offset = "0x32";
         origin = "top-center";
 
         # look
         transparency = 10;
-        frame_color = "#${colors.base0E}";
+        frame_color = colors.base;
         corner_radius = config.my.fontName;
       };
 
       urgency_low = {
-        #frame_color = "#268bd2";
-        background = "#${colors.base00}";
-        foreground = "#${colors.base05}";
-        #timeout = 1;
+        frame_color = colors.primary;
+        background = colors.base;
+        foreground = colors.text;
+        timeout = 1;
       };
 
       urgency_normal = {
-        #frame_color = "#b58900";
-        background = "#${colors.base00}";
-        foreground = "#${colors.base05}";
-        #timeout = 1;
+        frame_color = colors.accent;
+        background = colors.base;
+        foreground = colors.text;
+        timeout = 1;
       };
 
       urgency_critical = {
-        #frame_color = "#dc322f";
-        background = "#${colors.base00}";
-        foreground = "#${colors.base05}";
-        #timeout = 1;
+        frame_color = colors.critical;
+        background = colors.base;
+        foreground = colors.text;
+        timeout = 1;
       };
     };
   };
