@@ -28,4 +28,6 @@
       };
     };
   };
+
+  environment.systemPackages = with pkgs; [xkb-switch];
 }
