@@ -119,7 +119,7 @@ in {
         - shell_command_before:
             - cd "$HOME/Extended Mind/"
           panes:
-            - nvim index.md
+            - nvim context.md
     '';
     "tmuxp/reading.yaml".text = ''
       session_name: reading

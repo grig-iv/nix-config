@@ -14,6 +14,7 @@
     disko.url = "github:nix-community/disko";
 
     grig-dwm.url = "github:grig-iv/dwm";
+    grig-gost.url = "github:grig-iv/gost";
 
     grub2-themes.url = "github:vinceliuice/grub2-themes";
     tidal-cycles.url = "github:mitchmindtree/tidalcycles.nix";

@@ -4,23 +4,17 @@
   inputs,
   ...
 }: let
-  dwm-exe = lib.getExe inputs.grig-dwm.packages.${pkgs.system}.dwm;
+  dwm = lib.getExe inputs.grig-dwm.packages.${pkgs.system}.default;
+  gost = lib.getExe inputs.grig-gost.packages.${pkgs.system}.default;
   dwm-log = "$HOME/.local/share/dwm.log";
 in {
   xsession = {
     enable = true;
-    windowManager.command = "${dwm-exe} &> ${dwm-log}";
+    windowManager.command = "${dwm} &> ${dwm-log}";
     initExtra = ''
       rm ${dwm-log}
+      ${gost} &
     '';
-  };
-
-  services.dwm-status = {
-    enable = true;
-    order = [
-      "audio"
-      "time"
-    ];
   };
 
   services.sxhkd.enable = true;

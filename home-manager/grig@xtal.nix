@@ -11,7 +11,9 @@ in {
     ./configs/wezterm
     ./configs/firefox
     ./configs/dmenu.nix
+    ./configs/dunst.nix
     ./configs/zathura.nix
+    ./configs/redshift.nix
     ./configs/rofi.nix
     ./configs/feh.nix
     ./configs/udiskie.nix
@@ -36,6 +38,7 @@ in {
     d = "~/Downloads";
     c = "~/.config";
     p = "~/Projects";
+    t = "~/media/T7/torrents";
   };
 
   home = {
@@ -80,17 +83,11 @@ in {
   news.display = "show";
 
   systemd.user.services.easy-mounts = {
-    Unit = {
-      Description = "Create link to /run/media";
-    };
-    Install = {
-      WantedBy = ["default.target"];
-    };
-    Service = {
-      ExecStart = "${pkgs.writeShellScript "watch-store" ''
-        #!/run/current-system/sw/bin/bash
-        ln -sf "/run/media/${user}" "$HOME/media"
-      ''}";
-    };
+    Unit.Description = "Create link to /run/media";
+    Install.WantedBy = ["default.target"];
+    Service.ExecStart = "${pkgs.writeShellScript "watch-store" ''
+      #!/run/current-system/sw/bin/bash
+      ln -sf "/run/media/${user}" "$HOME/media"
+    ''}";
   };
 }
