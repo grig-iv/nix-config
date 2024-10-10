@@ -91,6 +91,8 @@ in
           ln -sf "${cloudPath}/FreeTube/playlists.db"   "${homePath}/.config/FreeTube/playlists.db"
           ln -sf "${cloudPath}/FreeTube/profiles.db"    "${homePath}/.config/FreeTube/profiles.db"
           ln -sf "${cloudPath}/FreeTube/settings.db"    "${homePath}/.config/FreeTube/settings.db"
+
+          chown -R ${user} "${cloudPath}/FreeTube"
         '';
       };
 
@@ -101,6 +103,8 @@ in
           mkdir -p "${homePath}/.local/share/fish"
 
           ln -sf "${cloudPath}/fish/fish_history" "${homePath}/.local/share/fish/fish_history"
+
+          chown -R ${user} "${homePath}/.local/share/fish"
         '';
       };
 
@@ -112,6 +116,8 @@ in
 
           ln -sf "${cloudPath}/calcurse/apts" "${homePath}/.local/share/calcurse/apts"
           ln -sf "${cloudPath}/calcurse/todo" "${homePath}/.local/share/calcurse/todo"
+
+          chown -R ${user} "${homePath}/.local/share/calcurse"
         '';
       };
     };
