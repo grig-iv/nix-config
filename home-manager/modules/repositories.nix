@@ -7,10 +7,17 @@
 with lib; let
   repos = config.my.repositories;
   script =
-    concatMapStrings (r: ''
+    concatMapStrings (r: let
+      ssh = getExe pkgs.openssh;
+      git = getExe pkgs.git;
+      options =
+        if r ? options
+        then r.options
+        else "";
+    in ''
       if [ ! -e ${r.path} ]; then
           mkdir -p ${dirOf r.path}
-          GIT_SSH=${getExe pkgs.openssh} ${getExe pkgs.git} clone ${r.url} ${r.path}
+          GIT_SSH=${ssh} ${git} clone ${options} ${r.url} ${r.path}
       fi
     '')
     repos;

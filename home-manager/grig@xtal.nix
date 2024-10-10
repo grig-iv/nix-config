@@ -58,10 +58,6 @@ in {
         url = "git@github.com:grig-iv/gost.git";
         path = "$HOME/sources/gost";
       }
-      {
-        url = "git@github.com:grig-iv/qmk_firmware.git";
-        path = "$HOME/sources/qmk_firmware";
-      }
     ];
   };
 
