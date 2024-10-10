@@ -33,12 +33,36 @@ in {
     ./configs/development/go.nix
   ];
 
-  my.shell.bookmarks = {
-    b = "~/Books";
-    d = "~/Downloads";
-    c = "~/.config";
-    p = "~/Projects";
-    t = "~/media/T7/torrents";
+  my = {
+    shell.bookmarks = {
+      b = "~/Books";
+      d = "~/Downloads";
+      c = "~/.config";
+      p = "~/Projects";
+      t = "~/media/T7/torrents";
+    };
+    repositories = [
+      {
+        url = "git@github.com:grig-iv/nvim.git";
+        path = "$HOME/.config/nvim";
+      }
+      {
+        url = "git@github.com:grig-iv/grog.git";
+        path = "$HOME/sources/grog";
+      }
+      {
+        url = "git@github.com:grig-iv/dwm.git";
+        path = "$HOME/sources/dwm";
+      }
+      {
+        url = "git@github.com:grig-iv/gost.git";
+        path = "$HOME/sources/gost";
+      }
+      {
+        url = "git@github.com:grig-iv/qmk_firmware.git";
+        path = "$HOME/sources/qmk_firmware";
+      }
+    ];
   };
 
   home = {

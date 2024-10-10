@@ -8,6 +8,7 @@ with lib; {
     ./bookmarks.nix
     ./scoop.nix
     ./colors.nix
+    ./repositories.nix
   ];
 
   options.my = {
