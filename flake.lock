@@ -238,11 +238,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1728238545,
-        "narHash": "sha256-0xFwmPAX2y99B7X+U+6ovo81BDXBr0UmKa1LYB6lyV0=",
+        "lastModified": 1728590135,
+        "narHash": "sha256-J49LvrK7gvF81Fa/ymfEELJBkdTh/+3SwkNUi6vyPCg=",
         "owner": "grig-iv",
         "repo": "dwm",
-        "rev": "3cf147a3a37293b8d1d5404e581e56c8e8582f73",
+        "rev": "a729f14c956867cc8f2c10734bc0c595a12375cf",
         "type": "github"
       },
       "original": {
@@ -257,11 +257,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1728238723,
-        "narHash": "sha256-rUcnMHWJXbdt3TalU8wJOR01RchHiE+3gLMvyVBjeZ0=",
+        "lastModified": 1728702942,
+        "narHash": "sha256-duu9Er2AahzrQWIMr1jJO3vQCOX0l33ujeD7yO95m9k=",
         "owner": "grig-iv",
         "repo": "gost",
-        "rev": "c2d7f151244d859aba89717d80658ecee1730217",
+        "rev": "f95201ad844878825e646005c403a8a777cfdc40",
         "type": "github"
       },
       "original": {
