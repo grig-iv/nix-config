@@ -30,6 +30,7 @@ in {
     ./configs/cursor.nix
     ./configs/bitwarden.nix
     ./configs/darktable.nix
+    ./configs/bottom.nix
     ./configs/development/go.nix
   ];
 
