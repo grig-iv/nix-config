@@ -10,6 +10,7 @@ in {
     font-awesome
     roboto-mono
     times-newer-roman
+    raleway
     # google-fonts
   ];
 
