@@ -34,7 +34,7 @@ in {
 
   programs.tmux = {
     enable = true;
-    prefix = "M-Space";
+    prefix = "M-b";
     escapeTime = 50;
     baseIndex = 1;
     keyMode = "vi";
@@ -81,6 +81,9 @@ in {
       bind -n M-C-S-PgUp switch-client -p
       bind -n M-C-S-PgDn switch-client -n
 
+      bind -n M-S-Up swap-pane -U
+      bind -n M-S-Down swap-pane -D
+
       bind -n M-s display-popup -E "$EDITOR /tmp/scratchpad.md"
       bind -n M-g display-popup -w 80% -h 80% -d "#{pane_current_path}" -E "lazygit"
       bind -n M-t display-popup -d "#{pane_current_path}" -E "fish"
@@ -100,10 +103,10 @@ in {
       bind -T copy-mode-vi "M-Right" if -F "#{pane_at_right}" "" "select-pane -R"
 
       # Resize
-      bind -n "M-C-Left" if-shell "$is_vim" "send-keys M-C-Left" "resize-pane -L 1"
-      bind -n "M-C-Down" if-shell "$is_vim" "send-keys M-C-Down" "resize-pane -D 1"
-      bind -n "M-C-Up" if-shell "$is_vim" "send-keys M-C-Up" "resize-pane -U 1"
-      bind -n "M-C-Right" if-shell "$is_vim" "send-keys M-C-Right" "resize-pane -R 1"
+      bind -n "M-C-Left" if-shell "$is_vim" "send-keys M-C-Left" "resize-pane -L 5"
+      bind -n "M-C-Down" if-shell "$is_vim" "send-keys M-C-Down" "resize-pane -D 5"
+      bind -n "M-C-Up" if-shell "$is_vim" "send-keys M-C-Up" "resize-pane -U 5"
+      bind -n "M-C-Right" if-shell "$is_vim" "send-keys M-C-Right" "resize-pane -R 5"
 
       bind -T copy-mode-vi M-C-Left resize-pane -L 1
       bind -T copy-mode-vi M-C-Down resize-pane -D 1
