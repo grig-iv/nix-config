@@ -2,7 +2,7 @@
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
-    #    ./bootloader.nix ## remove if woked without
+    # ./bootloader.nix ## remove if woked without
     .././modules
     .././configs/user.nix
     .././configs/nix.nix
@@ -39,9 +39,18 @@
   };
 
   boot.loader = {
-    systemd-boot.enable = true;
-    efi.canTouchEfiVariables = true;
     timeout = 10;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot/efi"; 
+    };
+    grub = {
+      enable = true;
+      efiSupport = true;
+      # efiInstallAsRemovable = true;
+      device = "nodev";
+      useOSProber = true;
+    };
   };
 
   networking.firewall.enable = true;
