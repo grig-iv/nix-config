@@ -121,6 +121,18 @@ in {
           panes:
             - nvim context.md
     '';
+    "tmuxp/work.yaml".text = ''
+      session_name: work
+      windows:
+        - shell_command_before:
+            - cd "$HOME/Extended Mind/"
+          panes:
+            - nvim context.md
+        - shell_command_before:
+            - cd "/mnt/c/Users/grig/source/lc-client/master"
+          panes:
+            - pwshc lazygit
+    '';
     "tmuxp/reading.yaml".text = ''
       session_name: reading
       windows:
