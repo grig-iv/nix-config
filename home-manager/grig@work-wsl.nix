@@ -7,7 +7,7 @@
     ./configs/fish.nix
     ./configs/neovim.nix
     ./configs/notes.nix
-    ./configs/ssh.nix
+    ./configs/ssh
     ./configs/tmux.nix
     ./configs/yazi
     ./configs/git.nix
