@@ -20,9 +20,12 @@
     manpages.enable = false;
   };
 
-  my.shell.bookmarks = {
-    "x" = config.home.sessionVariables.NIXCONF;
-  };
+  my.shell.bookmarks = [
+    {
+      path = config.home.sessionVariables.NIXCONF;
+      binding = "x";
+    }
+  ];
 
   home = {
     packages = with pkgs; [

@@ -22,7 +22,12 @@ with lib; {
 
   xdg.enable = true;
 
-  my.shell.bookmarks.h = "~/";
+  my.shell.bookmarks = [
+    {
+      path = "~/";
+      binding = "h";
+    }
+  ];
 
   home = {
     # FIXME

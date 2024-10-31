@@ -84,7 +84,7 @@ in {
       bind -n M-S-Up swap-pane -U
       bind -n M-S-Down swap-pane -D
 
-      bind -n M-s display-popup -E "$EDITOR /tmp/scratchpad.md"
+      bind -n M-s display-popup -E "nvim /tmp/scratchpad.md"
       bind -n M-g display-popup -w 80% -h 80% -d "#{pane_current_path}" -E "lazygit"
       bind -n M-t display-popup -d "#{pane_current_path}" -E "fish"
 

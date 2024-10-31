@@ -1,34 +1,41 @@
 {
+  pkgs,
   config,
   lib,
   ...
-}: let
+}:
+with lib; let
   cfg = config.my.shell;
+  bookmarks = pipe cfg.bookmarks [
+    (xs: map (x: x.path) xs)
+    (xs: concatStringsSep "\n" xs)
+    (x: pkgs.writeText "bookmarks" x)
+  ];
 in
   with lib; {
     options.my.shell.bookmarks = mkOption {
-      type = with types; attrsOf str;
+      type = with types; listOf (attrsOf str);
       default = {};
     };
 
     config = {
-      programs.lf.keybindings =
-        lib.mapAttrs'
-        (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
-        cfg.bookmarks;
-
-      home.shellAliases =
-        lib.mapAttrs'
-        (name: value: nameValuePair ("g" + name) ("cd " + (lib.escape [" "] value)))
-        cfg.bookmarks;
+      home.shellAliases = mergeAttrsList (
+        lib.map
+        (x: {"g${x.binding}" = "cd " + (lib.escape [" "] x.path);})
+        cfg.bookmarks
+      );
 
       programs.yazi.keymap.manager.prepend_keymap =
-        lib.mapAttrsToList
-        (name: value: {
-          on = ["g" name];
-          run = "cd " + (lib.escape [" "] value);
-          desc = "Go to " + value;
+        lib.map
+        (x: {
+          on = ["g" x.binding];
+          run = "cd " + (lib.escape [" "] x.path);
+          desc = "Go to " + x.path;
         })
-        (lib.filterAttrs (n: v: n != "h" && n != "c" && n != "d") cfg.bookmarks);
+        cfg.bookmarks;
+
+      programs.fish.functions.goto_bookmark = ''
+        cd $(cat ${bookmarks} | sort -V | ${getExe pkgs.skim})
+      '';
     };
   }

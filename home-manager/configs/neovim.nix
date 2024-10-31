@@ -23,7 +23,12 @@ with lib; {
     ripgrep.enable = true;
   };
 
-  my.shell.bookmarks.n = config.home.sessionVariables.NVIMCONF;
+  my.shell.bookmarks = [
+    {
+      path = config.home.sessionVariables.NVIMCONF;
+      binding = "n";
+    }
+  ];
 
   home = {
     packages = with pkgs; [
