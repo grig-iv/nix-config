@@ -18,8 +18,11 @@
       isInWsl = true;
       windowsUserPath = lib.mkDefault "/mnt/c/Users/abstr/";
     };
-    shell.bookmarks = {
-      "w" = config.my.hostInfo.windowsUserPath;
-    };
+    shell.bookmarks = [
+      {
+        path = config.my.hostInfo.windowsUserPath;
+        binding = "w";
+      }
+    ];
   };
 }

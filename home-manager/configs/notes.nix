@@ -9,5 +9,10 @@
     };
   };
 
-  my.shell.bookmarks.m = "~/Extended Mind";
+  my.shell.bookmarks = [
+    {
+      path = "~/Extended Mind";
+      binding = "m";
+    }
+  ];
 }
