@@ -35,6 +35,7 @@ in {
   programs = {
     skim = {
       enable = true;
+      enableFishIntegration = false;
     };
     fish = {
       functions = {

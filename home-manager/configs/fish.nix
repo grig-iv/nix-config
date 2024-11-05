@@ -60,11 +60,18 @@ in {
             eval $EDITOR $selected_file
         end
       '';
+
+      run = ''
+        if test -e "./main.go"
+            go run .
+        end
+      '';
     };
 
     shellInit = ''
       bind \cq 'exit'
       bind \cl 'clear; commandline -f repaint'
+      bind \cr 'run'
     '';
 
     interactiveShellInit = ''
