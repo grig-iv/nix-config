@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   programs.go = {
     enable = true;
     goPath = ".local/go";
@@ -7,7 +11,7 @@
 
   home = {
     packages = with pkgs; [
-      gopls
+      unstable.gopls
       gore
     ];
     sessionPath = [
