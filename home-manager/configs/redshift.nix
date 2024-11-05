@@ -1,6 +1,6 @@
 {...}: {
   services.redshift = {
-    enable = true;
+    enable = false;
     temperature.night = 2800;
     latitude = 59.951828;
     longitude = 30.342980;
