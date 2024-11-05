@@ -3,7 +3,13 @@
   unstable,
   ...
 }: {
-  my.shell.bookmarks.e = "~/Darktable Exported";
+  my.shell.bookmarks = [
+    {
+      path = "~/Darktable Exported";
+      binding = "e";
+    }
+  ];
+
   home.packages = with pkgs; [
     unstable.darktable
   ];

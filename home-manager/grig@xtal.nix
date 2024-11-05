@@ -35,13 +35,29 @@ in {
   ];
 
   my = {
-    shell.bookmarks = {
-      b = "~/Books";
-      d = "~/Downloads";
-      c = "~/.config";
-      p = "~/Projects";
-      t = "~/media/T7/torrents";
-    };
+    shell.bookmarks = [
+      {
+        path = "~/Books";
+        binding = "b";
+      }
+      {
+        path = "~/Downloads";
+        binding = "d";
+      }
+      {
+        path = "~/.config";
+        binding = "c";
+      }
+      {
+        path = "~/sources";
+        binding = "s";
+      }
+      {
+        path = "~/media/T7/torrents";
+        binding = "t";
+      }
+    ];
+
     repositories = [
       {
         url = "git@github.com:grig-iv/nvim.git";
