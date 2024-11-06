@@ -71,7 +71,7 @@ in {
     shellInit = ''
       bind \cq 'exit'
       bind \cl 'clear; commandline -f repaint'
-      bind \cr 'run'
+      bind \cr 'run; commandline -f repaint'
     '';
 
     interactiveShellInit = ''

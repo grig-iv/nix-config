@@ -34,6 +34,17 @@ in {
     ./configs/development/go.nix
   ];
 
+  programs.fish = {
+    functions.transcend-dev = ''
+      set dir $(pwd)
+      cd ~/sources/transcend
+      cd $(go run . --dir $dir --print-last-dir)
+    '';
+    shellInit = pkgs.lib.mkAfter ''
+      bind \ct 'transcend-dev; commandline -f repaint'
+    '';
+  };
+
   my = {
     shell.bookmarks = [
       {
