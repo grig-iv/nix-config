@@ -31,6 +31,7 @@ in {
     ./configs/bitwarden.nix
     ./configs/darktable.nix
     ./configs/bottom.nix
+    ./configs/xcolor.nix
     ./configs/development/go.nix
   ];
 
