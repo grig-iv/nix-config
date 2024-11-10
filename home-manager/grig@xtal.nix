@@ -38,8 +38,15 @@ in {
   programs.fish = {
     functions.transcend-dev = ''
       set dir $(pwd)
+      cd "$(go run . --dir $dir --print-last-dir)"
+
+      set tmp (mktemp -t "transcend-cwd.XXXXX")
       cd ~/sources/transcend
-      cd $(go run . --dir $dir --print-last-dir)
+      go run . $argv --cwd-file="$tmp"
+      if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+          cd -- "$cwd"
+      end
+      rm -f -- "$tmp" &2> /dev/null
     '';
     shellInit = pkgs.lib.mkAfter ''
       bind \ct 'transcend-dev; commandline -f repaint'

@@ -45,7 +45,7 @@ in {
         if type -q plato
              plato
         else
-            echo "  "
+            echo "   "
         end
       '';
 
