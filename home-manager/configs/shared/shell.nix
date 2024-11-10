@@ -15,6 +15,7 @@ with lib; {
     ./../eza.nix
     ./../lazygit.nix
     ./../fish.nix
+    ./../bash.nix
     ./../tmux.nix
     ./../neovim.nix
     ./../direnv.nix
