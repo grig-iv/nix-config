@@ -18,6 +18,7 @@
     .././configs/shadowsocks.nix
     .././configs/docker.nix
     .././configs/printing.nix
+    .././configs/proxychains.nix
   ];
 
   my = {
