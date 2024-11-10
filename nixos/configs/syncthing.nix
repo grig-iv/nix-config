@@ -86,13 +86,12 @@ in
           fi
 
           mkdir -p "${cloudPath}/FreeTube"
+          chown grig "${cloudPath}/FreeTube"
 
           ln -sf "${cloudPath}/FreeTube/history.db"     "${homePath}/.config/FreeTube/history.db"
           ln -sf "${cloudPath}/FreeTube/playlists.db"   "${homePath}/.config/FreeTube/playlists.db"
           ln -sf "${cloudPath}/FreeTube/profiles.db"    "${homePath}/.config/FreeTube/profiles.db"
           ln -sf "${cloudPath}/FreeTube/settings.db"    "${homePath}/.config/FreeTube/settings.db"
-
-          chown -R ${user} "${cloudPath}/FreeTube"
         '';
       };
 
@@ -101,10 +100,9 @@ in
         after = ["multi-user.target"];
         script = ''
           mkdir -p "${homePath}/.local/share/fish"
+          chown grig "${homePath}/.local/share/fish"
 
           ln -sf "${cloudPath}/fish/fish_history" "${homePath}/.local/share/fish/fish_history"
-
-          chown -R ${user} "${homePath}/.local/share/fish"
         '';
       };
 
@@ -113,11 +111,10 @@ in
         after = ["multi-user.target"];
         script = ''
           mkdir -p "${homePath}/.local/share/calcurse"
+          chown grig "${homePath}/.local/share/calcurse"
 
           ln -sf "${cloudPath}/calcurse/apts" "${homePath}/.local/share/calcurse/apts"
           ln -sf "${cloudPath}/calcurse/todo" "${homePath}/.local/share/calcurse/todo"
-
-          chown -R ${user} "${homePath}/.local/share/calcurse"
         '';
       };
     };
