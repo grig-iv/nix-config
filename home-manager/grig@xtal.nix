@@ -99,10 +99,6 @@ in {
       tor-browser
       chromium
       gimp
-      spotify
-      # obs-studio
-      # screenkey
-      audacity
       electrum
       keepass
       unstable.freetube
@@ -113,9 +109,7 @@ in {
       diskonaut
       calcurse
       krusader
-      scribus
-
-      st
+      yt-dlp
 
       # work
       remmina
@@ -123,6 +117,13 @@ in {
       libreoffice
       skypeforlinux
       slack
+
+      #tmp
+      st
+      spotify
+      audacity
+      # obs-studio
+      # screenkey
     ];
 
     stateVersion = "24.05";
