@@ -41,6 +41,14 @@ in {
     with pkgs; {
       fish_greeting = "";
 
+      fish_prompt = ''
+        if type -q plato
+             plato
+        else
+            echo "  "
+        end
+      '';
+
       mkdircd = ''
         mkdir -pv $argv; and cd $argv
       '';

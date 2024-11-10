@@ -23,7 +23,9 @@
   ];
 
   statusLeft = lib.concatStrings [
-    "#[fg=${c.primary}]󱂬 "
+    "#[align=absolute-centre]"
+    "#[fg=${c.accent}]#{pane_current_path}"
+    "#[align=right]"
   ];
 
   statusRight = lib.concatStrings [
@@ -61,6 +63,7 @@ in {
       set -g window-status-current-format "${activeWindow}"
       set -g status-left "${statusLeft}"
       set -g status-right "${statusRight}"
+      set -g status-left-length 65
       set -g pane-active-border-style fg=${c.primary}
       set -g pane-border-style fg=${c.overlay0}
       set -g message-style fg=${c.accent},bg=default
