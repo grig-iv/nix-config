@@ -39,10 +39,12 @@
 
     shellAliases = {
       "x" = "jump $NIXCONF";
-
-      "shm" = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
-      "snc" = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
     };
+  };
+
+  programs.fish.shellAbbrs = {
+    "hms" = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
+    "nrs" = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
   };
 
   systemd.user.startServices = "sd-switch";

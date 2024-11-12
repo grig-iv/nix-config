@@ -2,8 +2,6 @@
 {config, ...}: let
   colors = config.my.colors;
 in {
-  home.shellAliases.g = "lazygit";
-
   programs = {
     lazygit = {
       enable = true;
