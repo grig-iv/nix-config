@@ -1,12 +1,16 @@
 {
   pkgs,
+  unstable,
   lib,
   config,
+  inputs,
   ...
 }: let
   colors' = config.my.colors';
 in {
   imports = [./starship.nix];
+
+  home.packages = [unstable.fish-lsp];
 
   programs.fish = {
     enable = true;
@@ -41,13 +45,7 @@ in {
     with pkgs; {
       fish_greeting = "";
 
-      fish_prompt = ''
-        if type -q plato
-             plato
-        else
-            echo "   "
-        end
-      '';
+      fish_prompt = getExe inputs.grig-plato.packages.${pkgs.system}.default;
 
       mkdircd = ''
         mkdir -pv $argv; and cd $argv
