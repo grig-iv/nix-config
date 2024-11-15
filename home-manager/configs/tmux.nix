@@ -23,9 +23,7 @@
   ];
 
   statusLeft = lib.concatStrings [
-    "#[align=absolute-centre]"
     "#[fg=${c.accent}]#{pane_current_path}"
-    "#[align=right]"
   ];
 
   statusRight = lib.concatStrings [
@@ -57,7 +55,7 @@ in {
       # theme
       set -g status-position top
       set -g status-style bg=default
-      set -g status-justify left
+      set -g status-justify absolute-centre
       set -g window-status-format "${inactiveWindow}"
       set -g window-status-separator ""
       set -g window-status-current-format "${activeWindow}"
@@ -74,6 +72,7 @@ in {
       # Tmux only bindings
       bind -n M-n new-window -c "#{pane_current_path}"
       bind -n M-q confirm-before -p "kill-window #W? (y/n)" kill-pane
+      bind q confirm-before -p "kill-server #W? (y/n)" kill-server
 
       bind -n M-h split-window -h -c "#{pane_current_path}"
       bind -n M-v split-window -v -c "#{pane_current_path}"
@@ -116,6 +115,10 @@ in {
       bind -T copy-mode-vi M-C-Up resize-pane -U 1
       bind -T copy-mode-vi M-C-Right resize-pane -R 1
     '';
+  };
+
+  programs.fish.shellAbbrs = {
+    "tl" = "tmuxp load";
   };
 
   xdg.configFile = {
