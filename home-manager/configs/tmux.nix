@@ -7,9 +7,7 @@
   c = config.my.colors;
 
   tmuxRun = pkgs.writeShellScriptBin "tmux-run" ''
-    if [ -z "$TMUX" ]; then
-        tmux attach -t main || tmuxp load main
-    fi
+    tmuxp load main -y
   '';
 
   activeWindow = lib.concatStrings [
@@ -87,6 +85,7 @@ in {
       bind -n M-S-Down swap-pane -D
 
       bind -n M-s display-popup -E "nvim /tmp/scratchpad.md"
+      bind -n M-m display-popup -w 80% -h 80% -E "nvim '$HOME/Extended Mind/context.md'"
       bind -n M-g display-popup -w 80% -h 80% -d "#{pane_current_path}" -E "lazygit"
       bind -n M-t display-popup -d "#{pane_current_path}" -E "fish"
 
@@ -123,7 +122,13 @@ in {
 
   xdg.configFile = {
     "tmuxp/main.yaml".text = ''
-      session_name: main
+      session_name: default
+      windows:
+        - panes:
+            - echo 'Hello!'
+    '';
+    "tmuxp/mind.yaml".text = ''
+      session_name: mind
       windows:
         - shell_command_before:
             - cd "$HOME/Extended Mind/"
