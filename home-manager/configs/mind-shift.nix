@@ -10,5 +10,9 @@ in {
 
     "super + ctrl + shift + Prior" = cmd "move-to-tag -p";
     "super + ctrl + shift + Next" = cmd "move-to-tag -n";
+
+    "super + t" = cmd "go-to-win-or-spawn org.wezfu wezterm";
+    "super + f" = cmd "go-to-win-or-spawn firefox firefox";
+    "super + s" = cmd "go-to-win-or-spawn TelegramDesktop telegram-desktop";
   };
 }
