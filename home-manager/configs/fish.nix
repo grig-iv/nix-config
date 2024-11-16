@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   lib,
   config,
   inputs,
@@ -9,8 +8,6 @@
   colors' = config.my.colors';
 in {
   imports = [./starship.nix];
-
-  home.packages = [unstable.fish-lsp];
 
   programs.fish = {
     enable = true;
