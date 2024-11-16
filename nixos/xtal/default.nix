@@ -27,23 +27,26 @@
   };
 
   services = {
-    displayManager.defaultSession = "dwm";
-    xserver.displayManager = {
-      session = [
-        {
-          manage = "desktop";
-          name = "dwm";
-          start = ''exec $HOME/.xsession'';
-        }
-      ];
-    };
+    displayManager.defaultSession = "none+mind-shift";
+    xserver.displayManager.session = [
+      {
+        manage = "window";
+        name = "dwm";
+        start = "exec $HOME/.xsession";
+      }
+      {
+        manage = "window";
+        name = "mind-shift";
+        start = "exec $OME/.xsession";
+      }
+    ];
   };
 
   boot.loader = {
     timeout = 10;
     efi = {
       canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot/efi"; 
+      efiSysMountPoint = "/boot/efi";
     };
     grub = {
       enable = true;
