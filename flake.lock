@@ -294,11 +294,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1731447898,
-        "narHash": "sha256-MSIZ+kh1cjCWeZVtwTH5TUMYdJSgQ+K2LkOPKZPSVgs=",
+        "lastModified": 1731451157,
+        "narHash": "sha256-5iHLj29hv2lyy4HyURu5od8w1kLmjueLonDlOJezbMQ=",
         "owner": "grig-iv",
         "repo": "plato",
-        "rev": "6f547eab74088a8c03030eb9682ecbbaf91aed12",
+        "rev": "9a15e83502becfa0c9399484b48b8bb308ae9798",
         "type": "github"
       },
       "original": {
