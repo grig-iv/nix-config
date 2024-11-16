@@ -7,7 +7,8 @@
 in {
   imports = [
     ./configs/shared/shell.nix
-    ./configs/dwm.nix
+    ./configs/xsession.nix
+    ./configs/mind-shift.nix
     ./configs/wezterm
     ./configs/firefox
     ./configs/dmenu.nix
