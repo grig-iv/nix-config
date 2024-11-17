@@ -4,6 +4,7 @@ in {
   services.sxhkd.keybindings = {
     "super + alt + ctrl + q" = cmd "quit";
     "super + alt + q" = cmd "kill-client";
+    "super + alt + f" = cmd "full-screen";
 
     "super + ctrl + Prior" = cmd "go-to-tag -p";
     "super + ctrl + Next" = cmd "go-to-tag -n";
