@@ -49,18 +49,35 @@ in {
       '';
 
       jump = ''
-        if test (count $argv) -eq 0
-            echo "No target directory provided."
-            exit 1
+        argparse -N 1 'd/dir' 'r/recursive' -- $argv
+        or return
+
+        set find_args "--max-depth" "1"
+
+        if set -q _flag_recursive
+            set find_args
         end
 
-        set target_dir (eval echo $argv[1])
-        cd $target_dir; or exit
+        if set -q _flag_dir
+            set -a find_args "--type" "dir"
+        else
+            set -a find_args "--type" "f"
+        end
 
-        set selected_file (${getExe fd} -t f | ${getExe skim} --preview 'bat --color=always --line-range :100 {}')
+        cd (string replace '~' $HOME $argv)
 
-        if test -n "$selected_file"
-            eval $EDITOR $selected_file
+        set selection (command fd . $find_args | sk)
+        if test -z "$selection"
+            echo "No selection"
+            cd -
+            return
+        end
+
+
+        if set -q _flag_dir
+            cd $selection
+        else
+            $EDITOR ./$selection
         end
       '';
 

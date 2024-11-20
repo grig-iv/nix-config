@@ -50,7 +50,7 @@ with lib; {
     };
 
     shellAliases = {
-      n = "jump $NVIMCONF";
+      n = "jump -r $NVIMCONF";
     };
   };
 }

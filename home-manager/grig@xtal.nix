@@ -136,6 +136,10 @@ in {
     ];
 
     stateVersion = "24.05";
+
+    shellAliases = {
+      "s" = "jump -d ~/sources/";
+    };
   };
 
   news.display = "show";

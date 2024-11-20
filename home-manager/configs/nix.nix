@@ -38,7 +38,7 @@
     };
 
     shellAliases = {
-      "x" = "jump $NIXCONF";
+      "x" = "jump -r $NIXCONF";
     };
   };
 
