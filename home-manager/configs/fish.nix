@@ -66,7 +66,8 @@ in {
 
       run = ''
         if test -e "./main.go"
-            go run .
+            commandline -r "go run ."
+            commandline -f execute
         end
       '';
     };

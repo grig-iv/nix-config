@@ -9,6 +9,11 @@
     goBin = ".local/go/bin";
   };
 
+  programs.fish.shellAbbrs = {
+    "gmt" = "go mod tidy";
+    "gmi" = "go mod init";
+  };
+
   home = {
     packages = with pkgs; [
       unstable.gopls

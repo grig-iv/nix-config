@@ -117,7 +117,7 @@ in {
   };
 
   programs.fish.shellAbbrs = {
-    "tl" = "tmuxp load";
+    "tl" = "tmuxp load -y";
   };
 
   xdg.configFile = {
