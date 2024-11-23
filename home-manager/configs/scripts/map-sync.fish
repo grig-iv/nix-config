@@ -21,6 +21,6 @@ end
 for mark in $marks
     if set -q $mark
         echo movng $$mark to $mark.geojson
-        mv -f $$mark "$HOME/Extended Mind/resources/maps"
+        mv -f $$mark "$HOME/Extended Mind/resources/maps/$mark.geojson"
     end
 end
