@@ -81,8 +81,8 @@ in {
       bind -n M-C-S-PgUp switch-client -p
       bind -n M-C-S-PgDn switch-client -n
 
-      bind -n M-S-Up swap-pane -U
-      bind -n M-S-Down swap-pane -D
+      bind -r S-Up swap-pane -U
+      bind -r S-Down swap-pane -D
 
       bind -n M-s display-popup -E "nvim /tmp/scratchpad.md"
       bind -n M-m display-popup -w 80% -h 80% -E "nvim '$HOME/Extended Mind/context.md'"
