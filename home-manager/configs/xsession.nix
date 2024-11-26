@@ -18,7 +18,6 @@ in {
       fi
 
       if [ "$DESKTOP_SESSION" == "none+mind-shift" ]; then
-          wezterm -e tmuxp load main -y &
           mind-shift-st &
           mind-shift &> $HOME/.local/share/mind-shift.log
           while [ -e ${mind-shift-dev} ]; do

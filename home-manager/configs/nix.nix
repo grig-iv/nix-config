@@ -45,6 +45,8 @@
   programs.fish.shellAbbrs = {
     "hms" = lib.mkDefault "home-manager switch --flake $NIXCONF#$(whoami)@$(hostname)";
     "nrs" = "sudo nixos-rebuild switch --flake $NIXCONF#$(hostname)";
+    "nd" = "nix develop";
+    "lu" = "nix flake lock --update-input";
   };
 
   systemd.user.startServices = "sd-switch";
