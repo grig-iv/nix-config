@@ -119,6 +119,7 @@ in {
       calcurse
       krusader
       yt-dlp
+      gnome.gnome-boxes
 
       # work
       remmina

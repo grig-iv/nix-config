@@ -6,6 +6,9 @@ in {
     "super + alt + q" = cmd "kill-client";
     "super + alt + f" = cmd "full-screen";
 
+    "super + Up" = cmd "focus -p";
+    "super + Down" = cmd "focus -n";
+
     "super + ctrl + Prior" = cmd "go-to-tag -p";
     "super + ctrl + Next" = cmd "go-to-tag -n";
 
