@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./modules
     ./configs/wsl.nix
@@ -11,17 +11,34 @@
     ./configs/tmux.nix
     ./configs/yazi
     ./configs/git.nix
-    ./configs/lazygit.nix
     ./configs/skim.nix
     ./configs/bat.nix
     ./configs/qmk.nix
+    ./configs/development/go.nix
   ];
 
   home = {
     username = "grig";
     homeDirectory = "/home/grig";
     stateVersion = "23.05";
+    packages = with pkgs; [
+      stow
+      lazygit
+      lf
+    ];
   };
-  my.hostInfo. windowsUserPath = "/mnt/c/Users/grig/";
 
+  my = {
+    hostInfo.windowsUserPath = "/mnt/c/Users/grig/";
+    repositories = [
+      {
+        url = "git@github.com:grig-iv/nvim.git";
+        path = "$HOME/.config/nvim";
+      }
+      {
+        url = "git@github.com:grig-iv/dotfiles.git";
+        path = "$HOME/.config/dotfiles";
+      }
+    ];
+  };
 }

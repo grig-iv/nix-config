@@ -16,10 +16,6 @@
     windows.user = "grig";
   };
 
-  environment.systemPackages = with pkgs; [
-    zathura
-  ];
-
   hardware.keyboard.qmk.enable = true;
 
   system.stateVersion = "23.11";
