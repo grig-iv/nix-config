@@ -13,7 +13,6 @@
     ./configs/git.nix
     ./configs/lazygit.nix
     ./configs/skim.nix
-    ./configs/eza.nix
     ./configs/bat.nix
     ./configs/qmk.nix
   ];
