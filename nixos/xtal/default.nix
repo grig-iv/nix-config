@@ -19,6 +19,7 @@
     .././configs/docker.nix
     .././configs/printing.nix
     .././configs/proxychains.nix
+    .././configs/wifi-adapter.nix
   ];
 
   my = {
@@ -75,6 +76,7 @@
     wget
     curl
     unzip
+    usbutils
   ];
 
   # USB mount
