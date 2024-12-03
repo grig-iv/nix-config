@@ -1,7 +1,12 @@
-{pkgs, ...}: {
+{
+  unstable,
+  pkgs,
+  ...
+}: {
   services = {
     printing = {
       enable = true;
+      package = unstable.cups;
       drivers = with pkgs; [
         gutenprint
       ];
@@ -11,5 +16,6 @@
       nssmdns4 = true;
       openFirewall = true;
     };
+    ipp-usb.enable = true;
   };
 }
