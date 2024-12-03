@@ -103,23 +103,25 @@ in {
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-      # main
+      diskonaut
+      calcurse
+      yt-dlp
+
+      xclip
+      pulsemixer
+      krusader
+
+      telegram-desktop
+      unstable.freetube
       qbittorrent
       tor-browser
       chromium
       gimp
       electrum
       keepass
-      unstable.freetube
-      telegram-desktop
-      xclip
-      maim
-      pulsemixer
-      diskonaut
-      calcurse
-      krusader
-      yt-dlp
+
       gnome.gnome-boxes
+      spice-vdagent
 
       # work
       remmina

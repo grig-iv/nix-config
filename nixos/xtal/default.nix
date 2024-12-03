@@ -19,6 +19,7 @@
     .././configs/docker.nix
     .././configs/printing.nix
     .././configs/proxychains.nix
+    .././configs/vm.nix
     .././configs/wifi-adapter.nix
   ];
 
