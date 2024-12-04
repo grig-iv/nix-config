@@ -7,6 +7,16 @@
 in {
   imports = [
     ./configs/shared/shell.nix
+    ./configs/nix.nix
+    ./configs/yazi
+    ./configs/skim.nix
+    ./configs/bat.nix
+    ./configs/git.nix
+    ./configs/fish.nix
+    ./configs/bash.nix
+    ./configs/tmux.nix
+    ./configs/neovim.nix
+    ./configs/direnv.nix
     ./configs/xsession.nix
     ./configs/mind-shift.nix
     ./configs/wezterm
@@ -84,6 +94,10 @@ in {
         path = "$HOME/.config/nvim";
       }
       {
+        url = "git@github.com:grig-iv/dotfiles.git";
+        path = "$HOME/.config/dotfiles";
+      }
+      {
         url = "git@github.com:grig-iv/grog.git";
         path = "$HOME/sources/grog";
       }
@@ -104,8 +118,10 @@ in {
 
     packages = with pkgs; [
       diskonaut
+      lazygit
       calcurse
       yt-dlp
+      stow
 
       xclip
       pulsemixer
@@ -143,6 +159,10 @@ in {
     shellAliases = {
       "s" = "jump -d ~/sources/";
     };
+  };
+
+  programs.fish.shellAbbrs = {
+    "stw" = "stow --dotfiles --no-folding -t $HOME -d $HOME/.config -S dotfiles";
   };
 
   news.display = "show";

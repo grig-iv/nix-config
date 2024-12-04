@@ -6,19 +6,6 @@
 with lib; {
   imports = [
     ./../../modules
-
-    ./../nix.nix
-    ./../yazi
-    ./../skim.nix
-    ./../bat.nix
-    ./../git.nix
-    ./../eza.nix
-    ./../lazygit.nix
-    ./../fish.nix
-    ./../bash.nix
-    ./../tmux.nix
-    ./../neovim.nix
-    ./../direnv.nix
   ];
 
   xdg.enable = true;
@@ -43,7 +30,6 @@ with lib; {
       tldr
       zip
       tree
-      babashka
       bc
     ];
 
