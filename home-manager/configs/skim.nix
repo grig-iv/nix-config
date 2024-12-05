@@ -62,7 +62,7 @@ in {
         '';
       };
 
-      shellInit = pkgs.lib.mkAfter ''
+      interactiveShellInit = pkgs.lib.mkAfter ''
         bind \cp 'goToProject; commandline -f execute'
         bind \cf 'findAndEdit'
         bind \ck 'killProcess'

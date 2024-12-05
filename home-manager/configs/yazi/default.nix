@@ -95,7 +95,7 @@ in {
     };
   };
 
-  programs.fish.shellInit = pkgs.lib.mkAfter ''
+  programs.fish.interactiveShellInit = pkgs.lib.mkAfter ''
     bind \ce 'ya; commandline -f execute'
   '';
 

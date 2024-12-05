@@ -118,10 +118,12 @@ in {
 
     packages = with pkgs; [
       diskonaut
-      lazygit
       calcurse
       yt-dlp
       stow
+      lazygit
+      lf
+      helix
 
       xclip
       pulsemixer
@@ -159,10 +161,6 @@ in {
     shellAliases = {
       "s" = "jump -d ~/sources/";
     };
-  };
-
-  programs.fish.shellAbbrs = {
-    "stw" = "stow --dotfiles --no-folding -t $HOME -d $HOME/.config -S dotfiles";
   };
 
   news.display = "show";

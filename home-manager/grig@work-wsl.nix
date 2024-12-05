@@ -25,6 +25,7 @@
       stow
       lazygit
       lf
+      helix
     ];
   };
 
