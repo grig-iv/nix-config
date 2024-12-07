@@ -30,7 +30,6 @@ in {
     ./configs/udiskie.nix
     ./configs/qmk.nix
     ./configs/flameshot.nix
-    ./configs/mpv.nix
     ./configs/gtk.nix
     ./configs/sxiv.nix
     ./configs/discord.nix
@@ -137,6 +136,7 @@ in {
       gimp
       electrum
       keepass
+      mpv
 
       gnome.gnome-boxes
       spice-vdagent
