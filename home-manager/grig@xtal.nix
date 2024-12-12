@@ -122,9 +122,19 @@ in {
       stow
       lazygit
       lf
-      helix
+      unstable.helix
       tmux
       tmuxp
+
+      # lsp & formaters
+      marksman # makrdown
+      taplo # toml
+      vscode-langservers-extracted # html/css/json
+      yaml-language-server # yaml
+      nil # nix lsp
+      alejandra # nix formater
+      lua-language-server # lua lsp
+      stylua # lua formatter
 
       xclip
       pulsemixer
