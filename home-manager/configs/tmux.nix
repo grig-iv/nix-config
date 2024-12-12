@@ -6,10 +6,6 @@
 }: let
   c = config.my.colors;
 
-  tmuxRun = pkgs.writeShellScriptBin "tmux-run" ''
-    tmuxp load main -y
-  '';
-
   activeWindow = lib.concatStrings [
     "#[fg=${c.surface0},bg=default]"
     "#[fg=${c.primary},bg=${c.surface0},bold]#{b:pane_current_path}"
@@ -28,8 +24,6 @@
     "#[fg=${c.primary}]#{session_name}  "
   ];
 in {
-  home.packages = [tmuxRun];
-
   programs.tmux = {
     enable = true;
     prefix = "M-b";
@@ -40,7 +34,6 @@ in {
     mouse = true;
     terminal = "tmux-256color";
     shell = lib.getExe pkgs.fish;
-    tmuxp.enable = true;
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = tmux-fzf;
@@ -113,46 +106,6 @@ in {
       bind -T copy-mode-vi M-C-Down resize-pane -D 1
       bind -T copy-mode-vi M-C-Up resize-pane -U 1
       bind -T copy-mode-vi M-C-Right resize-pane -R 1
-    '';
-  };
-
-  programs.fish.shellAbbrs = {
-    "tl" = "tmuxp load -y";
-  };
-
-  xdg.configFile = {
-    "tmuxp/main.yaml".text = ''
-      session_name: default
-      windows:
-        - panes:
-            - echo 'Hello!'
-    '';
-    "tmuxp/mind.yaml".text = ''
-      session_name: mind
-      windows:
-        - shell_command_before:
-            - cd "$HOME/Extended Mind/"
-          panes:
-            - nvim context.md
-    '';
-    "tmuxp/work.yaml".text = ''
-      session_name: work
-      windows:
-        - shell_command_before:
-            - cd "$HOME/Extended Mind/"
-          panes:
-            - nvim context.md
-        - shell_command_before:
-            - cd "/mnt/c/Users/grig/source/lc-client/master"
-          panes:
-            - pwshc lazygit
-    '';
-    "tmuxp/reading.yaml".text = ''
-      session_name: reading
-      windows:
-        - panes:
-            -
-            - nvim ~/Extended\ Mind/areas/english/words-list.txt
     '';
   };
 }

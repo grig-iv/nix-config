@@ -123,6 +123,8 @@ in {
       lazygit
       lf
       helix
+      tmux
+      tmuxp
 
       xclip
       pulsemixer
