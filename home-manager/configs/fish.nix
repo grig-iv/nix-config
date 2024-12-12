@@ -7,8 +7,6 @@
 }: let
   colors' = config.my.colors';
 in {
-  imports = [./starship.nix];
-
   programs.fish = {
     enable = true;
     plugins = with pkgs.fishPlugins; [

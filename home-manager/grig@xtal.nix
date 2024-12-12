@@ -24,7 +24,6 @@ in {
     ./configs/dmenu.nix
     ./configs/dunst.nix
     ./configs/zathura.nix
-    ./configs/redshift.nix
     ./configs/rofi.nix
     ./configs/feh.nix
     ./configs/udiskie.nix
@@ -32,15 +31,12 @@ in {
     ./configs/flameshot.nix
     ./configs/gtk.nix
     ./configs/sxiv.nix
-    ./configs/discord.nix
     ./configs/notes.nix
-    ./configs/anki.nix
     ./configs/ssh
     ./configs/audio.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
     ./configs/darktable.nix
-    ./configs/bottom.nix
     ./configs/xcolor.nix
     ./configs/development/go.nix
   ];
@@ -125,16 +121,23 @@ in {
       unstable.helix
       tmux
       tmuxp
+      bottom
 
       # lsp & formaters
       marksman # makrdown
       taplo # toml
       vscode-langservers-extracted # html/css/json
       yaml-language-server # yaml
-      nil # nix lsp
-      alejandra # nix formater
-      lua-language-server # lua lsp
-      stylua # lua formatter
+
+      nil
+      alejandra
+
+      lua-language-server
+      stylua
+
+      go
+      unstable.gopls
+      gore
 
       xclip
       pulsemixer
@@ -148,6 +151,8 @@ in {
       gimp
       electrum
       keepass
+      discord
+      anki-bin
       mpv
 
       gnome.gnome-boxes
