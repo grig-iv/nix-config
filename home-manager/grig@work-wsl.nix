@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   imports = [
     ./modules
     ./configs/wsl.nix
@@ -25,7 +29,17 @@
       stow
       lazygit
       lf
-      helix
+      unstable.helix
+
+      # lsp & formaters
+      marksman # makrdown
+      taplo # toml
+      vscode-langservers-extracted # html/css/json
+      yaml-language-server # yaml
+      nil # nix lsp
+      alejandra # nix formater
+      lua-language-server # lua lsp
+      stylua # lua formatter
     ];
   };
 
