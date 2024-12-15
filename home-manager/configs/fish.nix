@@ -93,9 +93,7 @@ in {
       test -e ${extra-config} && source ${extra-config}
     '';
 
-    interactiveShellInit = let
-      extra-interactive-config = "$HOME/.config/fish/interactive-config-extra.fish";
-    in ''
+    interactiveShellInit = ''
       set -g fish_color_normal ${colors'.text} # default color
       set -g fish_color_command ${colors'.green} # commands like echo
       set -g fish_color_keyword ${colors'.red} # keywords like if - this falls back on the command color if unset
@@ -123,8 +121,6 @@ in {
       set -g fish_pager_color_prefix ${colors'.pink} # the prefix string, i.e. the string that is to be completed
       set -g fish_pager_color_completion ${colors'.text} # suffix of the selected completion
       set -g fish_pager_color_description ${colors'.overlay0} # description of the selected completion
-
-      test -e ${extra-interactive-config} && source ${extra-interactive-config}
     '';
   };
 

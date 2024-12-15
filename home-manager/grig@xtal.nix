@@ -6,7 +6,7 @@
   user = "grig";
 in {
   imports = [
-    ./configs/shared/shell.nix
+    ./modules
     ./configs/nix.nix
     ./configs/yazi
     ./configs/skim.nix
@@ -17,27 +17,16 @@ in {
     ./configs/tmux.nix
     ./configs/neovim.nix
     ./configs/direnv.nix
-    ./configs/xsession.nix
-    ./configs/mind-shift.nix
     ./configs/wezterm
     ./configs/firefox
     ./configs/dmenu.nix
     ./configs/dunst.nix
-    ./configs/zathura.nix
-    ./configs/rofi.nix
-    ./configs/feh.nix
     ./configs/udiskie.nix
-    ./configs/qmk.nix
-    ./configs/flameshot.nix
     ./configs/gtk.nix
-    ./configs/sxiv.nix
-    ./configs/notes.nix
     ./configs/ssh
     ./configs/audio.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
-    ./configs/darktable.nix
-    ./configs/xcolor.nix
     ./configs/development/go.nix
   ];
 
@@ -112,6 +101,13 @@ in {
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      wget
+      curl
+      unzip
+      tldr
+      zip
+      tree
+      bc
       diskonaut
       calcurse
       yt-dlp
@@ -122,6 +118,9 @@ in {
       tmux
       tmuxp
       bottom
+
+      qmk
+      evtest
 
       # lsp & formaters
       marksman # makrdown
@@ -139,12 +138,21 @@ in {
       unstable.gopls
       gore
 
+      # x11 + desktop
       xclip
+      xcolor
+      xorg.xeyes
+      xorg.xev
+      feh
       pulsemixer
+      flameshot
       krusader
 
+      zathura
+      obsidian
       telegram-desktop
       unstable.freetube
+      unstable.darktable
       qbittorrent
       tor-browser
       chromium
@@ -174,20 +182,42 @@ in {
     ];
 
     stateVersion = "24.05";
-
-    shellAliases = {
-      "s" = "jump -d ~/sources/";
-    };
   };
 
-  news.display = "show";
-
-  systemd.user.services.easy-mounts = {
-    Unit.Description = "Create link to /run/media";
-    Install.WantedBy = ["default.target"];
-    Service.ExecStart = "${pkgs.writeShellScript "watch-store" ''
-      #!/run/current-system/sw/bin/bash
-      ln -sf "/run/media/${user}" "$HOME/media"
-    ''}";
+  xsession = {
+    enable = true;
+    windowManager.command = ''
+      . $HOME/.config/x11/xsession.sh
+    '';
   };
+
+  services.sxhkd.enable = true;
+
+  services.sxhkd.keybindings = let
+    cmd = x: ''bash -c "echo '${x}' > /dev/tcp/127.0.0.1/10005"'';
+  in {
+    "super + alt + ctrl + q" = cmd "quit";
+    "super + alt + q" = cmd "kill-client";
+    "super + alt + f" = cmd "full-screen";
+
+    "super + Up" = cmd "focus -p";
+    "super + Down" = cmd "focus -n";
+
+    "super + ctrl + Prior" = cmd "go-to-tag -p";
+    "super + ctrl + Next" = cmd "go-to-tag -n";
+
+    "super + ctrl + shift + Prior" = cmd "move-to-tag -p";
+    "super + ctrl + shift + Next" = cmd "move-to-tag -n";
+
+    "super + t" = cmd "go-to-win-or-spawn org.wezfu wezterm";
+    "super + f" = cmd "go-to-win-or-spawn firefox firefox";
+    "super + s" = cmd "go-to-win-or-spawn TelegramDesktop telegram-desktop";
+
+    "super + shift + s" = "flameshot gui";
+    "print" = "flameshot screen -c";
+
+    "super + alt + c" = "xcolor -s";
+  };
+
+  xdg.enable = true;
 }

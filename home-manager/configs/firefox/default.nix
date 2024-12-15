@@ -1,17 +1,4 @@
 {pkgs, ...}: {
-  home.sessionVariables.BROWSER = "firefox";
-
-  xdg = {
-    configFile."tridactyl/tridactylrc".source = ./tridactylrc;
-    mimeApps = {
-      enable = true;
-      defaultApplications = {
-        "x-scheme-handler/http" = "firefox.desktop";
-        "x-scheme-handler/https" = "firefox.desktop";
-      };
-    };
-  };
-
   programs.firefox = {
     enable = true;
     package = pkgs.firefox.override {

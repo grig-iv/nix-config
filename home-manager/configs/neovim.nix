@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -19,16 +18,8 @@ with lib; {
         gcc
       ];
     };
-    #vscode.extensions = [pkgs.vscode-marketplace.asvetliakov.vscode-neovim];
     ripgrep.enable = true;
   };
-
-  my.shell.bookmarks = [
-    {
-      path = config.home.sessionVariables.NVIMCONF;
-      binding = "n";
-    }
-  ];
 
   home = {
     packages = with pkgs; [
@@ -43,14 +34,8 @@ with lib; {
       nodePackages.cspell
     ];
 
-    sessionVariables = {
-      EDITOR = mkDefault "nvim";
-      NVIMCONF = mkDefault "~/.config/nvim";
-      EXTMIND = mkDefault "$HOME/extended-mind";
-    };
-
     shellAliases = {
-      n = "jump -r $NVIMCONF";
+      n = "jump -r $HOME/.config/nvim";
     };
   };
 }
