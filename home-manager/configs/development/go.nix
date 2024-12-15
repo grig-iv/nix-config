@@ -1,7 +1,0 @@
-{...}: {
-  home = {
-    sessionPath = [
-      "$GOBIN"
-    ];
-  };
-}

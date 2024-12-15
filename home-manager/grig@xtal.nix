@@ -13,21 +13,15 @@ in {
     ./configs/bat.nix
     ./configs/git.nix
     ./configs/fish.nix
-    ./configs/bash.nix
     ./configs/tmux.nix
     ./configs/neovim.nix
     ./configs/direnv.nix
-    ./configs/wezterm
     ./configs/firefox
-    ./configs/dmenu.nix
     ./configs/dunst.nix
     ./configs/udiskie.nix
-    ./configs/gtk.nix
     ./configs/ssh
-    ./configs/audio.nix
     ./configs/cursor.nix
     ./configs/bitwarden.nix
-    ./configs/development/go.nix
   ];
 
   programs.fish = {
@@ -147,6 +141,8 @@ in {
       pulsemixer
       flameshot
       krusader
+      dmenu
+      wezterm
 
       zathura
       obsidian
@@ -196,6 +192,9 @@ in {
   services.sxhkd.keybindings = let
     cmd = x: ''bash -c "echo '${x}' > /dev/tcp/127.0.0.1/10005"'';
   in {
+    "XF86Audio{Lower,Raise}Volume" = "pamixer -{d,i} 5";
+    "XF86AudioMute" = "pamixer -t";
+
     "super + alt + ctrl + q" = cmd "quit";
     "super + alt + q" = cmd "kill-client";
     "super + alt + f" = cmd "full-screen";
@@ -217,6 +216,10 @@ in {
     "print" = "flameshot screen -c";
 
     "super + alt + c" = "xcolor -s";
+
+    "super + alt + s" = "audio-cycle-output";
+
+    "super + p" = "dmenu_run";
   };
 
   xdg.enable = true;
