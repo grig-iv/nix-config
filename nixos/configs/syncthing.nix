@@ -72,6 +72,11 @@ in
             path = cloudPath;
             devices = ["phone" "xtal" "tha-wsl"];
           };
+          "Music" = {
+            id = "music";
+            path = "${homePath}/music";
+            devices = ["phone" "xtal" "tha-wsl"];
+          };
         };
       };
     };
