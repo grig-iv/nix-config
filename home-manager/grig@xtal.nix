@@ -24,24 +24,6 @@ in {
     ./configs/bitwarden.nix
   ];
 
-  programs.fish = {
-    functions.transcend-dev = ''
-      set dir $(pwd)
-      cd "$(go run . --dir $dir --print-last-dir)"
-
-      set tmp (mktemp -t "transcend-cwd.XXXXX")
-      cd ~/sources/transcend
-      go run . $argv --cwd-file="$tmp"
-      if set cwd (cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
-          cd -- "$cwd"
-      end
-      rm -f -- "$tmp" &2> /dev/null
-    '';
-    shellInit = pkgs.lib.mkAfter ''
-      bind \ct 'transcend-dev; commandline -f repaint'
-    '';
-  };
-
   my = {
     shell.bookmarks = [
       {
@@ -95,6 +77,7 @@ in {
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      dash
       wget
       curl
       unzip
@@ -143,6 +126,7 @@ in {
       krusader
       dmenu
       wezterm
+      sxhkd
 
       zathura
       obsidian
@@ -185,41 +169,6 @@ in {
     windowManager.command = ''
       . $HOME/.config/x11/xsession.sh
     '';
-  };
-
-  services.sxhkd.enable = true;
-
-  services.sxhkd.keybindings = let
-    cmd = x: ''bash -c "echo '${x}' > /dev/tcp/127.0.0.1/10005"'';
-  in {
-    "XF86Audio{Lower,Raise}Volume" = "pamixer -{d,i} 5";
-    "XF86AudioMute" = "pamixer -t";
-
-    "super + alt + ctrl + q" = cmd "quit";
-    "super + alt + q" = cmd "kill-client";
-    "super + alt + f" = cmd "full-screen";
-
-    "super + Up" = cmd "focus -p";
-    "super + Down" = cmd "focus -n";
-
-    "super + ctrl + Prior" = cmd "go-to-tag -p";
-    "super + ctrl + Next" = cmd "go-to-tag -n";
-
-    "super + ctrl + shift + Prior" = cmd "move-to-tag -p";
-    "super + ctrl + shift + Next" = cmd "move-to-tag -n";
-
-    "super + t" = cmd "go-to-win-or-spawn org.wezfu wezterm";
-    "super + f" = cmd "go-to-win-or-spawn firefox firefox";
-    "super + s" = cmd "go-to-win-or-spawn TelegramDesktop telegram-desktop";
-
-    "super + shift + s" = "flameshot gui";
-    "print" = "flameshot screen -c";
-
-    "super + alt + c" = "xcolor -s";
-
-    "super + alt + s" = "audio-cycle-output";
-
-    "super + p" = "dmenu_run";
   };
 
   xdg.enable = true;
