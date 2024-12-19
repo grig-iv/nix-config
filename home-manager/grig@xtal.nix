@@ -9,7 +9,6 @@ in {
     ./modules
     ./configs/nix.nix
     ./configs/yazi
-    ./configs/skim.nix
     ./configs/bat.nix
     ./configs/git.nix
     ./configs/fish.nix
@@ -21,33 +20,9 @@ in {
     ./configs/udiskie.nix
     ./configs/ssh
     ./configs/cursor.nix
-    ./configs/bitwarden.nix
   ];
 
   my = {
-    shell.bookmarks = [
-      {
-        path = "~/Books";
-        binding = "b";
-      }
-      {
-        path = "~/Downloads";
-        binding = "d";
-      }
-      {
-        path = "~/.config";
-        binding = "c";
-      }
-      {
-        path = "~/sources";
-        binding = "s";
-      }
-      {
-        path = "~/media/T7/torrents";
-        binding = "t";
-      }
-    ];
-
     repositories = [
       {
         url = "git@github.com:grig-iv/nvim.git";
@@ -95,6 +70,8 @@ in {
       tmux
       tmuxp
       bottom
+      fd
+      skim
 
       qmk
       evtest
@@ -127,6 +104,7 @@ in {
       dmenu
       wezterm
       sxhkd
+      unclutter
 
       zathura
       obsidian

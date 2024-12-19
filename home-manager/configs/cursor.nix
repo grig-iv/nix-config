@@ -4,7 +4,4 @@
     name = "Bibata-Modern-Ice";
     size = 16;
   };
-  services.unclutter = {
-    enable = true;
-  };
 }
