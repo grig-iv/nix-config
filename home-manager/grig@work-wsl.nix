@@ -7,7 +7,6 @@
     ./modules
     ./configs/wsl.nix
     ./configs/nix.nix
-    ./configs/shared/shell.nix # remove
     ./configs/fish.nix
     ./configs/neovim.nix
     ./configs/notes.nix
@@ -17,8 +16,6 @@
     ./configs/git.nix
     ./configs/skim.nix
     ./configs/bat.nix
-    ./configs/qmk.nix
-    ./configs/development/go.nix
   ];
 
   home = {
