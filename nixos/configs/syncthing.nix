@@ -6,7 +6,7 @@
   host = config.my.host;
   user = config.my.user;
   homePath = "/home/${user}";
-  cloudPath = "${homePath}/Cloud";
+  cloudPath = "${homePath}/cloud";
   hasCloud = lib.hasAttr "Cloud" config.services.syncthing.settings.folders;
 in
   with lib; {
@@ -37,14 +37,14 @@ in
           "xtal".id = "Q5QZIKG-DLRF2VN-6PC6TEQ-VT324HL-2DLDYLC-OWPXUMD-4KRLX5X-L76DKQH";
         };
         folders = filterAttrs (n: v: any (d: d == host) v.devices) {
-          "Extended Mind" = {
+          "Mind" = {
             id = "tcgvs-gd77k";
-            path = "${homePath}/Extended Mind";
+            path = "${homePath}/mind";
             devices = ["phone" "xtal" "tha-wsl" "work-wsl"];
           };
           "Quick Share" = {
             id = "mudfh-6fzjh";
-            path = "${homePath}/Quick Share";
+            path = "${homePath}/quick-share";
             devices = ["phone" "xtal" "tha-wsl" "work-wsl"];
           };
           ".config-win" = {
@@ -54,18 +54,13 @@ in
           };
           "Books" = {
             id = "ztshj-sh3ra";
-            path = "${homePath}/Books";
+            path = "${homePath}/books";
             devices = ["phone" "xtal" "tha-wsl"];
           };
           "Camera" = {
             id = "7pgoy-oxxrb";
-            path = "${homePath}/Camera";
+            path = "${homePath}/camera";
             devices = ["phone" "xtal" "tha-wsl"];
-          };
-          "Interlinked Cells" = {
-            id = "rfkva-mxs67";
-            path = "${homePath}/Interlinked Cells";
-            devices = ["phone" "xtal" "tha-wsl" "tha-mili"];
           };
           "Cloud" = {
             id = "rqeqw-kzojx";
