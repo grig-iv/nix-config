@@ -33,9 +33,5 @@ with lib; {
       nodejs_20
       nodePackages.cspell
     ];
-
-    shellAliases = {
-      n = "jump -r $HOME/.config/nvim";
-    };
   };
 }

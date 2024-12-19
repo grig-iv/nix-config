@@ -5,7 +5,6 @@
 }:
 with lib; {
   imports = [
-    ./bookmarks.nix
     ./scoop.nix
     ./colors.nix
     ./repositories.nix
