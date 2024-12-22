@@ -13,7 +13,6 @@ in {
     ./configs/fish.nix
     ./configs/tmux.nix
     ./configs/neovim.nix
-    ./configs/direnv.nix
     ./configs/firefox
     ./configs/dunst.nix
     ./configs/udiskie.nix
@@ -71,6 +70,7 @@ in {
       bottom
       fd
       skim
+      direnv
 
       rbw
       pinentry
