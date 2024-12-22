@@ -33,6 +33,8 @@
       stow
       lazygit
       lf
+      unstable.yazi
+      glow
       unstable.helix
       tmux
       tmuxp
