@@ -7,7 +7,6 @@
 in {
   imports = [
     ./modules
-    ./configs/nix.nix
     ./configs/yazi
     ./configs/bat.nix
     ./configs/git.nix
@@ -148,6 +147,12 @@ in {
       . $HOME/.config/x11/xsession.sh
     '';
   };
+
+  manual = {
+    manpages.enable = false;
+  };
+
+  systemd.user.startServices = "sd-switch";
 
   xdg.enable = true;
 }

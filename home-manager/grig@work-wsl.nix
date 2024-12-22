@@ -6,7 +6,6 @@
   imports = [
     ./modules
     ./configs/wsl.nix
-    ./configs/nix.nix
     ./configs/fish.nix
     ./configs/neovim.nix
     ./configs/ssh
@@ -72,4 +71,10 @@
       }
     ];
   };
+
+  manual = {
+    manpages.enable = false;
+  };
+
+  systemd.user.startServices = "sd-switch";
 }
