@@ -1,6 +1,6 @@
 {
   pkgs,
-  inputs,
+  unstable,
   ...
 }: let
   # TODO replace with my own file
@@ -27,13 +27,9 @@
     cat ${icons} >> $out
   '';
 in {
-  # nixpkgs.overlays = [
-  #   inputs.yazi.overlays.default
-  # ];
-
   programs.yazi = {
     enable = true;
-    package = pkgs.yazi;
+    package = unstable.yazi;
     enableFishIntegration = true;
     settings = {
       manager = {
@@ -42,18 +38,6 @@ in {
         sort_by = "extension";
         sort_dir_first = true;
         sort_reverse = false;
-        visibility_rules = [
-          {
-            dir = "~/";
-            hide = [
-              "go"
-              "steam"
-            ];
-            show = [
-              "\.config"
-            ];
-          }
-        ];
       };
       plugin = {
         prepend_previewers = [
@@ -100,12 +84,9 @@ in {
   '';
 
   home.packages = with pkgs; [
-    # ffmpegthumbnailer
-    glow
   ];
 
   xdg.configFile = {
-    "yazi/init.lua".source = ./init.lua;
     "yazi/theme.toml".source = theme;
     "yazi/plugins/glow.yazi/init.lua".source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/Reledia/glow.yazi/4e016fa2357e5e7e9b1a4881e1492d73a0a2f2cc/init.lua";

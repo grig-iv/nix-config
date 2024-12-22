@@ -7,11 +7,9 @@
 in {
   imports = [
     ./modules
-    ./configs/yazi
     ./configs/bat.nix
     ./configs/git.nix
     ./configs/fish.nix
-    ./configs/tmux.nix
     ./configs/neovim.nix
     ./configs/firefox
     ./configs/dunst.nix
@@ -62,8 +60,10 @@ in {
       calcurse
       yt-dlp
       stow
+      glow
       lazygit
       lf
+      unstable.yazi
       unstable.helix
       tmux
       tmuxp
@@ -71,6 +71,7 @@ in {
       fd
       skim
       direnv
+      just
 
       rbw
       pinentry

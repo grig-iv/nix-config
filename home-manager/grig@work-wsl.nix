@@ -9,8 +9,8 @@
     ./configs/fish.nix
     ./configs/neovim.nix
     ./configs/ssh
-    ./configs/tmux.nix
-    ./configs/yazi
+    # ./configs/tmux.nix
+    # ./configs/yazi
     ./configs/git.nix
     ./configs/skim.nix
     ./configs/bat.nix

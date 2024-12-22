@@ -34,12 +34,6 @@ in {
     mouse = true;
     terminal = "tmux-256color";
     shell = lib.getExe pkgs.fish;
-    plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = tmux-fzf;
-        extraConfig = "";
-      }
-    ];
     extraConfig = ''
       set -sa terminal-overrides ",xterm*:Tc"
 
