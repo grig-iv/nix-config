@@ -12,8 +12,6 @@
     # ./configs/tmux.nix
     # ./configs/yazi
     ./configs/git.nix
-    ./configs/skim.nix
-    ./configs/bat.nix
   ];
 
   home = {
@@ -21,26 +19,29 @@
     homeDirectory = "/home/grig";
     stateVersion = "23.05";
     packages = with pkgs; [
-      wget
-      curl
-      unzip
-      tldr
-      zip
-      tree
+      bat
       bc
-      diskonaut
+      bottom
+      curl
       calcurse
+      diskonaut
+      just
+      unstable.helix
+      unzip
       stow
+      tldr
+      tree
       lazygit
       lf
+      wget
+      qmk
+      zip
+
       unstable.yazi
       glow
-      unstable.helix
+
       tmux
       tmuxp
-      bottom
-
-      qmk
 
       # lsp & formaters
       marksman # makrdown

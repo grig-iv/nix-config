@@ -7,7 +7,6 @@
 in {
   imports = [
     ./modules
-    ./configs/bat.nix
     ./configs/git.nix
     ./configs/fish.nix
     ./configs/neovim.nix
@@ -48,30 +47,31 @@ in {
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
-      dash
-      wget
-      curl
-      unzip
+      unstable.helix
+      stow
+      lazygit
+      skim
+      fd
       tldr
-      zip
       tree
+      direnv
+      curl
+      wget
+      unzip
+      zip
       bc
       diskonaut
-      calcurse
+      just
       yt-dlp
-      stow
-      glow
-      lazygit
       lf
+      bottom
+      calcurse
+
       unstable.yazi
-      unstable.helix
+      glow
+
       tmux
       tmuxp
-      bottom
-      fd
-      skim
-      direnv
-      just
 
       rbw
       pinentry
