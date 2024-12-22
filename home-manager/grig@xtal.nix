@@ -72,6 +72,9 @@ in {
       fd
       skim
 
+      rbw
+      pinentry
+
       qmk
       evtest
 
