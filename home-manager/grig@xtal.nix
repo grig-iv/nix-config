@@ -66,6 +66,8 @@ in {
       lf
       bottom
       calcurse
+      shellcheck
+      dash
 
       unstable.yazi
       glow
@@ -82,8 +84,11 @@ in {
       # lsp & formaters
       marksman # makrdown
       taplo # toml
-      vscode-langservers-extracted # html/css/json
       yaml-language-server # yaml
+
+      vscode-langservers-extracted # html/css/json
+      unstable.typescript-language-server
+      jsbeautifier
 
       nil
       alejandra
@@ -105,6 +110,7 @@ in {
       flameshot
       krusader
       dmenu
+      rofi
       wezterm
       sxhkd
       unclutter

@@ -36,6 +36,8 @@
       wget
       qmk
       zip
+      shellcheck
+      dash
 
       unstable.yazi
       glow
