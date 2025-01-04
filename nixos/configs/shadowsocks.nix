@@ -1,18 +1,31 @@
 {
-  pkgs,
+  unstable,
   config,
   ...
 }: {
-  sops.secrets."shadowsocks/vps-no" = {};
+  sops.secrets = {
+    "shadowsocks/vps-no" = {};
+    "shadowsocks/vps-nl" = {};
+  };
 
-  systemd.services.shadowsocks-client = {
-    description = "Shadowsocks Client Service";
-    after = ["network.target"];
-    wantedBy = ["multi-user.target"];
-
-    serviceConfig = {
-      ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -c ${config.sops.secrets."shadowsocks/vps-no".path}";
-      Restart = "on-failure";
+  systemd.services = {
+    shadowsocks-client-no = {
+      description = "Shadowsocks Client Service | NO";
+      after = ["network.target"];
+      wantedBy = ["multi-user.target"];
+      serviceConfig = {
+        ExecStart = "${unstable.shadowsocks-rust}/bin/sslocal -c ${config.sops.secrets."shadowsocks/vps-no".path}";
+        Restart = "on-failure";
+      };
+    };
+    shadowsocks-client-nl = {
+      description = "Shadowsocks Client Service | NL";
+      after = ["network.target"];
+      wantedBy = ["multi-user.target"];
+      serviceConfig = {
+        ExecStart = "${unstable.shadowsocks-rust}/bin/sslocal -c ${config.sops.secrets."shadowsocks/vps-nl".path}";
+        Restart = "on-failure";
+      };
     };
   };
 }
