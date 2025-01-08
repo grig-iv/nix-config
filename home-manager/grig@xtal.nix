@@ -47,6 +47,7 @@ in {
     homeDirectory = "/home/${user}";
 
     packages = with pkgs; [
+      runit
       unstable.helix
       stow
       lazygit
@@ -114,6 +115,7 @@ in {
       wezterm
       sxhkd
       unclutter
+      redis
 
       zathura
       obsidian
