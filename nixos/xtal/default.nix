@@ -15,7 +15,6 @@
     .././configs/audio.nix
     .././configs/sudo.nix
     .././configs/syncthing.nix
-    .././configs/shadowsocks.nix
     .././configs/docker.nix
     .././configs/printing.nix
     .././configs/proxychains.nix
@@ -78,6 +77,7 @@
     curl
     unzip
     usbutils
+    unstable.shadowsocks-rust
   ];
 
   # USB mount
