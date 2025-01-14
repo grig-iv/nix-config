@@ -90,6 +90,7 @@ in {
       vscode-langservers-extracted # html/css/json
       unstable.typescript-language-server
       jsbeautifier
+      tailwindcss-language-server
 
       nil
       alejandra
@@ -100,6 +101,9 @@ in {
       go
       unstable.gopls
       gore
+
+      unstable.zig
+      unstable.zls
 
       # x11 + desktop
       xclip
