@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   services = {
     gnome.gnome-keyring.enable = true;
-    dbus.packages = [pkgs.gnome.seahorse];
+    dbus.packages = [pkgs.seahorse];
     xserver = {
       enable = true;
       displayManager.gdm.enable = true;
@@ -11,13 +11,13 @@
 
   environment = with pkgs; {
     systemPackages = [libsecret];
-    gnome.excludePackages = with pkgs.gnome; [
+    gnome.excludePackages = with pkgs; [
       gnome-photos
       gnome-tour
       cheese
       gnome-music
       gnome-terminal
-      pkgs.gedit
+      gedit
       epiphany
       geary
       evince

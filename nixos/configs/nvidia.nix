@@ -6,12 +6,12 @@ in {
   services.xserver.videoDrivers = [driver];
 
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
-      driSupport = true;
     };
 
     nvidia = {
+      open = false;
       modesetting.enable = driver == close; # should be true for "nvidia" and fals for "nouveau"
       forceFullCompositionPipeline = true;
     };

@@ -69,6 +69,8 @@ in {
       calcurse
       shellcheck
       dash
+      ghostty
+      v2raya
 
       unstable.yazi
       glow
@@ -90,6 +92,8 @@ in {
       vscode-langservers-extracted # html/css/json
       unstable.typescript-language-server
       jsbeautifier
+
+      tailwindcss
       tailwindcss-language-server
 
       nil
@@ -132,11 +136,11 @@ in {
       gimp
       electrum
       keepass
-      discord
+      # discord
       anki-bin
       mpv
 
-      gnome.gnome-boxes
+      gnome-boxes
       spice-vdagent
 
       # work
