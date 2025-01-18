@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  unstable,
+  ...
+}: {
   imports = [
     ./disko.nix
     ./hardware-configuration.nix
@@ -25,6 +29,27 @@
   my = {
     user = "grig";
     host = "xtal";
+  };
+
+  services.yggdrasil = {
+    enable = true;
+    package = unstable.yggdrasil;
+    persistentKeys = true;
+    settings = {
+      Peers = [
+        "tls://38.180.77.225:5051?password=MJvO5Nxuor6UqmjbNYSOwA1Fmrt3PVfR"
+        "tls://37.1.221.231:5051?password=0r48BfdAkckJ9c40L7p7gA0ETxXj6kBM"
+      ];
+    };
+  };
+
+  networking.firewall = {
+    allowedTCPPortRanges = [
+      {
+        from = 50000;
+        to = 50500;
+      }
+    ];
   };
 
   services = {
@@ -78,6 +103,7 @@
     unzip
     usbutils
     unstable.shadowsocks-rust
+    unstable.yggdrasil
   ];
 
   # USB mount

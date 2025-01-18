@@ -89,9 +89,12 @@ in {
       taplo # toml
       yaml-language-server # yaml
 
+      nginx
       vscode-langservers-extracted # html/css/json
       unstable.typescript-language-server
       jsbeautifier
+      biome
+      bun
 
       tailwindcss
       tailwindcss-language-server
@@ -124,6 +127,10 @@ in {
       sxhkd
       unclutter
       redis
+
+      mpd
+      ncmpcpp
+      mpc
 
       zathura
       obsidian
