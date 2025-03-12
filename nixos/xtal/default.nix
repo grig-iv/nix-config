@@ -53,7 +53,7 @@
   };
 
   services = {
-    displayManager.defaultSession = "none+mind-shift";
+    displayManager.defaultSession = "qtile";
     xserver.displayManager.session = [
       {
         manage = "window";
@@ -63,9 +63,15 @@
       {
         manage = "window";
         name = "mind-shift";
-        start = "exec $OME/.xsession";
+        start = "exec $HOME/.xsession";
+      }
+      {
+        manage = "window";
+        name = "qtile";
+        start = "exec $HOME/.xsession";
       }
     ];
+    v2raya.enable = true;
   };
 
   boot.loader = {

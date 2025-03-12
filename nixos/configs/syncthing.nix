@@ -15,7 +15,7 @@ in
     sops.secrets."syncthing/key-${host}" = {};
     sops.secrets."syncthing/cert-${host}" = {};
     services.syncthing = {
-      enable = true;
+      enable = false;
       user = user;
       group = "wheel";
       openDefaultPorts = mkDefault true;

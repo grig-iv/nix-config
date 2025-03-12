@@ -71,6 +71,7 @@ in {
       dash
       ghostty
       v2raya
+      syncthing
 
       unstable.yazi
       glow
@@ -83,6 +84,7 @@ in {
 
       qmk
       evtest
+      imagemagick
 
       # lsp & formaters
       marksman # makrdown
@@ -109,6 +111,11 @@ in {
       unstable.gopls
       gore
 
+      rustup
+      gcc
+
+      pyright
+
       unstable.zig
       unstable.zls
 
@@ -117,6 +124,8 @@ in {
       xcolor
       xorg.xeyes
       xorg.xev
+      xbindkeys
+      xdotool
       feh
       pulsemixer
       flameshot
@@ -127,10 +136,12 @@ in {
       sxhkd
       unclutter
       redis
+      polybar
 
       mpd
       ncmpcpp
       mpc
+      ffmpeg
 
       zathura
       obsidian
@@ -141,11 +152,15 @@ in {
       tor-browser
       chromium
       gimp
+      inkscape
       electrum
       keepass
       # discord
       anki-bin
       mpv
+      v2raya
+      texliveFull
+      scribus
 
       gnome-boxes
       spice-vdagent
@@ -156,13 +171,6 @@ in {
       libreoffice
       skypeforlinux
       slack
-
-      #tmp
-      st
-      spotify
-      audacity
-      # obs-studio
-      # screenkey
     ];
 
     stateVersion = "24.05";

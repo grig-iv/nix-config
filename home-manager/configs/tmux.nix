@@ -33,7 +33,7 @@ in {
     newSession = true;
     mouse = true;
     terminal = "tmux-256color";
-    shell = lib.getExe pkgs.fish;
+    shell = lib.getExe pkgs.zsh;
     extraConfig = ''
       set -sa terminal-overrides ",xterm*:Tc"
 

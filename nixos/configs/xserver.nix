@@ -18,6 +18,11 @@
 
     xserver = {
       enable = true;
+      xautolock.enable = false;
+      windowManager.qtile.enable = true;
+      desktopManager = {
+        xfce.enable = true;
+      };
     };
 
     libinput = {
