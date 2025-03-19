@@ -1,5 +1,5 @@
 update-unstable:
-    nix flake lock --update-input nixpkgs-unstable
+    nix flake update nixpkgs-unstable
 
 update-pkgs:
-    nix flake lock --update-input nixpkgs
+    nix flake update nixpkgs
