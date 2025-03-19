@@ -124,6 +124,7 @@ in {
       xcolor
       xorg.xeyes
       xorg.xev
+      xorg.xwininfo
       xbindkeys
       xdotool
       feh
@@ -161,6 +162,9 @@ in {
       v2raya
       texliveFull
       scribus
+
+      ardour
+      furnace
 
       gnome-boxes
       spice-vdagent

@@ -2,7 +2,6 @@
   environment.systemPackages = with pkgs; [
     cudatoolkit
     cudaPackages.cudnn
-    # cudaPackages.cuda-samples # suddenly broke
   ];
 
   environment.sessionVariables = {

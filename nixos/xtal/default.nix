@@ -15,6 +15,7 @@
     .././configs/fonts.nix
     .././configs/keyboard
     .././configs/nvidia.nix
+    .././configs/cuda.nix
     .././configs/xserver.nix
     .././configs/audio.nix
     .././configs/sudo.nix
@@ -53,7 +54,12 @@
   };
 
   services = {
-    displayManager.defaultSession = "qtile";
+    open-webui.enable = true;
+    ollama.enable = true;
+  };
+
+  services = {
+    displayManager.defaultSession = "none+qtile";
     xserver.displayManager.session = [
       {
         manage = "window";
