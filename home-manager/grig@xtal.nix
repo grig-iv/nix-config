@@ -7,13 +7,11 @@
 in {
   imports = [
     ./modules
-    ./configs/git.nix
     ./configs/fish.nix
     ./configs/neovim.nix
     ./configs/firefox
     ./configs/dunst.nix
     ./configs/udiskie.nix
-    ./configs/ssh
     ./configs/cursor.nix
   ];
 
