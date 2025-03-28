@@ -137,6 +137,7 @@ in {
       redis
       polybar
 
+      vlc
       mpd
       ncmpcpp
       mpc
