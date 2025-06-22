@@ -2,51 +2,15 @@
   pkgs,
   unstable,
   ...
-}: let
-  user = "grig";
-in {
+}: {
   imports = [
-    ./modules
-    ./configs/fish.nix
-    ./configs/neovim.nix
-    ./configs/firefox
-    ./configs/dunst.nix
-    ./configs/udiskie.nix
-    ./configs/cursor.nix
+    ./configs/sops.nix
+    ./configs/ssh.nix
   ];
 
-  my = {
-    repositories = [
-      {
-        url = "git@github.com:grig-iv/nvim.git";
-        path = "$HOME/.config/nvim";
-      }
-      {
-        url = "git@github.com:grig-iv/dotfiles.git";
-        path = "$HOME/.config/dotfiles";
-      }
-      {
-        url = "git@github.com:grig-iv/grog.git";
-        path = "$HOME/sources/grog";
-      }
-      {
-        url = "git@github.com:grig-iv/dwm.git";
-        path = "$HOME/sources/dwm";
-      }
-      {
-        url = "git@github.com:grig-iv/gost.git";
-        path = "$HOME/sources/gost";
-      }
-    ];
-  };
-
   home = {
-    username = user;
-    homeDirectory = "/home/${user}";
-
     packages = with pkgs; [
       runit
-      unstable.helix
       stow
       lazygit
       skim
@@ -59,17 +23,17 @@ in {
       unzip
       zip
       bc
-      diskonaut
       just
       yt-dlp
-      lf
       bottom
-      calcurse
-      shellcheck
-      dash
-      ghostty
-      v2raya
-      syncthing
+      unstable.helix
+
+      neovim
+      ripgrep
+      tree-sitter
+      fd
+      jq
+      nodejs_20
 
       unstable.yazi
       glow
@@ -77,23 +41,23 @@ in {
       tmux
       tmuxp
 
-      rbw
-      pinentry
-
       qmk
       evtest
       imagemagick
+
+      # services
+      syncthing
+      v2raya
+      shadowsocks-rust
 
       # lsp & formaters
       marksman # makrdown
       taplo # toml
       yaml-language-server # yaml
 
-      nginx
       vscode-langservers-extracted # html/css/json
       unstable.typescript-language-server
       jsbeautifier
-      biome
       bun
 
       tailwindcss
@@ -114,37 +78,27 @@ in {
 
       pyright
 
-      unstable.zig
-      unstable.zls
-
       # x11 + desktop
-      xclip
       xcolor
-      xorg.xeyes
       xorg.xev
       xorg.xwininfo
       xbindkeys
+      xkb-switch
       xdotool
-      feh
-      pulsemixer
-      flameshot
-      krusader
-      dmenu
-      rofi
-      wezterm
+      unclutter-xfixes
       sxhkd
-      unclutter
-      redis
-      polybar
+      rofi
 
       vlc
       mpd
       ncmpcpp
       mpc
       ffmpeg
+      mpv
 
+      krusader
+      ghostty
       zathura
-      obsidian
       telegram-desktop
       unstable.freetube
       unstable.darktable
@@ -153,38 +107,48 @@ in {
       chromium
       gimp
       inkscape
-      electrum
       keepass
       # discord
       anki-bin
-      mpv
       v2raya
-      texliveFull
-      scribus
 
-      ardour
+      reaper
+      vital
       furnace
 
       gnome-boxes
-      spice-vdagent
 
       # work
       remmina
       putty
       libreoffice
-      skypeforlinux
       slack
     ];
 
-    stateVersion = "24.05";
+    stateVersion = "24.11";
   };
 
-  xsession = {
-    enable = true;
-    windowManager.command = ''
-      . $HOME/.config/x11/xsession.sh
-    '';
+  sops.secrets."shadowsocks/vps-no".path = "%r/shadowsocks/config-no.json";
+  systemd.user.services.shadowsocks = {
+    Unit = {
+      Description = "Shadowsocks";
+      After = ["network-online.target" "sops-nix.service"];
+      Wants = "network-online.target";
+    };
+    Service = {
+      Type = "simple";
+      ExecStart = "${pkgs.shadowsocks-rust}/bin/sslocal -c %t/shadowsocks/config-no.json";
+      Restart = "always";
+      RestartSec = "5";
+    };
+    Install = {
+      WantedBy = ["default.target"];
+    };
   };
+
+  programs.home-manager.enable = true;
+  targets.genericLinux.enable = true;
+  xdg.enable = true;
 
   manual = {
     manpages.enable = false;
@@ -192,5 +156,6 @@ in {
 
   systemd.user.startServices = "sd-switch";
 
-  xdg.enable = true;
+  username = "grig";
+  homeDirectory = "/home/grig";
 }

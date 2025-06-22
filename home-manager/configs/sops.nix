@@ -1,6 +1,12 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.sops-nix.homeManagerModules.sops];
+
   sops = {
-    age.keyFile = "/var/lib/sops/key";
+    age.keyFile = "/var/lib/key.age";
     defaultSopsFile = ../../secrets.yaml;
   };
 

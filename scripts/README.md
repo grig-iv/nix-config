@@ -1,28 +1,21 @@
 ## Xtal
 
-1. Disko and nixos-install
 ```
-> curl -L https://raw.githubusercontent.com/grig-iv/nix-config/refs/heads/main/scripts/xtal-install.sh -o /tpm/xtal-install.sh
-> chmod +x /tpm/xtal-install.sh
-> bash /tpm/xtal-install.sh
-```
+# 1. add user to sudoers
+su -
+vi /etc/sudoers
 
-2. Install secrets
-```
-> mkdir /mnt/var/lib/sops/
-> vi /mnt/var/lib/sops/key
-> nixos-install --flake /mnt/etc/nixos#xtal
-```
+# 2. install nix (then restart shell)
+sudo apt install curl
+sh <(curl --proto '=https' --tlsv1.2 -L https://nixos.org/nix/install) --daemon
+exit
 
-3. In brand new nixos
-```
-> sudo passwd grig
+# 3. add flakes feature
+echo "experimental-features = nix-command flakes" >> sudo /etc/nix/nix.conf
 
-> sudo chown -R grig /etc/nixos
-> cd /etc/nixos
-> git remote set-url git@github.com:grig-iv/nix-config.git
+# 4. add key.age
+sudo vi /var/lib/key.age
 
-> git clone https://github.com/grig-iv/nvim.git ~/.config/nvim
-> cd ~/.config/nvim
-> git remote set-url git@github.com:grig-iv/nvim.git
+# 5. install home-manager
+nix run home-manager/master -- switch --flake github:grig-iv/nix-config#$(whoami)@$(hostname)
 ```
