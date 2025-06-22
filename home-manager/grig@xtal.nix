@@ -125,6 +125,8 @@
       slack
     ];
 
+    username = "grig";
+    homeDirectory = "/home/grig";
     stateVersion = "24.11";
   };
 
@@ -155,7 +157,4 @@
   };
 
   systemd.user.startServices = "sd-switch";
-
-  username = "grig";
-  homeDirectory = "/home/grig";
 }
