@@ -22,6 +22,11 @@ in {
       modules = [(./. + "/grig@xtal.nix")];
     };
 
+    "grig@tha" = inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs extraSpecialArgs;
+      modules = [(./. + "/grig@tha.nix")];
+    };
+
     "grig@tha-wsl" = inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs extraSpecialArgs;
       modules = [(./. + "/grig@tha-wsl.nix")];
